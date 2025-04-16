@@ -1,32 +1,25 @@
-package View;
+package View.Instructor;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Aprendiz {
-
+public class InstructorPerfilAprendiz {
     private JPanel main;
     private JButton visualizarPerfilButton;
     private JButton XYZButton;
-    private JFrame frame;
 
-    public Aprendiz(JFrame frame)
-    {
-        this.frame=frame;
-
+    public InstructorPerfilAprendiz(JFrame frame) {
     }
-
 
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("SAEP");
-        Aprendiz aprendiz = new Aprendiz(frame); // Se pasa el frame al constructor de Menu
-        frame.setContentPane(aprendiz.main);
+        JFrame frame = new JFrame("Instructor");
+        InstructorPerfilAprendiz instructorPerfilAprendiz = new InstructorPerfilAprendiz(frame);
+        frame.setContentPane(instructorPerfilAprendiz.main);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //frame.setUndecorated(true);
         frame.setVisible(true);
         frame.addWindowListener(new WindowAdapter() {
 
@@ -44,3 +37,5 @@ public class Aprendiz {
 
     }
 }
+
+

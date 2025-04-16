@@ -1,4 +1,4 @@
-package View;
+package View.Empresa;
 
 import javax.swing.*;
 
