@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7589b220-7d6f-4120-ba69-62b308475b25" name="Changes" comment="Pantalla Aprendiz 100&amp;">
-      <change afterPath="$PROJECT_DIR$/src/img/ecuador (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz.form" afterDir="false" />
-    </list>
+    <list default="true" id="7589b220-7d6f-4120-ba69-62b308475b25" name="Changes" comment="Pantalla Aprendiz 100&amp;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +58,7 @@
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE": "right",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE": "left",
-    "git-widget-placeholder": "miguel",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -148,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744762709659</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Pantalla Aprendiz 100&amp;">
+      <option name="closed" value="true" />
+      <created>1744769406597</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744769406597</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="hola" />
+    <MESSAGE value="modal de aprendiz" />
     <MESSAGE value="Pantalla Aprendiz 100&amp;" />
     <option name="LAST_COMMIT_MESSAGE" value="Pantalla Aprendiz 100&amp;" />
   </component>
