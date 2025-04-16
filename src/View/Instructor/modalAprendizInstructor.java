@@ -1,4 +1,4 @@
-package View;
+package View.Instructor;
 
 import javax.swing.*;
 

@@ -1,16 +1,16 @@
-package View;
+package View.Instructor;
 
 import javax.swing.*;
 
-public class modalPerfilEmpresa {
+public class modalPerfilInstructor {
     private JPanel main;
-    private JButton comfirmarButton;
+    private JButton confirmarButton;
     private JTextField textField1;
 
     public static void main(String[] args) {
-        modalPerfilEmpresa modal = new modalPerfilEmpresa();
+        modalPerfilInstructor modal = new modalPerfilInstructor();
         JFrame frame = new JFrame();
-        frame.setContentPane(new modalPerfilEmpresa().main);
+        frame.setContentPane(new modalPerfilInstructor().main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setSize(500,700);
