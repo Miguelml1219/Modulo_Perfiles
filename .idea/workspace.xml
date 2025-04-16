@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.form" afterDir="false" />
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Modal">
       <change beforePath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/modalAprendizInstructor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalAprendizInstructor.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizInstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalAprendizInstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilInstructor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilInstructor.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilInstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/modalPerfilInstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/ico-user-80.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/ico-user-80.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,9 +94,22 @@
       <workItem from="1744812765034" duration="797000" />
       <workItem from="1744813883196" duration="3009000" />
     </task>
+    <task id="LOCAL-00001" summary="Modal">
+      <option name="closed" value="true" />
+      <created>1744823134183</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744823134183</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modal" />
   </component>
 </project>
