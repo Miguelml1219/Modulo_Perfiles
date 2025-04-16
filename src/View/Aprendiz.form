@@ -11,7 +11,7 @@
     <border type="none"/>
     <children>
       <grid id="9a665" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="5" left="30" bottom="30" right="5"/>
+        <margin top="7" left="30" bottom="30" right="5"/>
         <constraints>
           <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -178,7 +178,7 @@
         </children>
       </grid>
       <grid id="4d8f7" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="5" left="30" bottom="5" right="30"/>
+        <margin top="7" left="30" bottom="5" right="30"/>
         <constraints>
           <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -194,7 +194,9 @@
             <properties>
               <font size="28" style="1"/>
               <foreground color="-16764058"/>
-              <text value="Bitácoras"/>
+              <horizontalTextPosition value="10"/>
+              <icon value="img/ecuador (1).png"/>
+              <text value="Bitácoras         "/>
             </properties>
           </component>
           <component id="523cd" class="javax.swing.JLabel">
@@ -420,7 +422,7 @@
               <foreground color="-16777216"/>
               <horizontalAlignment value="4"/>
               <horizontalTextPosition value="10"/>
-              <icon value="img/Diseño sin título (14) - copia.png"/>
+              <icon value="img/Diseño sin título (14) - copia - copia.png"/>
               <text value="Tu Progreso  "/>
             </properties>
           </component>
