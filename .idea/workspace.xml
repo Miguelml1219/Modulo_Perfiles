@@ -4,50 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Pantalla Aprendiz 100&amp;">
-      <change afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/Empresa.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/Empresa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/Instructor.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/Instructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/modalAprendizInstructor.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/modalAprendizInstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_08__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_09__Changes_.xml" beforeDir="false" />
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="pantalla administrador">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/InstructorPerfilAprendiz.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/InstructorPerfilAprendiz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizInstructor.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalAprendizInstructor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilAprendiz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilInstructor.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/modalPerfilInstructor.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +57,7 @@
     "Application.Aprendiz.executor": "Run",
     "Application.Empresa.executor": "Run",
     "Application.EmpresaPerfilAprendiz.executor": "Run",
+    "Application.InicioAdministrador.executor": "Run",
     "Application.Instructor.executor": "Run",
     "Application.InstructorPerfilAprendiz.executor": "Run",
     "Application.modalAprendizEmpresa.executor": "Run",
@@ -106,8 +66,9 @@
     "Application.modalPerfilEmpresa.executor": "Run",
     "Application.modalPerfilInstructor.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "239",
-    "git-widget-placeholder": "miguel",
+    "git-widget-placeholder": "fabian",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -117,7 +78,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.InicioAdministrador">
     <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.Aprendiz.Aprendiz" />
       <module name="Modulo_Perfiles" />
@@ -131,8 +92,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="InicioAdministrador" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.Administrador.InicioAdministrador" />
+      <module name="Modulo_Perfiles" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.Administrador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InicioAdministrador" />
         <item itemvalue="Application.Aprendiz" />
       </list>
     </recent_temporary>
@@ -166,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744823134183</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="pantalla administrador">
+      <option name="closed" value="true" />
+      <created>1744842080880</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744842080880</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +159,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Modal" />
     <MESSAGE value="Pantalla Aprendiz 100&amp;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pantalla Aprendiz 100&amp;" />
+    <MESSAGE value="pantalla administrador" />
+    <option name="LAST_COMMIT_MESSAGE" value="pantalla administrador" />
   </component>
 </project>
