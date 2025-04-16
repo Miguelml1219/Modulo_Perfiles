@@ -164,7 +164,7 @@
               <foreground color="-16764058"/>
               <horizontalTextPosition value="10"/>
               <icon value="img/ico-user-256 - copia.png"/>
-              <text value="EMPRESA                                                                                                                "/>
+              <text value="EMPRESA                                                                                                   "/>
             </properties>
           </component>
           <component id="a067c" class="javax.swing.JLabel">

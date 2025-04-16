@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class modalAprendizEmpresa {
     private JPanel main;
+    private JTextField textField1;
 
     public static void main(String[] args) {
         modalAprendizEmpresa modal = new modalAprendizEmpresa();

@@ -5,6 +5,7 @@ import javax.swing.*;
 public class modalPerfilAprendiz {
     private JPanel main;
     private JButton comfirmarButton;
+    private JTextField textField1;
 
     public static void main(String[] args) {
         modalPerfilAprendiz modal = new modalPerfilAprendiz();

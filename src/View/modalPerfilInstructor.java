@@ -4,7 +4,8 @@ import javax.swing.*;
 
 public class modalPerfilInstructor {
     private JPanel main;
-    private JButton comfirmarButton;
+    private JButton confirmarButton;
+    private JTextField textField1;
 
     public static void main(String[] args) {
         modalPerfilInstructor modal = new modalPerfilInstructor();
