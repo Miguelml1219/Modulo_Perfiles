@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_09__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_04_2025_18_09__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_04_2025_5_38_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_04_2025_5_38_p_m___Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_04_2025_5_51_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_04_2025_5_51_p__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/Empresa.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/Empresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/EmpresaPerfilAprendiz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalAprendizEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalPerfilEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalPerfilInstructor.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/modalPerfilInstructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -39,15 +58,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Aprendiz.executor": "Run",
+    "Application.Empresa.executor": "Run",
+    "Application.EmpresaPerfilAprendiz.executor": "Run",
     "Application.Instructor.executor": "Run",
     "Application.InstructorPerfilAprendiz.executor": "Run",
+    "Application.modalAprendizEmpresa.executor": "Run",
+    "Application.modalAprendizInstructor.executor": "Run",
+    "Application.modalPerfilAprendiz.executor": "Run",
+    "Application.modalPerfilEmpresa.executor": "Run",
+    "Application.modalPerfilInstructor.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "maikol",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -70,6 +99,8 @@
       <updated>1744770834355</updated>
       <workItem from="1744770835429" duration="122000" />
       <workItem from="1744770967560" duration="344000" />
+      <workItem from="1744812765034" duration="797000" />
+      <workItem from="1744813883196" duration="3009000" />
     </task>
     <servers />
   </component>
