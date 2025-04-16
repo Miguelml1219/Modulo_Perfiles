@@ -3,13 +3,11 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="ChangeListManager"
-             
+  <component name="ChangeListManager">
     <list default="true" id="7589b220-7d6f-4120-ba69-62b308475b25" name="Changes" comment="Pantalla Aprendiz 100&amp;">
       <change afterPath="$PROJECT_DIR$/src/img/ecuador (1).png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz.form" afterDir="false" />
     </list>
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,21 +29,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
+    &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;4nGu10&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
     &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 4
-}</component>
+    &quot;customColor&quot;: &quot;&quot;,
+    &quot;associatedIndex&quot;: 4
+    }</component>
   <component name="ProjectId" id="2vjRZr3vduMOT6qsnCitF4fLjVk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -93,9 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
-
         <item itemvalue="Application.Aprendiz" />
-
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +140,6 @@
       <option name="project" value="LOCAL" />
       <updated>1744657067760</updated>
     </task>
-    
     <task id="LOCAL-00004" summary="Pantalla Aprendiz 100&amp;">
       <option name="closed" value="true" />
       <created>1744762709659</created>
@@ -152,7 +147,6 @@
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
       <updated>1744762709659</updated>
-
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -174,9 +168,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="hola" />
-
     <MESSAGE value="Pantalla Aprendiz 100&amp;" />
     <option name="LAST_COMMIT_MESSAGE" value="Pantalla Aprendiz 100&amp;" />
-
   </component>
 </project>
