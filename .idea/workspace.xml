@@ -3,8 +3,13 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="ChangeListManager">
-    <list default="true" id="7589b220-7d6f-4120-ba69-62b308475b25" name="Changes" comment="modal de aprendiz" />
+  <component name="ChangeListManager"
+             
+    <list default="true" id="7589b220-7d6f-4120-ba69-62b308475b25" name="Changes" comment="Pantalla Aprendiz 100&amp;">
+      <change afterPath="$PROJECT_DIR$/src/img/ecuador (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz.form" afterDir="false" />
+    </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,28 +54,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.modalPerfilAprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fabian&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/crist/IdeaProjects/Modulo_Perfiles/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Aprendiz.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE": "right",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE": "left",
+    "git-widget-placeholder": "miguel",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/crist/IdeaProjects/Modulo_Perfiles/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="modalPerfilAprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.modalPerfilAprendiz" />
+    <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.Aprendiz" />
       <module name="Modulo_Perfiles" />
       <extension name="coverage">
         <pattern>
@@ -84,7 +93,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.modalPerfilAprendiz" />
+
+        <item itemvalue="Application.Aprendiz" />
+
       </list>
     </recent_temporary>
   </component>
@@ -133,13 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744657067760</updated>
     </task>
-    <task id="LOCAL-00004" summary="modal de aprendiz">
+    
+    <task id="LOCAL-00004" summary="Pantalla Aprendiz 100&amp;">
       <option name="closed" value="true" />
-      <created>1744767767418</created>
+      <created>1744762709659</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1744767767419</updated>
+      <updated>1744762709659</updated>
+
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -161,7 +174,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="hola" />
-    <MESSAGE value="modal de aprendiz" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal de aprendiz" />
+
+    <MESSAGE value="Pantalla Aprendiz 100&amp;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pantalla Aprendiz 100&amp;" />
+
   </component>
 </project>
