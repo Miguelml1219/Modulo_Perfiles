@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Pantalla Aprendiz 100&amp;">
-      <change afterPath="$PROJECT_DIR$/src/View/GestionPantalla.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/GestionPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/Empresa.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/Empresa.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor/Instructor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Instructor/Instructor.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Instructor/Instructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.java" afterDir="false" />
-    </list>
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -187,7 +165,7 @@
       <workItem from="1744770967560" duration="344000" />
       <workItem from="1744812765034" duration="797000" />
       <workItem from="1744813883196" duration="3009000" />
-      <workItem from="1744908455829" duration="16391000" />
+      <workItem from="1744908455829" duration="16936000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />
@@ -213,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744843145306</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Gestion de pantallas">
+      <option name="closed" value="true" />
+      <created>1744929598107</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744929598128</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +210,7 @@
     <MESSAGE value="Modal" />
     <MESSAGE value="pantalla administrador" />
     <MESSAGE value="Pantalla Aprendiz 100&amp;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pantalla Aprendiz 100&amp;" />
+    <MESSAGE value="Gestion de pantallas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestion de pantallas" />
   </component>
 </project>
