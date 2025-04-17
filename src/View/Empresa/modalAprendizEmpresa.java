@@ -6,11 +6,10 @@ public class modalAprendizEmpresa {
     private JPanel main;
     private JTextField textField1;
 
-    public static void main(String[] args) {
-        modalAprendizEmpresa modal = new modalAprendizEmpresa();
+    public void main() {
         JFrame frame = new JFrame();
-        frame.setContentPane(new modalAprendizEmpresa().main);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(this.main);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setSize(500,700);
         frame.setResizable(false);

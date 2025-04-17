@@ -7,10 +7,9 @@ public class modalPerfilAprendiz {
     private JButton confirmarButton;
     private JTextField textField1;
 
-    public static void main(String[] args) {
-        modalPerfilAprendiz modal = new modalPerfilAprendiz();
+    public void main() {
         JFrame frame = new JFrame();
-        frame.setContentPane(new modalPerfilAprendiz().main);
+        frame.setContentPane(this.main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setSize(500,700);

@@ -1,10 +1,15 @@
 package View.Administrador;
 
 import View.Aprendiz.Aprendiz;
+import View.Aprendiz.modalPerfilAprendiz;
+import View.Empresa.modalAprendizEmpresa;
+import View.GestionPantalla;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -15,13 +20,20 @@ public class AdministradorAprendiz {
     private JButton miPerfilButton;
     private JTable table1;
     private JTextField textField1;
+    private JButton button1;
 
     private JFrame frame;
 
-    public AdministradorAprendiz(JFrame frame) {
-        cargarTabla();
-    }
 
+    public AdministradorAprendiz() {
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modalPerfilAprendiz Administrador = new modalPerfilAprendiz();
+                Administrador.main();
+            }
+        });
+    }
 
     private void cargarTabla() {
         Object[][] datos = {
@@ -50,28 +62,14 @@ public class AdministradorAprendiz {
 
     }
 
-    public static void main(String[] args) {
-
+    public void main (){
         JFrame frame = new JFrame("SAEP");
-        AdministradorAprendiz administradorAprendiz = new AdministradorAprendiz(frame); // Se pasa el frame al constructor de Menu
-        frame.setContentPane(administradorAprendiz.main);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        AdministradorAprendiz administradorAprendiz = new AdministradorAprendiz(); // Se pasa el frame al constructor de Menu
+        frame.setContentPane(this.main);
+        //frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
         frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-
-                int option = JOptionPane.showConfirmDialog(frame, "¿Está seguro de que desea salir?\nCualquier operación que esté realizando y no haya guardado se perderá.","Confirmar Salida",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-                if(option == JOptionPane.YES_OPTION)
-                {
-                    frame.dispose(); // Cierra la ventana
-                    System.exit(0);
-                }
-            }
-        });
 
     }
 }
