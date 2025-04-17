@@ -21,15 +21,6 @@
           <title-color color="-16053493"/>
         </border>
         <children>
-          <component id="4c52b" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="55" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <icon value="img/ico-user-256 - copia.png"/>
-              <text value=""/>
-            </properties>
-          </component>
           <component id="ea2a5" class="javax.swing.JLabel">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
@@ -69,6 +60,20 @@
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="94221" class="javax.swing.JButton" binding="button1" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="55" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-3421756"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <icon value="img/ico-user-256 - copia.png"/>
+              <opaque value="false"/>
+              <requestFocusEnabled value="false"/>
               <text value=""/>
             </properties>
           </component>
