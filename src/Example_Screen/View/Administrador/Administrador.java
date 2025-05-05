@@ -1,6 +1,7 @@
 package Example_Screen.View.Administrador;
 
 import Example_Screen.Model.Usuario;
+import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,142 +19,271 @@ public class Administrador {
     private JButton coevaluadores;
     private JButton auxiliares;
     private JButton inicio;
+    private JLabel logo;
+    private JLabel menu_burguer;
+    private JPanel menuPanel;
+    private JLabel img_princi;
+    private JPanel contenidoPanel;
     private JTable table1;
     private JFrame frame;
-    private Usuario usuario;
 
-    public Administrador(JFrame frame, Usuario usuario) {
+    private VerUsuariosRegistrados verUsuario = new VerUsuariosRegistrados();
 
-        this.usuario=usuario;
+    public static int verUsuarioPorRol = 0;
 
-        if(usuario.getRol().equalsIgnoreCase("Aprendiz"))
-        {
-            verUsuariosButton.setVisible(false);
-            crearUsuariosButton.setVisible(false);
-            permisosButton.setVisible(false);
-            ajustesButton.setVisible(false);
-            aprendices.setVisible(false);
-            evaluadores.setVisible(false);
-            coevaluadores.setVisible(false);
-            auxiliares.setVisible(false);
+
+
+    private boolean menuReducido = false; // Estado inicial
+
+
+    public Administrador() {
+
+        //this.usuario=usuario;
+
+        verUsuariosButton.setVisible(true);
+        crearUsuariosButton.setVisible(true);
+        permisosButton.setVisible(true);
+        ajustesButton.setVisible(true);
+
+        aprendices.setVisible(false);
+        evaluadores.setVisible(false);
+        coevaluadores.setVisible(false);
+        auxiliares.setVisible(false);
+
+
+//        if(usuario.getRol().equalsIgnoreCase("Admin"))
+//        {
+//            verUsuariosButton.setVisible(true);
+//            crearUsuariosButton.setVisible(true);
+//            permisosButton.setVisible(true);
+//            ajustesButton.setVisible(true);
+//        }
+
+        logo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        menu_burguer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton, miPerfil, permisosButton, ajustesButton,
+                aprendices, evaluadores, coevaluadores, auxiliares};
+
+        for (JButton btn : botones) {
+            btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
 
-        if(usuario.getRol().equalsIgnoreCase("Admin"))
-        {
-            verUsuariosButton.setVisible(true);
-            crearUsuariosButton.setVisible(true);
-            permisosButton.setVisible(true);
-            ajustesButton.setVisible(true);
-            aprendices.setVisible(true);
-            evaluadores.setVisible(true);
-            coevaluadores.setVisible(true);
-            auxiliares.setVisible(true);
-        }
+        Color colorHover = new Color(0, 120, 50);
+        Color colorBase = new Color(57, 169, 0);
 
-
-
-        verUsuariosButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        crearUsuariosButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        permisosButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        ajustesButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        aprendices.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        evaluadores.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        coevaluadores.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        auxiliares.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-
-        verUsuariosButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                verUsuariosButton.setBackground(new Color(0, 120, 50)); // Azul más claro al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                verUsuariosButton.setBackground(new Color(57,169,0)); // Restaurar color base
-            }
-        });
-
-        crearUsuariosButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                crearUsuariosButton.setBackground(new Color(0, 120, 50)); // Azul más claro al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                crearUsuariosButton.setBackground(new Color(57,169,0)); // Restaurar color base
-            }
-        });
-
-        permisosButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                permisosButton.setBackground(new Color(0, 120, 50)); // Azul más claro al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                permisosButton.setBackground(new Color(57,169,0)); // Restaurar color base
-            }
-        });
-
-        miPerfil.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                miPerfil.setBackground(new Color(0, 120, 50)); // Azul más claro al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                miPerfil.setBackground(new Color(57,169,0)); // Restaurar color base
-            }
-        });
-
-        ajustesButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                ajustesButton.setBackground(new Color(0, 120, 50)); // Azul más claro al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                ajustesButton.setBackground(new Color(57,169,0)); // Restaurar color base
-            }
-        });
+        aplicarEfectoHover(inicio, colorHover, colorBase);
+        aplicarEfectoHover(verUsuariosButton, colorHover, colorBase);
+        aplicarEfectoHover(crearUsuariosButton, colorHover, colorBase);
+        aplicarEfectoHover(permisosButton, colorHover, colorBase);
+        aplicarEfectoHover(miPerfil, colorHover, colorBase);
+        aplicarEfectoHover(ajustesButton, colorHover, colorBase);
 
         verUsuariosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (aprendices.isVisible()) {
-                    // Si están visibles, ocultarlos
-                    aprendices.setVisible(false);
-                    evaluadores.setVisible(false);
-                    coevaluadores.setVisible(false);
-                    auxiliares.setVisible(false);
-                } else {
-                    // Si no están visibles, mostrarlos
-                    aprendices.setVisible(true);
-                    evaluadores.setVisible(true);
-                    coevaluadores.setVisible(true);
-                    auxiliares.setVisible(true);
-                }
+                boolean visible = aprendices.isVisible();
+                aprendices.setVisible(!visible);
+                evaluadores.setVisible(!visible);
+                coevaluadores.setVisible(!visible);
+                auxiliares.setVisible(!visible);
+
+            }
+        });
+        logo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                contenidoPanel.removeAll();
+                contenidoPanel.setLayout(new BorderLayout());
+                contenidoPanel.add(img_princi);
+                contenidoPanel.revalidate();
+                contenidoPanel.repaint();
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
             }
         });
 
 
+        inicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                contenidoPanel.removeAll();
+                contenidoPanel.setLayout(new BorderLayout());
+                contenidoPanel.add(img_princi);
+                contenidoPanel.revalidate();
+                contenidoPanel.repaint();
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+
+            }
+        });
 
 
+        menu_burguer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int anchoCompleto = 200;  // Ancho original del menú
+                int anchoReducido = 80;   // Ancho reducido (30% aprox)
+
+                boolean visible = aprendices.isVisible();
+
+                verUsuariosButton.setVisible(false);
+                crearUsuariosButton.setVisible(false);
+                permisosButton.setVisible(false);
+                ajustesButton.setVisible(false);
+                miPerfil.setVisible(false);
+                inicio.setVisible(false);
+                logo.setVisible(false);
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+
+                if (menuReducido) {
+                    menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+
+                    verUsuariosButton.setVisible(true);
+                    crearUsuariosButton.setVisible(true);
+                    permisosButton.setVisible(true);
+                    ajustesButton.setVisible(true);
+                    miPerfil.setVisible(true);
+                    inicio.setVisible(true);
+                    logo.setVisible(true);
+
+                } else {
+                    menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+                }
+
+                menuPanel.revalidate(); // Refresca el layout
+                menuReducido = !menuReducido;
+
+
+
+            }
+        });
+
+        aprendices.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verUsuarioPorRol = 1;
+                mostrarPanelUsuarios();
+            }
+        });
+        evaluadores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verUsuarioPorRol = 2;
+                mostrarPanelUsuarios();
+
+            }
+        });
+        coevaluadores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verUsuarioPorRol = 3;
+                mostrarPanelUsuarios();
+            }
+        });
+        auxiliares.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verUsuarioPorRol = 4;
+                mostrarPanelUsuarios();
+            }
+        });
+
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelEditar();
+            }
+        });
+        permisosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                configurarBotonPermisos();
+            }
+        });
+    }
+
+    public void configurarBotonPermisos() {
+        permisosButton.addActionListener(e -> {
+            contenidoPanel.removeAll();
+
+            PermisosPanel permisosPanel = new PermisosPanel();
+            contenidoPanel.setLayout(new BorderLayout());
+            contenidoPanel.add(permisosPanel.getMainPanel(), BorderLayout.CENTER);
+
+            contenidoPanel.revalidate();
+            contenidoPanel.repaint();
+        });
+        // También puedes agregar el efecto hover que ya tienes en otros botones
+        permisosButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                permisosButton.setBackground(new Color(0, 120, 50));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                permisosButton.setBackground(new Color(57, 169, 0));
+            }
+        });
     }
 
 
-    public static void main(String[] args) {
+    public void mostrarPanelEditar() {
+        Editar_Admin editarAdmin = new Editar_Admin();
 
-        Usuario usuario = new Usuario("Carlos", "Admin"); // Cambia a "Admin" para probar el otro perfil
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(editarAdmin.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void aplicarEfectoHover(JButton boton, Color colorHover, Color colorBase) {
+        boton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                boton.setBackground(colorHover);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                boton.setBackground(colorBase);
+            }
+        });
+    }
+
+    public void mostrarPanelUsuarios() {
+        VerUsuariosRegistrados verUsuarios = new VerUsuariosRegistrados();
+
+    // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(verUsuarios.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
+    // Ahora sí: ya están inicializados los campos como `busqueda` y `table1`
+        verUsuarios.obtenerDatosUsuario();
+        verUsuarios.inicializarFiltro(verUsuarios.getBusqueda(), verUsuarios.getTable());
+        verUsuarios.tipoDeUsuarioRegistrado();
+        verUsuarios.componentesPersonalizado();
+    }
+
+    public void Admin_Screen() {
         JFrame frame = new JFrame("SAEP");
-        Administrador administrador = new Administrador(frame, usuario); // Se pasa el frame al constructor de Menu
-        frame.setContentPane(administrador.main);
+        frame.setContentPane(this.main);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
@@ -171,6 +301,6 @@ public class Administrador {
                 }
             }
         });
-
     }
+
 }
