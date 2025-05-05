@@ -44,7 +44,7 @@
             <margin top="35" left="35" bottom="35" right="35"/>
             <constraints/>
             <properties>
-              <background color="-1"/>
+              <background color="-592138"/>
             </properties>
             <border type="none"/>
             <children>
@@ -243,7 +243,7 @@
           <component id="t2t2t" class="javax.swing.JButton" binding="guardarButton">
             <constraints/>
             <properties>
-              <background color="-12998400"/>
+              <background color="-812014"/>
               <enabled value="true"/>
               <font name="Calibri" size="20" style="1"/>
               <foreground color="-1"/>

@@ -1,17 +1,18 @@
 package Example_Screen.View.Administrador;
 
 import Example_Screen.Model.Usuario;
+import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
 
 public class Administrador {
     private JPanel main;
     private JButton verUsuariosButton;
     private JButton crearUsuariosButton;
-    private JButton ajustesButton;
     private JButton permisosButton;
     private JButton miPerfil;
     private JButton aprendices;
@@ -24,6 +25,7 @@ public class Administrador {
     private JPanel menuPanel;
     private JLabel img_princi;
     private JPanel contenidoPanel;
+    private JButton registrarEmpresa;
     private JTable table1;
     private JFrame frame;
 
@@ -43,7 +45,7 @@ public class Administrador {
         verUsuariosButton.setVisible(true);
         crearUsuariosButton.setVisible(true);
         permisosButton.setVisible(true);
-        ajustesButton.setVisible(true);
+        registrarEmpresa.setVisible(true);
 
         aprendices.setVisible(false);
         evaluadores.setVisible(false);
@@ -62,7 +64,7 @@ public class Administrador {
         logo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         menu_burguer.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton, miPerfil, permisosButton, ajustesButton,
+        JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton, miPerfil, permisosButton, registrarEmpresa,
                 aprendices, evaluadores, coevaluadores, auxiliares};
 
         for (JButton btn : botones) {
@@ -77,7 +79,7 @@ public class Administrador {
         aplicarEfectoHover(crearUsuariosButton, colorHover, colorBase);
         aplicarEfectoHover(permisosButton, colorHover, colorBase);
         aplicarEfectoHover(miPerfil, colorHover, colorBase);
-        aplicarEfectoHover(ajustesButton, colorHover, colorBase);
+        aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
 
         verUsuariosButton.addActionListener(new ActionListener() {
             @Override
@@ -128,7 +130,7 @@ public class Administrador {
         menu_burguer.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int anchoCompleto = 200;  // Ancho original del menú
+                int anchoCompleto = 255;  // Ancho original del menú
                 int anchoReducido = 80;   // Ancho reducido (30% aprox)
 
                 boolean visible = aprendices.isVisible();
@@ -136,7 +138,7 @@ public class Administrador {
                 verUsuariosButton.setVisible(false);
                 crearUsuariosButton.setVisible(false);
                 permisosButton.setVisible(false);
-                ajustesButton.setVisible(false);
+                registrarEmpresa.setVisible(false);
                 miPerfil.setVisible(false);
                 inicio.setVisible(false);
                 logo.setVisible(false);
@@ -151,7 +153,7 @@ public class Administrador {
                     verUsuariosButton.setVisible(true);
                     crearUsuariosButton.setVisible(true);
                     permisosButton.setVisible(true);
-                    ajustesButton.setVisible(true);
+                    registrarEmpresa.setVisible(true);
                     miPerfil.setVisible(true);
                     inicio.setVisible(true);
                     logo.setVisible(true);
@@ -281,6 +283,14 @@ public class Administrador {
         verUsuarios.componentesPersonalizado();
     }
 
+    public static void setFrameIcon(JFrame frame) {
+        URL iconoURL = Administrador.class.getClassLoader().getResource("Example_Screen/img/SENA.png");
+        if (iconoURL != null) {
+            frame.setIconImage(new ImageIcon(iconoURL).getImage());
+        }
+    }
+
+
     public void Admin_Screen() {
         JFrame frame = new JFrame("SAEP");
         frame.setContentPane(this.main);
@@ -288,6 +298,8 @@ public class Administrador {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
         frame.setVisible(true);
+
+        setFrameIcon(frame);
         frame.addWindowListener(new WindowAdapter() {
 
             @Override

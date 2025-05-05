@@ -8,6 +8,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
 import Example_Screen.View.Administrador.*;
@@ -25,6 +26,7 @@ public class LoginGUI {
 
     public LoginGUI() {
 
+
         ingresarButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         Border bottom1 = BorderFactory.createMatteBorder(0, 0, 2, 0, Color.decode("#39A900"));
@@ -32,6 +34,25 @@ public class LoginGUI {
         TexfContraseña.setBorder(bottom1);
 
         cargarUsuario();
+
+        TexfUsuario.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {  // Si se presiona Enter
+                    ingresarButton.doClick();
+                }
+            }
+        });
+
+        TexfContraseña.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {  // Si se presiona Enter
+                    ingresarButton.doClick();
+                }
+            }
+        });
+
 
         ingresarButton.addActionListener(new ActionListener() {
             @Override
@@ -114,6 +135,11 @@ public class LoginGUI {
         frame.setSize(700, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        URL iconoURL = LoginGUI.class.getClassLoader().getResource("Example_Screen/img/SENA.png");
+        if (iconoURL != null) {
+            frame.setIconImage(new ImageIcon(iconoURL).getImage());
+        }
 
         frame.addWindowListener(new WindowAdapter() {
             @Override
