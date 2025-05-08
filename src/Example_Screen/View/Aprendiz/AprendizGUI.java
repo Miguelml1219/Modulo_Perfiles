@@ -1,71 +1,42 @@
 package Example_Screen.View.Aprendiz;
 
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static Example_Screen.View.Administrador.Administrador.setFrameIcon;
+import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
+
 public class AprendizGUI {
-/*
+    private JPanel panelAprendiz;
 
-    static class DatabaseManager {
-        public static Usuario autenticar(String usuario, String contraseña) {
-            String sql = "SELECT * FROM usuarios WHERE email = ? AND clave = ?";
+    public JPanel getPanel() {
+        return panelAprendiz;
+    }
 
-            try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    public void moduloAprendiz() {
+        JFrame frame = new JFrame("SAEP");
+        frame.setContentPane(this.panelAprendiz);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //frame.setUndecorated(true);
+        frame.setVisible(true);
 
-                pstmt.setString(1, usuario);
-                pstmt.setString(2, contraseña);
+        System.out.println(cofigBotonInicioSegunRol);
 
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    if (rs.next()) {
-                        Rol rol = Rol.fromId(rs.getInt("id_rol"));
-                        return new Usuario(
-                                rs.getInt("ID_usuarios"),
-                                rs.getString("email"),
-                                rs.getString("clave"),
-                                rs.getString("nombres"),
-                                rs.getString("numero"),
-                                rol
-                        );
-                    }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
+        setFrameIcon(frame);
+        frame.addWindowListener(new WindowAdapter() {
 
+            @Override
+            public void windowClosing(WindowEvent e) {
 
-            public void LoginWindow() {
-
-                btnLogin.addActionListener(e -> {
-
-
-                    Usuario u = DatabaseManager.autenticar(usuario, contraseña);
-                    if (u != null) {
-                        JOptionPane.showMessageDialog(this, "Bienvenido, " + u.getNombre());
-                        dispose();
-                        abrirPanelSegunRol(u);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                });
-            }
-
-            private void abrirPanelSegunRol(Usuario u) {
-                switch (u.getRol()) {
-                    case ADMINISTRADOR:
-                    case ADMIN_SISTEMA:
-                        new PanelAdmin(u).setVisible(true);
-                        break;
-                    case APRENDIZ:
-                        new PanelAprendiz(u).setVisible(true);
-                        break;
-                    case EVALUADOR:
-                        new PanelInstructor(u).setVisible(true);
-                        break;
-                    default:
-                        new PanelBasico(u).setVisible(true);
+                int option = JOptionPane.showConfirmDialog(frame, "¿Está seguro de que desea salir?\nCualquier operación que esté realizando y no haya guardado se perderá.","Confirmar Salida",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+                if(option == JOptionPane.YES_OPTION)
+                {
+                    frame.dispose(); // Cierra la ventana
+                    System.exit(0);
                 }
             }
-        }
-
- */
+        });
+    }
 }

@@ -24,10 +24,10 @@ public class Aprendiz {
         });
     }
 
-    public void main() {
-
+    public static void  main(String[]srgs) {
+        Aprendiz aprendiz = new Aprendiz();
         JFrame frame = new JFrame("SAEP");
-        frame.setContentPane(this.main);
+        frame.setContentPane(aprendiz.main);
         //frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);

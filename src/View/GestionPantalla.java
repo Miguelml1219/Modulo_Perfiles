@@ -50,7 +50,6 @@ public class GestionPantalla {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Aprendiz aprendiz = new Aprendiz();
-                aprendiz.main();
             }
         });
 

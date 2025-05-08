@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas" />
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GestionPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GestionPantalla.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +42,12 @@
     &quot;assignee&quot;: &quot;M4IK8&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Miguelml1219/Modulo_Perfiles.git",
-    "accountId": "b34dff06-a247-440e-9b6e-7fc5d659d6a3"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
+    &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -59,6 +70,7 @@
     "Application.InicioAdministrador.executor": "Run",
     "Application.Instructor.executor": "Run",
     "Application.InstructorPerfilAprendiz.executor": "Run",
+    "Application.LoginGUI.executor": "Run",
     "Application.modalAprendizEmpresa.executor": "Run",
     "Application.modalAprendizInstructor.executor": "Run",
     "Application.modalPerfilAprendiz.executor": "Run",
@@ -67,7 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "273",
-    "git-widget-placeholder": "fabian",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Maikol88/IdeaProjects/Modulo_Perfiles/src/img",
     "node.js.detected.package.eslint": "true",
@@ -83,7 +95,7 @@
       <recent name="C:\Users\Maikol88\IdeaProjects\Modulo_Perfiles\src\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GestionPantalla">
+  <component name="RunManager" selected="Application.LoginGUI">
     <configuration name="AdministradorAprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.Administrador.AdministradorAprendiz" />
       <module name="Modulo_Perfiles" />
@@ -136,12 +148,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Example_Screen.View.Login.LoginGUI" />
+      <module name="Modulo_Perfiles" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Example_Screen.View.Login.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LoginGUI" />
+        <item itemvalue="Application.Aprendiz" />
         <item itemvalue="Application.GestionPantalla" />
         <item itemvalue="Application.InicioAdministrador" />
         <item itemvalue="Application.AdministradorAprendiz" />
-        <item itemvalue="Application.Aprendiz" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +192,8 @@
       <workItem from="1744812765034" duration="797000" />
       <workItem from="1744813883196" duration="3009000" />
       <workItem from="1744908455829" duration="16936000" />
+      <workItem from="1746664117299" duration="11814000" />
+      <workItem from="1746737754876" duration="6336000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />

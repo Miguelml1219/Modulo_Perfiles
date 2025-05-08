@@ -1,8 +1,10 @@
 package Example_Screen.View.Administrador;
 
 import Example_Screen.Model.Usuario;
+import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
+import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,12 +28,17 @@ public class Administrador {
     private JLabel img_princi;
     private JPanel contenidoPanel;
     private JButton registrarEmpresa;
+    private JLabel tituloBienvenido;
     private JTable table1;
     private JFrame frame;
 
     private VerUsuariosRegistrados verUsuario = new VerUsuariosRegistrados();
 
     public static int verUsuarioPorRol = 0;
+    int anchoCompleto = 255;  // Ancho original del menú
+    int anchoReducido = 80;   // Ancho reducido (30% aprox)
+
+    boolean visible = Boolean.parseBoolean(null);
 
 
 
@@ -39,18 +46,41 @@ public class Administrador {
 
 
     public Administrador() {
+        cambiarTituloSegunRol();
+
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                cargarInicioPaneles();
+                break;
+            case "2": // Evaluador
+                break;
+            case "3": // Coevaluador
+                break;
+            case "4": // Auxiliar
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                break;
+            case "5": // Administrador
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+            case "6": // Administrador del sistema
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
+
 
         //this.usuario=usuario;
 
-        verUsuariosButton.setVisible(true);
-        crearUsuariosButton.setVisible(true);
-        permisosButton.setVisible(true);
-        registrarEmpresa.setVisible(true);
-
-        aprendices.setVisible(false);
-        evaluadores.setVisible(false);
-        coevaluadores.setVisible(false);
-        auxiliares.setVisible(false);
 
 
 //        if(usuario.getRol().equalsIgnoreCase("Admin"))
@@ -115,58 +145,51 @@ public class Administrador {
 
                 contenidoPanel.removeAll();
                 contenidoPanel.setLayout(new BorderLayout());
-                contenidoPanel.add(img_princi);
+
+                switch (cofigBotonInicioSegunRol) {
+                    case "1": // Aprendiz
+                        contenidoPanel.add(img_princi);
+                        mostrarPanelAprendiz();
+                        break;
+                    case "2": // Evaluador
+                        break;
+                    case "3": // Coevaluador
+                        break;
+                    case "4": // Auxiliar
+                        contenidoPanel.add(img_princi);
+                        aprendices.setVisible(false);
+                        evaluadores.setVisible(false);
+                        coevaluadores.setVisible(false);
+                        auxiliares.setVisible(true);
+                        break;
+                    case "5": // Administrador
+                        contenidoPanel.add(img_princi);
+                        aprendices.setVisible(false);
+                        evaluadores.setVisible(false);
+                        coevaluadores.setVisible(false);
+                        auxiliares.setVisible(false);
+                    case "6": // Administrador del sistema
+                        contenidoPanel.add(img_princi);
+                        aprendices.setVisible(false);
+                        evaluadores.setVisible(false);
+                        coevaluadores.setVisible(false);
+                        auxiliares.setVisible(false);
+                        break;
+                    default:
+                        // Rol desconocido: puedes mostrar un mensaje o panel de error
+                        System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+                }
+
                 contenidoPanel.revalidate();
                 contenidoPanel.repaint();
-                aprendices.setVisible(false);
-                evaluadores.setVisible(false);
-                coevaluadores.setVisible(false);
-                auxiliares.setVisible(false);
-
             }
         });
-
 
         menu_burguer.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int anchoCompleto = 255;  // Ancho original del menú
-                int anchoReducido = 80;   // Ancho reducido (30% aprox)
 
-                boolean visible = aprendices.isVisible();
-
-                verUsuariosButton.setVisible(false);
-                crearUsuariosButton.setVisible(false);
-                permisosButton.setVisible(false);
-                registrarEmpresa.setVisible(false);
-                miPerfil.setVisible(false);
-                inicio.setVisible(false);
-                logo.setVisible(false);
-                aprendices.setVisible(false);
-                evaluadores.setVisible(false);
-                coevaluadores.setVisible(false);
-                auxiliares.setVisible(false);
-
-                if (menuReducido) {
-                    menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
-
-                    verUsuariosButton.setVisible(true);
-                    crearUsuariosButton.setVisible(true);
-                    permisosButton.setVisible(true);
-                    registrarEmpresa.setVisible(true);
-                    miPerfil.setVisible(true);
-                    inicio.setVisible(true);
-                    logo.setVisible(true);
-
-                } else {
-                    menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
-                }
-
-                menuPanel.revalidate(); // Refresca el layout
-                menuReducido = !menuReducido;
-
-
-
+                configBotonMenuSegunRol();
             }
         });
 
@@ -283,6 +306,160 @@ public class Administrador {
         verUsuarios.componentesPersonalizado();
     }
 
+    public void mostrarPanelAprendiz() {
+        AprendizGUI aprendizGUI = new AprendizGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(aprendizGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void ocultarComponentesNoAsignado(){
+        aprendices.setVisible(false);
+        evaluadores.setVisible(false);
+        coevaluadores.setVisible(false);
+        auxiliares.setVisible(false);
+        verUsuariosButton.setVisible(false);
+        permisosButton.setVisible(false);
+        registrarEmpresa.setVisible(false);
+        crearUsuariosButton.setVisible(false);
+        verUsuariosButton.setVisible(false);
+    }
+
+    public void cargarInicioPaneles(){
+
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                ocultarComponentesNoAsignado();
+                mostrarPanelAprendiz();
+                break;
+            case "2": // Evaluador
+                break;
+            case "3": // Coevaluador
+                break;
+            case "4": // Auxiliar
+                break;
+            case "5": // Administrador
+            case "6": // Administrador del sistema
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
+    }
+
+    public void configBotonMenuSegunRol(){
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                anchoCompleto = 255;  // Ancho original del menú
+                anchoReducido = 80;   // Ancho reducido (30% aprox)
+
+                visible = aprendices.isVisible();
+
+                miPerfil.setVisible(false);
+                inicio.setVisible(false);
+                logo.setVisible(false);
+
+                if (menuReducido) {
+                    menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+
+                    miPerfil.setVisible(true);
+                    inicio.setVisible(true);
+                    logo.setVisible(true);
+
+                } else {
+                    menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+                }
+
+                menuPanel.revalidate(); // Refresca el layout
+                menuReducido = !menuReducido;
+                break;
+            case "2": // Evaluador
+                break;
+            case "3": // Coevaluador
+                break;
+            case "4": // Auxiliar
+                configBotonMenu();
+                break;
+            case "5": // Administrador
+                configBotonMenu();
+            case "6": // Administrador del sistema
+                configBotonMenu();
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+
+        }
+
+    }
+
+    public void configBotonMenu(){
+        anchoCompleto = 255;  // Ancho original del menú
+        anchoReducido = 80;   // Ancho reducido (30% aprox)
+
+        visible = aprendices.isVisible();
+
+        verUsuariosButton.setVisible(false);
+        crearUsuariosButton.setVisible(false);
+        permisosButton.setVisible(false);
+        registrarEmpresa.setVisible(false);
+        miPerfil.setVisible(false);
+        inicio.setVisible(false);
+        logo.setVisible(false);
+        aprendices.setVisible(false);
+        evaluadores.setVisible(false);
+        coevaluadores.setVisible(false);
+        auxiliares.setVisible(false);
+
+        if (menuReducido) {
+            menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+
+            verUsuariosButton.setVisible(true);
+            crearUsuariosButton.setVisible(true);
+            permisosButton.setVisible(true);
+            registrarEmpresa.setVisible(true);
+            miPerfil.setVisible(true);
+            inicio.setVisible(true);
+            logo.setVisible(true);
+
+        } else {
+            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        }
+
+        menuPanel.revalidate(); // Refresca el layout
+        menuReducido = !menuReducido;
+
+    }
+
+    public void cambiarTituloSegunRol(){
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                tituloBienvenido.setText("Bienvenido Aprendiz");
+                break;
+            case "2": // Evaluador
+                tituloBienvenido.setText("Bienvenido Evaluador");
+                break;
+            case "3": // Coevaluador
+                tituloBienvenido.setText("Bienvenido Coevaluador");
+                break;
+            case "4": // Auxiliar
+                tituloBienvenido.setText("Bienvenido Auxiliar");
+                break;
+            case "5": // Administrador
+                tituloBienvenido.setText("Bienvenido Administrador");
+            case "6": // Administrador del sistema
+                tituloBienvenido.setText("Bienvenido Administrador del sistema");
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
+    }
+
     public static void setFrameIcon(JFrame frame) {
         URL iconoURL = Administrador.class.getClassLoader().getResource("Example_Screen/img/SENA.png");
         if (iconoURL != null) {
@@ -298,6 +475,8 @@ public class Administrador {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
         frame.setVisible(true);
+
+        System.out.println(cofigBotonInicioSegunRol);
 
         setFrameIcon(frame);
         frame.addWindowListener(new WindowAdapter() {

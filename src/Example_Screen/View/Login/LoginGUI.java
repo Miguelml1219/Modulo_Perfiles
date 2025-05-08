@@ -22,7 +22,7 @@ public class LoginGUI {
     private JButton ingresarButton;
     private final String CONFIG_PATH = "config.properties";
 
-    Administrador administrador = new Administrador();
+    public static String cofigBotonInicioSegunRol= null;
 
     public LoginGUI() {
 
@@ -75,18 +75,33 @@ public class LoginGUI {
                     if (rs.next()) {
                         Usuario user = new Usuario(
                                 rs.getString("nombres"),
-                                rs.getString("id_rol")
+                                cofigBotonInicioSegunRol= rs.getString("id_rol")
                         );
+
 
                         guardarUsuario(usuario);
 
                         switch (user.getRol().toLowerCase()) {
-                            case "6":
-                                Administrador admi = new Administrador();
-                                admi.Admin_Screen();
-                                break;
+
                             case "1":
-                                new AprendizGUI();
+                                Administrador aprendiz = new Administrador();
+                                aprendiz.Admin_Screen();
+                                break;
+                            case "2":
+                                break;
+                            case "3":
+                                break;
+                            case "4":
+                                Administrador auxiliar = new Administrador();
+                                auxiliar.Admin_Screen();
+                                break;
+                            case "5":
+                                Administrador administrador = new Administrador();
+                                administrador.Admin_Screen();
+                                break;
+                            case "6":
+                                Administrador administradorSistema = new Administrador();
+                                administradorSistema.Admin_Screen();
                                 break;
                             default:
                                 JOptionPane.showMessageDialog(null, "Rol no reconocido.", "Error", JOptionPane.ERROR_MESSAGE);
