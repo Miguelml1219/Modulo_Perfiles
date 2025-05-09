@@ -1,5 +1,6 @@
 package Example_Screen.View.Administrador;
 
+import Empresas.Vista.EmpresaGUI;
 import Example_Screen.Model.Usuario;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
@@ -196,6 +197,12 @@ public class Administrador {
                 configurarBotonPermisos();
             }
         });
+        registrarEmpresa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelEmpresa();
+            }
+        });
     }
 
     public void configurarBotonPermisos() {
@@ -264,6 +271,23 @@ public class Administrador {
         verUsuarios.inicializarFiltro(verUsuarios.getBusqueda(), verUsuarios.getTable());
         verUsuarios.tipoDeUsuarioRegistrado();
         verUsuarios.componentesPersonalizado();
+    }
+
+    public void mostrarPanelEmpresa() {
+            EmpresaGUI empresaGUI = new EmpresaGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(empresaGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
+        // Ahora sí: ya están inicializados los campos como `busqueda` y `table1`
+//        empresaGUI.obtenerDatosUsuario();
+//        empresaGUI.inicializarFiltro(verUsuarios.getBusqueda(), verUsuarios.getTable());
+//        empresaGUI.tipoDeUsuarioRegistrado();
+//        empresaGUI.componentesPersonalizado();
     }
 
     public void mostrarPanelAprendiz() {
@@ -390,8 +414,7 @@ public class Administrador {
             inicio.setVisible(true);
             logo.setVisible(true);
 
-        } else {
-            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        } else {            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
         }
 
         menuPanel.revalidate(); // Refresca el layout
@@ -430,7 +453,6 @@ public class Administrador {
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
-                contenidoPanel.add(img_princi);
                 mostrarPanelAprendiz();
                 break;
             case "2": // Evaluador
