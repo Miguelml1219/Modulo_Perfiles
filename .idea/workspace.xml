@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas">
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas administrador, aprendiz, auxiliar, administrador del sistema">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GestionPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GestionPantalla.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "273",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "fabian",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Maikol88/IdeaProjects/Modulo_Perfiles/src/img",
     "node.js.detected.package.eslint": "true",
