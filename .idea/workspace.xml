@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="Gestion de pantallas">
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="conectar el modulo empresa a nuestro codigo">
+      <change afterPath="$PROJECT_DIR$/src/Empresas/ConexionBD/ConnectionDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/Controlador/ActualizarEmpresaDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/Controlador/EmpresaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/Modelo/Empresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/img/fondo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Empresas/librerias/pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modulo_Perfiles.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo_Perfiles.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Aprendiz/AprendizGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GestionPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GestionPantalla.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +67,7 @@
     "Application.AdministradorAprendiz.executor": "Run",
     "Application.Aprendiz.executor": "Run",
     "Application.Empresa.executor": "Run",
+    "Application.EmpresaGUI.executor": "Run",
     "Application.EmpresaPerfilAprendiz.executor": "Run",
     "Application.GestionPantalla.executor": "Run",
     "Application.InicioAdministrador.executor": "Run",
@@ -76,10 +79,14 @@
     "Application.modalPerfilAprendiz.executor": "Run",
     "Application.modalPerfilEmpresa.executor": "Run",
     "Application.modalPerfilInstructor.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "273",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "fabian",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Maikol88/IdeaProjects/Modulo_Perfiles/src/img",
     "node.js.detected.package.eslint": "true",
@@ -87,6 +94,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -96,12 +106,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.LoginGUI">
-    <configuration name="AdministradorAprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.Administrador.AdministradorAprendiz" />
+    <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.Aprendiz.Aprendiz" />
       <module name="Modulo_Perfiles" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.Administrador.*" />
+          <option name="PATTERN" value="View.Aprendiz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +119,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.Aprendiz.Aprendiz" />
+    <configuration name="EmpresaGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Empresas.Vista.EmpresaGUI" />
       <module name="Modulo_Perfiles" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.Aprendiz.*" />
+          <option name="PATTERN" value="Empresas.Vista.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,10 +174,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoginGUI" />
+        <item itemvalue="Application.EmpresaGUI" />
         <item itemvalue="Application.Aprendiz" />
         <item itemvalue="Application.GestionPantalla" />
         <item itemvalue="Application.InicioAdministrador" />
-        <item itemvalue="Application.AdministradorAprendiz" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +204,9 @@
       <workItem from="1744908455829" duration="16936000" />
       <workItem from="1746664117299" duration="11814000" />
       <workItem from="1746737754876" duration="6336000" />
+      <workItem from="1746762054402" duration="820000" />
+      <workItem from="1746821220641" duration="271000" />
+      <workItem from="1746822500624" duration="3790000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />
@@ -227,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744929598128</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Organizar menu de aprendiz">
+      <option name="closed" value="true" />
+      <created>1746762282069</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746762282069</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +260,8 @@
     <MESSAGE value="pantalla administrador" />
     <MESSAGE value="Pantalla Aprendiz 100&amp;" />
     <MESSAGE value="Gestion de pantallas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestion de pantallas" />
+    <MESSAGE value="Organizar menu de aprendiz" />
+    <MESSAGE value="conectar el modulo empresa a nuestro codigo" />
+    <option name="LAST_COMMIT_MESSAGE" value="conectar el modulo empresa a nuestro codigo" />
   </component>
 </project>

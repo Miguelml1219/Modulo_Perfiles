@@ -1,5 +1,6 @@
 package Example_Screen.View.Administrador;
 
+import Empresas.Vista.EmpresaGUI;
 import Example_Screen.Model.Usuario;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
@@ -29,6 +30,12 @@ public class Administrador {
     private JPanel contenidoPanel;
     private JButton registrarEmpresa;
     private JLabel tituloBienvenido;
+    private JPanel pnlBtonInicio;
+    private JPanel pnlBtonVerUsua;
+    private JPanel pnlBtonCrearUsua;
+    private JPanel pnlBtonRegisEmpr;
+    private JPanel pnlBtonPermiso;
+    private JPanel pnlBtonPerfil;
     private JTable table1;
     private JFrame frame;
 
@@ -126,15 +133,7 @@ public class Administrador {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                contenidoPanel.removeAll();
-                contenidoPanel.setLayout(new BorderLayout());
-                contenidoPanel.add(img_princi);
-                contenidoPanel.revalidate();
-                contenidoPanel.repaint();
-                aprendices.setVisible(false);
-                evaluadores.setVisible(false);
-                coevaluadores.setVisible(false);
-                auxiliares.setVisible(false);
+                regresarInicio();
             }
         });
 
@@ -143,45 +142,7 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                contenidoPanel.removeAll();
-                contenidoPanel.setLayout(new BorderLayout());
-
-                switch (cofigBotonInicioSegunRol) {
-                    case "1": // Aprendiz
-                        contenidoPanel.add(img_princi);
-                        mostrarPanelAprendiz();
-                        break;
-                    case "2": // Evaluador
-                        break;
-                    case "3": // Coevaluador
-                        break;
-                    case "4": // Auxiliar
-                        contenidoPanel.add(img_princi);
-                        aprendices.setVisible(false);
-                        evaluadores.setVisible(false);
-                        coevaluadores.setVisible(false);
-                        auxiliares.setVisible(true);
-                        break;
-                    case "5": // Administrador
-                        contenidoPanel.add(img_princi);
-                        aprendices.setVisible(false);
-                        evaluadores.setVisible(false);
-                        coevaluadores.setVisible(false);
-                        auxiliares.setVisible(false);
-                    case "6": // Administrador del sistema
-                        contenidoPanel.add(img_princi);
-                        aprendices.setVisible(false);
-                        evaluadores.setVisible(false);
-                        coevaluadores.setVisible(false);
-                        auxiliares.setVisible(false);
-                        break;
-                    default:
-                        // Rol desconocido: puedes mostrar un mensaje o panel de error
-                        System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
-                }
-
-                contenidoPanel.revalidate();
-                contenidoPanel.repaint();
+                regresarInicio();
             }
         });
 
@@ -234,6 +195,12 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 configurarBotonPermisos();
+            }
+        });
+        registrarEmpresa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelEmpresa();
             }
         });
     }
@@ -306,6 +273,23 @@ public class Administrador {
         verUsuarios.componentesPersonalizado();
     }
 
+    public void mostrarPanelEmpresa() {
+            EmpresaGUI empresaGUI = new EmpresaGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(empresaGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
+        // Ahora sí: ya están inicializados los campos como `busqueda` y `table1`
+//        empresaGUI.obtenerDatosUsuario();
+//        empresaGUI.inicializarFiltro(verUsuarios.getBusqueda(), verUsuarios.getTable());
+//        empresaGUI.tipoDeUsuarioRegistrado();
+//        empresaGUI.componentesPersonalizado();
+    }
+
     public void mostrarPanelAprendiz() {
         AprendizGUI aprendizGUI = new AprendizGUI();
 
@@ -327,6 +311,10 @@ public class Administrador {
         registrarEmpresa.setVisible(false);
         crearUsuariosButton.setVisible(false);
         verUsuariosButton.setVisible(false);
+        pnlBtonVerUsua.setVisible(false);
+        pnlBtonCrearUsua.setVisible(false);
+        pnlBtonRegisEmpr.setVisible(false);
+        pnlBtonPermiso.setVisible(false);
     }
 
     public void cargarInicioPaneles(){
@@ -426,8 +414,7 @@ public class Administrador {
             inicio.setVisible(true);
             logo.setVisible(true);
 
-        } else {
-            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        } else {            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
         }
 
         menuPanel.revalidate(); // Refresca el layout
@@ -458,6 +445,47 @@ public class Administrador {
                 // Rol desconocido: puedes mostrar un mensaje o panel de error
                 System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
         }
+    }
+
+    public void regresarInicio(){
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                mostrarPanelAprendiz();
+                break;
+            case "2": // Evaluador
+                break;
+            case "3": // Coevaluador
+                break;
+            case "4": // Auxiliar
+                contenidoPanel.add(img_princi);
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(true);
+                break;
+            case "5": // Administrador
+                contenidoPanel.add(img_princi);
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+            case "6": // Administrador del sistema
+                contenidoPanel.add(img_princi);
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
+
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
     }
 
     public static void setFrameIcon(JFrame frame) {
