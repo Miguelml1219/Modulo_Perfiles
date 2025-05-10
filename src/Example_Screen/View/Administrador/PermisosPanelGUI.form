@@ -235,7 +235,7 @@
       <grid id="s1s1s" binding="buttonPanel" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="1">
         <constraints border-constraint="South"/>
         <properties>
-          <background color="-1"/>
+          <background color="-592138"/>
           <foreground color="-12998400"/>
         </properties>
         <border type="none"/>
