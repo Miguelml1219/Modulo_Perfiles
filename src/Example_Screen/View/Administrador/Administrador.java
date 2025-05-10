@@ -1,7 +1,6 @@
 package Example_Screen.View.Administrador;
 
 import Empresas.Vista.EmpresaGUI;
-import Example_Screen.Model.Usuario;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
@@ -36,8 +35,12 @@ public class Administrador {
     private JPanel pnlBtonRegisEmpr;
     private JPanel pnlBtonPermiso;
     private JPanel pnlBtonPerfil;
+    private JLabel CerrarSesion;
+    private JPanel pnlBtonAsigInstru;
+    private JButton AsignarIntructorButton;
     private JTable table1;
     private JFrame frame;
+
 
     private VerUsuariosRegistrados verUsuario = new VerUsuariosRegistrados();
 
@@ -100,8 +103,9 @@ public class Administrador {
 
         logo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         menu_burguer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        CerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton, miPerfil, permisosButton, registrarEmpresa,
+        JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
                 aprendices, evaluadores, coevaluadores, auxiliares};
 
         for (JButton btn : botones) {
@@ -115,6 +119,7 @@ public class Administrador {
         aplicarEfectoHover(verUsuariosButton, colorHover, colorBase);
         aplicarEfectoHover(crearUsuariosButton, colorHover, colorBase);
         aplicarEfectoHover(permisosButton, colorHover, colorBase);
+        aplicarEfectoHover(AsignarIntructorButton, colorHover, colorBase);
         aplicarEfectoHover(miPerfil, colorHover, colorBase);
         aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
 
@@ -136,7 +141,15 @@ public class Administrador {
                 regresarInicio();
             }
         });
-
+        CerrarSesion.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (JOptionPane.showConfirmDialog(frame, "¿Estás seguro de cerrar sesión?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    LoginGUI.main(new String[0]);  // Llama al main para abrir un nuevo login
+                }
+            }
+        });
 
         inicio.addActionListener(new ActionListener() {
             @Override
@@ -204,6 +217,7 @@ public class Administrador {
             }
         });
     }
+
 
     public void configurarBotonPermisos() {
         permisosButton.addActionListener(e -> {
@@ -497,7 +511,7 @@ public class Administrador {
 
 
     public void Admin_Screen() {
-        JFrame frame = new JFrame("SAEP");
+        frame = new JFrame("SAEP");
         frame.setContentPane(this.main);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

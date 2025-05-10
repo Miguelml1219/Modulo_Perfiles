@@ -16,7 +16,7 @@ import Example_Screen.View.Aprendiz.AprendizGUI;
 //import Example_Screen.View.Aprendiz.*;
 
 public class LoginGUI {
-    private JPanel main;
+    public JPanel main;
     private JTextField TexfUsuario;
     private JPasswordField TexfContraseña;
     private JButton ingresarButton;
@@ -52,6 +52,7 @@ public class LoginGUI {
                 }
             }
         });
+
 
 
         ingresarButton.addActionListener(new ActionListener() {
