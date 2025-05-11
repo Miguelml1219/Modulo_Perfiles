@@ -82,7 +82,7 @@ public class VerUsuariosRegistrados {
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT tipo_dc, telefono, nombres, apellidos, email FROM usuarios WHERE id_rol = " + verUsuarioPorRol);
+            ResultSet rs = stmt.executeQuery("SELECT tipo_dc, numero, nombres, apellidos, email FROM usuarios WHERE id_rol = " + verUsuarioPorRol);
 
             while (rs.next()) {
                 dato[0] = rs.getString(1);

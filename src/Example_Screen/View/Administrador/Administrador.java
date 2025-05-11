@@ -400,7 +400,7 @@ public class Administrador {
     }
 
     public void configBotonMenu(){
-        anchoCompleto = 255;  // Ancho original del menú
+        anchoCompleto = 293;  // Ancho original del menú
         anchoReducido = 80;   // Ancho reducido (30% aprox)
 
         visible = aprendices.isVisible();
@@ -416,6 +416,7 @@ public class Administrador {
         evaluadores.setVisible(false);
         coevaluadores.setVisible(false);
         auxiliares.setVisible(false);
+        AsignarIntructorButton.setVisible(false);
 
         if (menuReducido) {
             menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
@@ -424,6 +425,7 @@ public class Administrador {
             crearUsuariosButton.setVisible(true);
             permisosButton.setVisible(true);
             registrarEmpresa.setVisible(true);
+            AsignarIntructorButton.setVisible(true);
             miPerfil.setVisible(true);
             inicio.setVisible(true);
             logo.setVisible(true);
