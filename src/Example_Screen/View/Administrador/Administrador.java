@@ -1,5 +1,6 @@
 package Example_Screen.View.Administrador;
 
+import AsignacionInstructor.AsignacionGUI;
 import Empresas.Vista.EmpresaGUI;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
@@ -216,6 +217,12 @@ public class Administrador {
                 mostrarPanelEmpresa();
             }
         });
+        AsignarIntructorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelAsignarInstructor();
+            }
+        });
     }
 
 
@@ -297,11 +304,18 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
 
-        // Ahora sí: ya están inicializados los campos como `busqueda` y `table1`
-//        empresaGUI.obtenerDatosUsuario();
-//        empresaGUI.inicializarFiltro(verUsuarios.getBusqueda(), verUsuarios.getTable());
-//        empresaGUI.tipoDeUsuarioRegistrado();
-//        empresaGUI.componentesPersonalizado();
+    }
+
+    public void mostrarPanelAsignarInstructor() {
+        AsignacionGUI asignacionGUI = new AsignacionGUI(frame);
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(asignacionGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
     }
 
     public void mostrarPanelAprendiz() {
