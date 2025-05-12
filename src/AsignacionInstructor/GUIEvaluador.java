@@ -5,13 +5,12 @@ import AsignacionInstructor.Conexion.Conexion;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 
 /**
  * Clase GUIEvaluador que permite la asignación y eliminación de instructores (evaluadores) a aprendices.
@@ -28,6 +27,8 @@ public class GUIEvaluador {
     private Conexion conexion = new Conexion();
     private AsignacionGUI asignacionGUI;
     private int idEvaluadorActual;
+//    private TableRowSorter<DefaultTableModel> sorter;
+//    private NonEditableTableModel modelo;
     int filas;
 
     /**
@@ -44,6 +45,8 @@ public class GUIEvaluador {
     public GUIEvaluador(int idaprendiz, String nombre, String documento, String ficha, AsignacionGUI parentGUI, int idEvaluadorActual){
         this.asignacionGUI = parentGUI;
         this.idEvaluadorActual = idEvaluadorActual;
+//        sorter = new TableRowSorter<>(modelo);
+//        table1.setRowSorter(sorter);
 
         listaContacto();
 
@@ -74,6 +77,31 @@ public class GUIEvaluador {
         Color color3 = new Color(0x0051B8);
         Color colorBase4 = new Color(0x007AFF);
         aplicarEfectoHover(button1, color3, colorBase4);
+
+
+//        textField1.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//                String searchText = textField1.getText().trim().toLowerCase();
+//
+//                if (sorter != null) {
+//                    // Filtro que busca en todas las columnas
+//                    RowFilter<DefaultTableModel, Object> filter = new RowFilter<DefaultTableModel, Object>() {
+//                        @Override
+//                        public boolean include(Entry<? extends DefaultTableModel, ? extends Object> entry) {
+//                            for (int i = 0; i < entry.getValueCount(); i++) {
+//                                if (entry.getStringValue(i).toLowerCase().contains(searchText)) {
+//                                    return true;
+//                                }
+//                            }
+//                            return false;
+//                        }
+//                    };
+//
+//                    sorter.setRowFilter(filter);
+//                }
+//            }
+//        });
 
 
         button1.addActionListener(new ActionListener() {
@@ -265,6 +293,12 @@ public class GUIEvaluador {
      */
     public void listaContacto()
     {
+
+//        // Eliminar el sorter anterior si existe
+//        if (sorter != null) {
+//            table1.setRowSorter(null);
+//        }
+
         NonEditableTableModel modeloa = new NonEditableTableModel();
         table1.setDefaultEditor(Object.class, null);
 
@@ -360,6 +394,14 @@ public class GUIEvaluador {
 
                 modeloa.addRow(dato);
             }
+
+//            sorter = new TableRowSorter<>(modelo);
+//            table1.setRowSorter(sorter);
+//
+//            // Restablecer el filtro de búsqueda si hay texto
+//            if (!textField1.getText().trim().isEmpty()) {
+//                textField1.setText(textField1.getText());
+//            }
         }
         catch (SQLException e)
         {

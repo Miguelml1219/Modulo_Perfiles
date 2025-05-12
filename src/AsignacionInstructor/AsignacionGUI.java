@@ -66,6 +66,15 @@ public class AsignacionGUI {
             }
         });
 
+        // Cargar datos al iniciar
+        try {
+            List<Asignacion> asignaciones = buscarGeneral(""); // Búsqueda sin filtro
+            actualizarTabla(asignaciones);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos: " + e.getMessage());
+        }
+
+
 
 
     }
