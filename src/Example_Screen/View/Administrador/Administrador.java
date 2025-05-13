@@ -5,7 +5,7 @@ import Empresas.Vista.EmpresaGUI;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
-//import Prueba3.Modelo.GUI.CodigoGUI;
+import Prueba3.Modelo.GUI.CodigoGUI;
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 
@@ -320,17 +320,17 @@ public class Administrador {
 
     }
 
-//    public void mostrarPanelSeguimiento() {
-//        CodigoGUI codigoGUI = new CodigoGUI();
-//
-//        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
-//        contenidoPanel.removeAll();
-//        contenidoPanel.setLayout(new BorderLayout());
-//        contenidoPanel.add(codigoGUI.getPanel(), BorderLayout.CENTER);
-//        contenidoPanel.revalidate();
-//        contenidoPanel.repaint();
-//
-//    }
+    public void mostrarPanelSeguimiento() {
+        CodigoGUI codigoGUI = new CodigoGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(codigoGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
+    }
 
     public void mostrarPanelAprendiz() {
         AprendizGUI aprendizGUI = new AprendizGUI();
@@ -365,7 +365,7 @@ public class Administrador {
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
                 ocultarComponentesNoAsignado();
-                //mostrarPanelSeguimiento();
+                mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
                 break;
@@ -498,7 +498,7 @@ public class Administrador {
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
-                //mostrarPanelSeguimiento();
+                mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
                 break;
