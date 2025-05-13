@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="boton de ver perfil en al tabla">
+    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="uni el modulo de seguimiento">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Controlador/ActualizarEmpresaDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresas/Controlador/ActualizarEmpresaDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Controlador/EmpresaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresas/Controlador/EmpresaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +213,8 @@
       <workItem from="1746933252599" duration="4553000" />
       <workItem from="1747088320357" duration="540000" />
       <workItem from="1747093344957" duration="2077000" />
-      <workItem from="1747103447153" duration="621000" />
+      <workItem from="1747103447153" duration="3226000" />
+      <workItem from="1747107931971" duration="1071000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />
@@ -251,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746762282069</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="uni el modulo de seguimiento">
+      <option name="closed" value="true" />
+      <created>1747105830219</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747105830259</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +279,7 @@
     <MESSAGE value="Organizar menu de aprendiz" />
     <MESSAGE value="conectar el modulo empresa a nuestro codigo" />
     <MESSAGE value="union del modulo asignar instructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="union del modulo asignar instructor" />
+    <MESSAGE value="uni el modulo de seguimiento" />
+    <option name="LAST_COMMIT_MESSAGE" value="uni el modulo de seguimiento" />
   </component>
 </project>
