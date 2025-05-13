@@ -5,6 +5,8 @@ import Empresas.Vista.EmpresaGUI;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
+//import Prueba3.Modelo.GUI.CodigoGUI;
+
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 
 import javax.swing.*;
@@ -318,6 +320,18 @@ public class Administrador {
 
     }
 
+//    public void mostrarPanelSeguimiento() {
+//        CodigoGUI codigoGUI = new CodigoGUI();
+//
+//        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+//        contenidoPanel.removeAll();
+//        contenidoPanel.setLayout(new BorderLayout());
+//        contenidoPanel.add(codigoGUI.getPanel(), BorderLayout.CENTER);
+//        contenidoPanel.revalidate();
+//        contenidoPanel.repaint();
+//
+//    }
+
     public void mostrarPanelAprendiz() {
         AprendizGUI aprendizGUI = new AprendizGUI();
 
@@ -339,6 +353,7 @@ public class Administrador {
         registrarEmpresa.setVisible(false);
         crearUsuariosButton.setVisible(false);
         verUsuariosButton.setVisible(false);
+        pnlBtonAsigInstru.setVisible(false);
         pnlBtonVerUsua.setVisible(false);
         pnlBtonCrearUsua.setVisible(false);
         pnlBtonRegisEmpr.setVisible(false);
@@ -350,7 +365,7 @@ public class Administrador {
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
                 ocultarComponentesNoAsignado();
-                mostrarPanelAprendiz();
+                //mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
                 break;
@@ -483,7 +498,7 @@ public class Administrador {
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
-                mostrarPanelAprendiz();
+                //mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
                 break;

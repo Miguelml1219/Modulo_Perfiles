@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="conectar el modulo empresa a nuestro codigo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="fabian" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,12 +35,12 @@
     &quot;assignee&quot;: &quot;M4IK8&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Miguelml1219/Modulo_Perfiles.git",
-    "accountId": "b34dff06-a247-440e-9b6e-7fc5d659d6a3"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
+    &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -52,50 +52,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.AdministradorAprendiz.executor": "Run",
-    "Application.Aprendiz.executor": "Run",
-    "Application.AsignacionGUI.executor": "Run",
-    "Application.Empresa.executor": "Run",
-    "Application.EmpresaGUI.executor": "Run",
-    "Application.EmpresaPerfilAprendiz.executor": "Run",
-    "Application.GestionPantalla.executor": "Run",
-    "Application.InicioAdministrador.executor": "Run",
-    "Application.Instructor.executor": "Run",
-    "Application.InstructorPerfilAprendiz.executor": "Run",
-    "Application.LoginGUI.executor": "Run",
-    "Application.modalAprendizEmpresa.executor": "Run",
-    "Application.modalAprendizInstructor.executor": "Run",
-    "Application.modalPerfilAprendiz.executor": "Run",
-    "Application.modalPerfilEmpresa.executor": "Run",
-    "Application.modalPerfilInstructor.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "273",
-    "git-widget-placeholder": "fabian",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Maikol88/IdeaProjects/Modulo_Perfiles/src/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15527344",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AdministradorAprendiz.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Aprendiz.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AsignacionGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CodigoGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Empresa.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EmpresaGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EmpresaPerfilAprendiz.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GestionPantalla.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InicioAdministrador.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Instructor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InstructorPerfilAprendiz.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.modalAprendizEmpresa.executor&quot;: &quot;Run&quot;,
+    &quot;Application.modalAprendizInstructor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.modalPerfilAprendiz.executor&quot;: &quot;Run&quot;,
+    &quot;Application.modalPerfilEmpresa.executor&quot;: &quot;Run&quot;,
+    &quot;Application.modalPerfilInstructor.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;184&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;273&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/FABIAN/IdeaProjects/Modulo_Perfiles/src/mmmmm&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\FABIAN\IdeaProjects\Modulo_Perfiles\src\mmmmm" />
       <recent name="C:\Users\Maikol88\IdeaProjects\Modulo_Perfiles\src\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -129,12 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmpresaGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Empresas.Vista.EmpresaGUI" />
+    <configuration name="CodigoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Prueba3.Modelo.GUI.CodigoGUI" />
       <module name="Modulo_Perfiles" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Empresas.Vista.*" />
+          <option name="PATTERN" value="Prueba3.Modelo.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,12 +144,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestionPantalla" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.GestionPantalla" />
+    <configuration name="EmpresaGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Empresas.Vista.EmpresaGUI" />
       <module name="Modulo_Perfiles" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.*" />
+          <option name="PATTERN" value="Empresas.Vista.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -171,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoginGUI" />
+        <item itemvalue="Application.CodigoGUI" />
         <item itemvalue="Application.AsignacionGUI" />
         <item itemvalue="Application.Aprendiz" />
         <item itemvalue="Application.EmpresaGUI" />
-        <item itemvalue="Application.GestionPantalla" />
       </list>
     </recent_temporary>
   </component>
@@ -206,6 +208,8 @@
       <workItem from="1746822500624" duration="3790000" />
       <workItem from="1746893800237" duration="17000" />
       <workItem from="1746933252599" duration="4553000" />
+      <workItem from="1747088320357" duration="540000" />
+      <workItem from="1747093344957" duration="2077000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />
@@ -261,6 +265,7 @@
     <MESSAGE value="Gestion de pantallas" />
     <MESSAGE value="Organizar menu de aprendiz" />
     <MESSAGE value="conectar el modulo empresa a nuestro codigo" />
-    <option name="LAST_COMMIT_MESSAGE" value="conectar el modulo empresa a nuestro codigo" />
+    <MESSAGE value="union del modulo asignar instructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="union del modulo asignar instructor" />
   </component>
 </project>
