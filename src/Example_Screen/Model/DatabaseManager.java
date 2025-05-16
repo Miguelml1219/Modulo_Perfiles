@@ -9,9 +9,19 @@ import Example_Screen.Connection.*;
 
 import static Example_Screen.Connection.DBConnection.getConnection;
 
+/**
+ * Esta es la Clase que maneja operaciones relacionadas con la base de datos, como cargar permisos de roles.
+ * Es como el "intermediario".
+ */
 public class DatabaseManager {
 
-    // Gestión de permisos
+    /**
+     * Aqui se obtiene todos los permisos que tiene un rol específico desde la base de datos.
+     *
+     * @param rol El rol del que queremos saber sus permisos (ej: admin, aprendiz,evaluador, etc.).
+     * @return Un mapa donde cada permiso está asociado a 'true' si el rol lo tiene.
+     *         Ejemplo: Si el rol es admin, podría devolver {Permiso.CREAR_USUARIO=true, Permiso.ELIMINAR=true}.
+     */
     public static Map<Permiso, Boolean> cargarPermisosRol(Rol rol) {
         Map<Permiso, Boolean> permisos = new HashMap<>();
         String sql = "SELECT p.id_permiso FROM permisos_rol pr " +

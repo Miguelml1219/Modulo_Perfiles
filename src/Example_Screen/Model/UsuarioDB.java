@@ -2,7 +2,9 @@ package Example_Screen.Model;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Clase que representa un usuario en la base de datos con todos sus datos y permisos.
+ */
 public class UsuarioDB {
     private int id;
     private String usuario;
@@ -11,7 +13,18 @@ public class UsuarioDB {
     private String identificacion;
     private final Rol rol;
     private Map<Permiso, Boolean> permisos = new HashMap<>();
-
+    /**
+     * Constructor principal para crear un usuario con todos sus datos.
+     * @param id Identificador único en la BD
+     * @param usuario Nombre de usuario
+     * @param contraseña Contraseña
+     * @param nombre Nombre completo
+     * @param identificacion Número de documento
+     * @param rol Rol del usuario (determina sus permisos)
+     *
+     * @example
+     * UsuarioDB admin = new UsuarioDB(1, "admin", "1234", "María", "123456", Rol.ADMIN_SISTEMA);
+     */
     public UsuarioDB(int id, String usuario, String contraseña, String nombre, String identificacion, Rol rol) {
         this.id = id;
         this.usuario = usuario;
@@ -21,7 +34,10 @@ public class UsuarioDB {
         this.rol = rol;
         cargarPermisosDesdeDB();
     }
-
+    /**
+     * Carga los permisos desde la base de datos según el rol del usuario.
+     * Se ejecuta automáticamente al crear el objeto.
+     */
     private void cargarPermisosDesdeDB() {
         this.permisos = DatabaseManager.cargarPermisosRol(this.rol);
     }
