@@ -16,7 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
+/**
+ * Esta clase es para la pantalla donde el administrador,puede ver y cambiar sus propios datos.
+ */
 public class Editar_Admin{
 
     private JPanel panel1;
@@ -46,11 +48,19 @@ public class Editar_Admin{
     private String originalEstado;
     private int userID; // Para almacenar el ID del usuario actual
 
-
+    /**
+     * Este metodo es para que otras partes del programa puedan agarrar el panel principal
+     * de esta pantalla y mostrarlo donde necesiten.
+     * @return El panel1 con todos los componentes de la interfaz. Es el que se muestra.
+     */
     public JPanel getPanel() {
         return panel1;
     }
-
+    /**
+     * El constructor, donde se arma toda la pantalla.
+     * Aquí se configuran los botones, se cargan los datos del usuario
+     * y se preparan las acciones para cuando el usuario hace clic.
+     */
     public Editar_Admin(){
 
         textField1.setVisible(false);
@@ -102,6 +112,11 @@ public class Editar_Admin{
         cargarDatosUsuario();
 
         editarPerfil️Button.addActionListener(new ActionListener() {
+            /**
+             * Cuando le pican al botón de "Editar Perfil".
+             * Lo que hace es dejar que el usuario cambie los datos en los campos.
+             * @param e El evento del clic, o sea, la acción de haber hecho clic.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 nombre.setBorder(bottom);

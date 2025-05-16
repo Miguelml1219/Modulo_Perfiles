@@ -1,5 +1,9 @@
 package Example_Screen.Model;
-
+/**
+ * Esta es la clase que representa a un usuario del sistema.
+ * Guarda toda la información básica de una persona: nombre, rol, documento, etc.
+ *
+ */
 public class Usuario {
     private String  nombre;
     private String rol;
@@ -8,7 +12,11 @@ public class Usuario {
     private String nombres;
     private String apellidos;
     private String email;
-
+    /**
+     * Constructor para crear un usuario.
+     * @param nombre Nombre de usuario.
+     * @param rol Rol asignado.
+     */
     public Usuario(String nombre, String rol) {
         this.nombre = nombre;
         this.rol = rol;

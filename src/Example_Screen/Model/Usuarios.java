@@ -1,5 +1,8 @@
 package Example_Screen.Model;
-
+/**
+ * Clase que representa la información completa de un usuario en el sistema.
+ * Contiene todos los datos personales.
+ */
 public class Usuarios {
 
     int ID_usuarios; String tipo_dc,numero,nombres,apellidos,email,direccion,contacto1,estado; int ID_rol;
