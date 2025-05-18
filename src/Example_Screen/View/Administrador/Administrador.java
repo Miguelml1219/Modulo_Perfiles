@@ -2,12 +2,14 @@ package Example_Screen.View.Administrador;
 
 import AsignacionInstructor.AsignacionGUI;
 import Empresas.Vista.EmpresaGUI;
+import Example_Screen.View.AprendicesAsignados;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
 import Prueba3.Modelo.GUI.CodigoGUI;
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
+import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +54,7 @@ public class Administrador {
     private VerUsuariosRegistrados verUsuario = new VerUsuariosRegistrados();
 
     public static int verUsuarioPorRol = 0;
-    int anchoCompleto = 255;  // Ancho original del menú
+    int anchoCompleto = 280;  // Ancho original del menú
     int anchoReducido = 80;   // Ancho reducido (30% aprox)
 
     boolean visible = Boolean.parseBoolean(null);
@@ -68,12 +70,14 @@ public class Administrador {
      */
     public Administrador() {
         cambiarTituloSegunRol();
+        tamañoCompletoMenu();
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
                 cargarInicioPaneles();
                 break;
             case "2": // Evaluador
+                cargarInicioPaneles();
                 break;
             case "3": // Coevaluador
                 break;
@@ -99,19 +103,6 @@ public class Administrador {
                 System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
         }
 
-
-        //this.usuario=usuario;
-
-
-
-//        if(usuario.getRol().equalsIgnoreCase("Admin"))
-//        {
-//            verUsuariosButton.setVisible(true);
-//            crearUsuariosButton.setVisible(true);
-//            permisosButton.setVisible(true);
-//            ajustesButton.setVisible(true);
-//        }
-
         logo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         menu_burguer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         CerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -133,6 +124,7 @@ public class Administrador {
         aplicarEfectoHover(AsignarIntructorButton, colorHover, colorBase);
         aplicarEfectoHover(miPerfil, colorHover, colorBase);
         aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
+
 
         /**
          * Aquí se configuran las acciones de los botones.
@@ -179,6 +171,7 @@ public class Administrador {
             public void mouseClicked(MouseEvent e) {
 
                 configBotonMenuSegunRol();
+
             }
         });
 
@@ -383,6 +376,23 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
+
+    public void mostrarTablaAprendicesAsignados() {
+        VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
+        AprendicesAsignados asignados = new AprendicesAsignados();
+
+        asignados.obtenerAprendicesAsignados(traerIDusuario, vista);
+
+// Mostrar la vista en el panel principal
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(vista.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+
+        vista.mostrarRol("Aprendices Asignados");
+
+    }
     /**
      * Este metodo sirve para ocultar un montón de botones y paneles del menú.
      * para que no vea opciones que no le corresponden.
@@ -392,11 +402,6 @@ public class Administrador {
         evaluadores.setVisible(false);
         coevaluadores.setVisible(false);
         auxiliares.setVisible(false);
-        verUsuariosButton.setVisible(false);
-        permisosButton.setVisible(false);
-        registrarEmpresa.setVisible(false);
-        crearUsuariosButton.setVisible(false);
-        verUsuariosButton.setVisible(false);
         pnlBtonAsigInstru.setVisible(false);
         pnlBtonVerUsua.setVisible(false);
         pnlBtonCrearUsua.setVisible(false);
@@ -416,6 +421,8 @@ public class Administrador {
                 mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
+                ocultarComponentesNoAsignado();
+                mostrarTablaAprendicesAsignados();
                 break;
             case "3": // Coevaluador
                 break;
@@ -436,8 +443,6 @@ public class Administrador {
     public void configBotonMenuSegunRol(){
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
-                anchoCompleto = 255;  // Ancho original del menú
-                anchoReducido = 80;   // Ancho reducido (30% aprox)
 
                 visible = aprendices.isVisible();
 
@@ -446,20 +451,40 @@ public class Administrador {
                 logo.setVisible(false);
 
                 if (menuReducido) {
-                    menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+                    tamañoCompletoMenu();
 
                     miPerfil.setVisible(true);
                     inicio.setVisible(true);
                     logo.setVisible(true);
 
                 } else {
-                    menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+                    tamañoReducidoMenu();
                 }
 
                 menuPanel.revalidate(); // Refresca el layout
                 menuReducido = !menuReducido;
                 break;
             case "2": // Evaluador
+
+                visible = aprendices.isVisible();
+
+                miPerfil.setVisible(false);
+                inicio.setVisible(false);
+                logo.setVisible(false);
+
+                if (menuReducido) {
+                    tamañoCompletoMenu();
+
+                    miPerfil.setVisible(true);
+                    inicio.setVisible(true);
+                    logo.setVisible(true);
+
+                } else {
+                    tamañoReducidoMenu();
+                }
+
+                menuPanel.revalidate(); // Refresca el layout
+                menuReducido = !menuReducido;
                 break;
             case "3": // Coevaluador
                 break;
@@ -484,8 +509,6 @@ public class Administrador {
      * Oculta todos los textos de los botones y solo deja iconos si se encoge.
      */
     public void configBotonMenu(){
-        anchoCompleto = 293;  // Ancho original del menú
-        anchoReducido = 80;   // Ancho reducido (30% aprox)
 
         visible = aprendices.isVisible();
 
@@ -503,7 +526,8 @@ public class Administrador {
         AsignarIntructorButton.setVisible(false);
 
         if (menuReducido) {
-            menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+            tamañoCompletoMenu();
+
 
             verUsuariosButton.setVisible(true);
             crearUsuariosButton.setVisible(true);
@@ -514,7 +538,8 @@ public class Administrador {
             inicio.setVisible(true);
             logo.setVisible(true);
 
-        } else {            menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        } else {
+            tamañoReducidoMenu();
         }
 
         menuPanel.revalidate(); // Refresca el layout
@@ -562,6 +587,7 @@ public class Administrador {
                 mostrarPanelSeguimiento();
                 break;
             case "2": // Evaluador
+                mostrarTablaAprendicesAsignados();
                 break;
             case "3": // Coevaluador
                 break;
@@ -603,6 +629,18 @@ public class Administrador {
         if (iconoURL != null) {
             frame.setIconImage(new ImageIcon(iconoURL).getImage());
         }
+    }
+
+    public void tamañoCompletoMenu(){
+        menuPanel.setPreferredSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+        menuPanel.setMinimumSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+        menuPanel.setMaximumSize(new Dimension(anchoCompleto, menuPanel.getHeight()));
+    }
+
+    public void tamañoReducidoMenu(){
+        menuPanel.setPreferredSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        menuPanel.setMinimumSize(new Dimension(anchoReducido, menuPanel.getHeight()));
+        menuPanel.setMaximumSize(new Dimension(anchoReducido, menuPanel.getHeight()));
     }
 
 
