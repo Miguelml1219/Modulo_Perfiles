@@ -2,11 +2,14 @@ package Example_Screen.View.Administrador;
 
 import AsignacionInstructor.AsignacionGUI;
 import Empresas.Vista.EmpresaGUI;
+import Example_Screen.Connection.AprendizDAO;
+import Example_Screen.Model.Aprendiz;
 import Example_Screen.View.AprendicesAsignados;
 import Example_Screen.View.Aprendiz.AprendizGUI;
+import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
-import Prueba3.Modelo.GUI.CodigoGUI;
+import Example_Screen.View.VentanaPrincipal;
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
@@ -352,15 +355,41 @@ public class Administrador {
      * Muestra el panel de seguimiento.
      */
     public void mostrarPanelSeguimiento() {
-        CodigoGUI codigoGUI = new CodigoGUI();
-
-        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
-        contenidoPanel.add(codigoGUI.getPanel(), BorderLayout.CENTER);
+
+        // Create and add the VentanaPrincipal directly
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        contenidoPanel.add(ventanaPrincipal, BorderLayout.CENTER);
+
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
+    }
+    public class VentanaPrincipal extends JPanel {
+        public VentanaPrincipal() {
+            setLayout(new BorderLayout());
 
+            AprendizDAO dao = new AprendizDAO();
+            Aprendiz aprendiz = dao.obtenerAprendiz();
+            int progreso = aprendiz != null ? aprendiz.calcularProgreso() : 0;
+
+
+            JLabel fechas = new JLabel(
+                    "<html>Fecha Inicio: " + (aprendiz != null ? aprendiz.getFechaInicio() : "") +
+                            "<br/>Fecha Final: " + (aprendiz != null ? aprendiz.getFechaFin() : "") + "</html>",
+                    SwingConstants.CENTER);
+
+            GraficoCircular grafico = new GraficoCircular(progreso);
+
+
+            add(grafico, BorderLayout.CENTER);
+            add(fechas, BorderLayout.SOUTH);
+        }
+
+        // Modified to return the panel itself instead of null
+        public Component getContentPane() {
+            return this;
+        }
     }
     /**
      * Muestra el panel específico para la vista de Aprendiz.
