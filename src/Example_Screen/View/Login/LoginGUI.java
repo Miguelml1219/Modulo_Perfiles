@@ -23,6 +23,7 @@ public class LoginGUI {
     private final String CONFIG_PATH = "config.properties";
 
     public static String cofigBotonInicioSegunRol= null;
+    public static int traerIDusuario= 0;
 
     public LoginGUI() {
 
@@ -77,8 +78,10 @@ public class LoginGUI {
                         Usuario user = new Usuario(
                                 rs.getString("nombres"),
                                 cofigBotonInicioSegunRol= rs.getString("id_rol")
-                        );
 
+
+                        );
+                        traerIDusuario= rs.getInt("ID_usuarios");
 
                         guardarUsuario(usuario);
 
@@ -89,6 +92,8 @@ public class LoginGUI {
                                 aprendiz.Admin_Screen();
                                 break;
                             case "2":
+                                Administrador coevaluador = new Administrador();
+                                coevaluador.Admin_Screen();
                                 break;
                             case "3":
                                 break;

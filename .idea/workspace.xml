@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="uni el modulo de seguimiento">
+      <change afterPath="$PROJECT_DIR$/src/Example_Screen/View/AprendicesAsignados.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Example_Screen/img/img-inicio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/Permiso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/Permiso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/Rol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/UsuarioDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/UsuarioDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/Usuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/Usuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Editar_Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Editar_Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (1).png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +41,12 @@
     &quot;assignee&quot;: &quot;M4IK8&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Miguelml1219/Modulo_Perfiles.git",
-    "accountId": "face91d8-18e0-4120-934c-80e7e5522dbe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
+    &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Example_Screen/Model/DatabaseManager.java" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -54,7 +54,7 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2vnBD7n2RpKTtOm2Y9tiQYwQIGI" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -90,7 +90,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;184&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;273&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;maikol&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fabian&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/FABIAN/IdeaProjects/Modulo_Perfiles/src/mmmmm&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -113,7 +113,7 @@
       <recent name="C:\Users\Maikol88\IdeaProjects\Modulo_Perfiles\src\Example_Screen\img" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.LoginGUI">
     <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.Aprendiz.Aprendiz" />
       <module name="Modulo_Perfiles" />
@@ -192,8 +192,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
       </set>
     </attachedChunks>
   </component>
@@ -222,6 +222,9 @@
       <workItem from="1747103447153" duration="3226000" />
       <workItem from="1747107931971" duration="1071000" />
       <workItem from="1747359311755" duration="5377000" />
+      <workItem from="1747501284601" duration="1270000" />
+      <workItem from="1747508422566" duration="8383000" />
+      <workItem from="1747533284951" duration="9713000" />
     </task>
     <task id="LOCAL-00001" summary="Modal">
       <option name="closed" value="true" />
@@ -287,6 +290,7 @@
     <MESSAGE value="conectar el modulo empresa a nuestro codigo" />
     <MESSAGE value="union del modulo asignar instructor" />
     <MESSAGE value="uni el modulo de seguimiento" />
-    <option name="LAST_COMMIT_MESSAGE" value="uni el modulo de seguimiento" />
+    <MESSAGE value="uni el modulo de empresa actualizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="uni el modulo de empresa actualizado" />
   </component>
 </project>
