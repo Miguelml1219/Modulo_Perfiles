@@ -9,7 +9,6 @@ import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
-import Example_Screen.View.VentanaPrincipal;
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
@@ -50,6 +49,9 @@ public class Administrador {
     private JLabel CerrarSesion;
     private JPanel pnlBtonAsigInstru;
     private JButton AsignarIntructorButton;
+    private JButton botonAprendizContratado;
+    private JPanel pnlBtonAprenContrat;
+    private JLabel separadorInvisible;
     private JTable table1;
     private JFrame frame;
 
@@ -83,24 +85,28 @@ public class Administrador {
                 cargarInicioPaneles();
                 break;
             case "3": // Coevaluador
+                cargarInicioPaneles();
                 break;
             case "4": // Auxiliar
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                cargarInicioPaneles();
                 break;
             case "5": // Administrador
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                cargarInicioPaneles();
                 break;
             case "6": // Administrador del sistema
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                cargarInicioPaneles();
                 break;
             default:
                 // Rol desconocido: puedes mostrar un mensaje o panel de error
@@ -428,15 +434,57 @@ public class Administrador {
      * para que no vea opciones que no le corresponden.
      */
     public void ocultarComponentesNoAsignado(){
-        aprendices.setVisible(false);
-        evaluadores.setVisible(false);
-        coevaluadores.setVisible(false);
-        auxiliares.setVisible(false);
-        pnlBtonAsigInstru.setVisible(false);
-        pnlBtonVerUsua.setVisible(false);
-        pnlBtonCrearUsua.setVisible(false);
-        pnlBtonRegisEmpr.setVisible(false);
-        pnlBtonPermiso.setVisible(false);
+
+        switch (cofigBotonInicioSegunRol) {
+            case "1": // Aprendiz
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                pnlBtonAsigInstru.setVisible(false);
+                pnlBtonVerUsua.setVisible(false);
+                pnlBtonCrearUsua.setVisible(false);
+                pnlBtonRegisEmpr.setVisible(false);
+                pnlBtonPermiso.setVisible(false);
+                pnlBtonAprenContrat.setVisible(false);
+                break;
+            case "2": // Evaluador
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                pnlBtonAsigInstru.setVisible(false);
+                pnlBtonVerUsua.setVisible(false);
+                pnlBtonCrearUsua.setVisible(false);
+                pnlBtonRegisEmpr.setVisible(false);
+                pnlBtonPermiso.setVisible(false);
+                pnlBtonAprenContrat.setVisible(false);
+                break;
+            case "3": // Coevaluador
+                aprendices.setVisible(false);
+                evaluadores.setVisible(false);
+                coevaluadores.setVisible(false);
+                auxiliares.setVisible(false);
+                pnlBtonAsigInstru.setVisible(false);
+                pnlBtonVerUsua.setVisible(false);
+                pnlBtonCrearUsua.setVisible(false);
+                pnlBtonRegisEmpr.setVisible(false);
+                pnlBtonPermiso.setVisible(false);
+                break;
+            case "4": // Auxiliar
+                pnlBtonAprenContrat.setVisible(false);
+                break;
+            case "5": // Administrador
+                pnlBtonAprenContrat.setVisible(false);
+                break;
+            case "6": // Administrador del sistema
+                pnlBtonAprenContrat.setVisible(false);
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
+
     }
 
     /**
@@ -455,12 +503,16 @@ public class Administrador {
                 mostrarTablaAprendicesAsignados();
                 break;
             case "3": // Coevaluador
+                ocultarComponentesNoAsignado();
                 break;
             case "4": // Auxiliar
+                ocultarComponentesNoAsignado();
                 break;
             case "5": // Administrador
+                ocultarComponentesNoAsignado();
                 break;
             case "6": // Administrador del sistema
+                ocultarComponentesNoAsignado();
                 break;
             default:
                 // Rol desconocido: puedes mostrar un mensaje o panel de error
@@ -477,16 +529,18 @@ public class Administrador {
 
                 visible = aprendices.isVisible();
 
-                miPerfil.setVisible(false);
-                inicio.setVisible(false);
+                pnlBtonPerfil.setVisible(false);
+                pnlBtonInicio.setVisible(false);
                 logo.setVisible(false);
+                separadorInvisible.setVisible(false);
 
                 if (menuReducido) {
                     tamañoCompletoMenu();
 
-                    miPerfil.setVisible(true);
-                    inicio.setVisible(true);
+                    pnlBtonPerfil.setVisible(true);
+                    pnlBtonInicio.setVisible(true);
                     logo.setVisible(true);
+                    separadorInvisible.setVisible(true);
 
                 } else {
                     tamañoReducidoMenu();
@@ -499,16 +553,18 @@ public class Administrador {
 
                 visible = aprendices.isVisible();
 
-                miPerfil.setVisible(false);
-                inicio.setVisible(false);
+                pnlBtonPerfil.setVisible(false);
+                pnlBtonInicio.setVisible(false);
                 logo.setVisible(false);
+                separadorInvisible.setVisible(false);
 
                 if (menuReducido) {
                     tamañoCompletoMenu();
 
-                    miPerfil.setVisible(true);
-                    inicio.setVisible(true);
+                    pnlBtonPerfil.setVisible(true);
+                    pnlBtonInicio.setVisible(true);
                     logo.setVisible(true);
+                    separadorInvisible.setVisible(true);
 
                 } else {
                     tamañoReducidoMenu();
@@ -518,6 +574,29 @@ public class Administrador {
                 menuReducido = !menuReducido;
                 break;
             case "3": // Coevaluador
+                visible = aprendices.isVisible();
+
+                pnlBtonPerfil.setVisible(false);
+                pnlBtonInicio.setVisible(false);
+                logo.setVisible(false);
+                pnlBtonAprenContrat.setVisible(false);
+                separadorInvisible.setVisible(false);
+
+                if (menuReducido) {
+                    tamañoCompletoMenu();
+
+                    pnlBtonPerfil.setVisible(true);
+                    pnlBtonInicio.setVisible(true);
+                    logo.setVisible(true);
+                    pnlBtonAprenContrat.setVisible(true);
+                    separadorInvisible.setVisible(true);
+
+                } else {
+                    tamañoReducidoMenu();
+                }
+
+                menuPanel.revalidate(); // Refresca el layout
+                menuReducido = !menuReducido;
                 break;
             case "4": // Auxiliar
                 configBotonMenu();
@@ -548,14 +627,15 @@ public class Administrador {
         crearUsuariosButton.setVisible(false);
         permisosButton.setVisible(false);
         registrarEmpresa.setVisible(false);
-        miPerfil.setVisible(false);
-        inicio.setVisible(false);
+        pnlBtonPerfil.setVisible(false);
+        pnlBtonInicio.setVisible(false);
         logo.setVisible(false);
         aprendices.setVisible(false);
         evaluadores.setVisible(false);
         coevaluadores.setVisible(false);
         auxiliares.setVisible(false);
         AsignarIntructorButton.setVisible(false);
+        separadorInvisible.setVisible(false);
 
         if (menuReducido) {
             tamañoCompletoMenu();
@@ -566,9 +646,10 @@ public class Administrador {
             permisosButton.setVisible(true);
             registrarEmpresa.setVisible(true);
             AsignarIntructorButton.setVisible(true);
-            miPerfil.setVisible(true);
-            inicio.setVisible(true);
+            pnlBtonPerfil.setVisible(true);
+            pnlBtonInicio.setVisible(true);
             logo.setVisible(true);
+            separadorInvisible.setVisible(true);
 
         } else {
             tamañoReducidoMenu();
@@ -623,6 +704,7 @@ public class Administrador {
                 mostrarTablaAprendicesAsignados();
                 break;
             case "3": // Coevaluador
+                contenidoPanel.add(img_princi);
                 break;
             case "4": // Auxiliar
                 contenidoPanel.add(img_princi);
@@ -690,8 +772,6 @@ public class Administrador {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
         frame.setVisible(true);
-
-        System.out.println(cofigBotonInicioSegunRol);
 
         setFrameIcon(frame);
         frame.addWindowListener(new WindowAdapter() {
