@@ -2,21 +2,27 @@ package Example_Screen.View.Administrador;
 
 import AsignacionInstructor.AsignacionGUI;
 import Empresas.Vista.EmpresaGUI;
-import Example_Screen.Connection.AprendizDAO;
 import Example_Screen.Model.Aprendiz;
+import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
 import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
-import Usuarios.*;
+
+import Example_Screen.View.VisualizarPerfilGUI;
+import Seguimiento.Modelo.GUI.CodigoGUI;
+import Seguimiento.Modelo.GUI.CodigoGUI2;
+
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.net.URL;
 /**
  * Esta es la clase principal para la pantalla del Administrador.
@@ -53,7 +59,16 @@ public class Administrador {
     private JButton botonAprendizContratado;
     private JPanel pnlBtonAprenContrat;
     private JLabel separadorInvisible;
+
     private JComboBox comboBox1;
+
+    private JPanel PanelFormato;
+    private JButton FormatoBoton;
+    private JButton f147;
+    private JButton f023;
+    private JPanel panelAsigna;
+    private JButton asignaBoton;
+
     private JTable table1;
     private JFrame frame;
 
@@ -105,6 +120,8 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                f023.setVisible(false);
+                f147.setVisible(false);
                 cargarInicioPaneles();
                 break;
             case "5": // Administrador
@@ -112,6 +129,8 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                f023.setVisible(false);
+                f147.setVisible(false);
                 cargarInicioPaneles();
                 break;
             case "6": // Administrador del sistema
@@ -119,6 +138,8 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                f023.setVisible(false);
+                f147.setVisible(false);
                 cargarInicioPaneles();
                 break;
             default:
@@ -131,7 +152,7 @@ public class Administrador {
         CerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
-                aprendices, evaluadores, coevaluadores, auxiliares};
+                aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023, botonAprendizContratado};
 
         for (JButton btn : botones) {
             btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -147,6 +168,8 @@ public class Administrador {
         aplicarEfectoHover(AsignarIntructorButton, colorHover, colorBase);
         aplicarEfectoHover(miPerfil, colorHover, colorBase);
         aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
+        aplicarEfectoHover(FormatoBoton, colorHover, colorBase);
+        aplicarEfectoHover(botonAprendizContratado, colorHover, colorBase);
 
 
         /**
@@ -164,6 +187,16 @@ public class Administrador {
 
             }
         });
+
+        FormatoBoton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean visible = f147.isVisible();
+                f147.setVisible(!visible);
+                f023.setVisible(!visible);
+            }
+        });
+
         logo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -265,6 +298,18 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 mostrarPanelesDeFormularios();
                 comboBox1.setVisible(true);
+            }
+        });
+        f147.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelSeguimiento147();
+            }
+        });
+        f023.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelSeguimiento023();
             }
         });
     }
@@ -388,46 +433,166 @@ public class Administrador {
         contenidoPanel.repaint();
 
     }
+
     /**
      * Muestra el panel de seguimiento.
      */
-    public void mostrarPanelSeguimiento() {
+    public void mostrarPanel(String titulo, JPanel panelContenido) {
+        // Etiqueta centrada
+        JLabel lblTitulo = new JLabel(titulo, SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Calibri", Font.BOLD, 25));   // tamaño y estilo opcionales
+        lblTitulo.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // margen superior/inferior
+        lblTitulo.setForeground(Color.WHITE); // Texto en color blanco
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
 
-        // Create and add the VentanaPrincipal directly
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-        contenidoPanel.add(ventanaPrincipal, BorderLayout.CENTER);
+        contenidoPanel.setBackground(new Color(57, 169, 0)); // Color verde #39A900
+
+        // Agregamos título y contenido
+        contenidoPanel.add(lblTitulo, BorderLayout.NORTH);
+        contenidoPanel.add(panelContenido, BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    // Clase para mostrar imagen de fondo
+    class ImagePanel extends JPanel {
+        private Image backgroundImage;
+
+        public ImagePanel(String imagePath) {
+            try {
+                backgroundImage = ImageIO.read(getClass().getResource(imagePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Imagen alternativa si no se encuentra la original
+                backgroundImage = null;
+            }
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (backgroundImage != null) {
+                // Dibuja la imagen para que se ajuste al tamaño del panel
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
+    }
+
+
+    // ------------­ LLAMADAS ESPECÍFICAS --------------
+    public void mostrarPanelSeguimiento147() {
+        String usuario = LoginGUI.getUsuarioActual();
+        CodigoGUI2 codigoGUI = new CodigoGUI2(usuario);
+
+        mostrarPanel("Formato 147 - Bitácoras", codigoGUI.getPanel());
+    }
+
+    public void mostrarPanelSeguimiento023() {
+        String usuario = LoginGUI.getUsuarioActual();
+        CodigoGUI codigoGUI = new CodigoGUI(usuario);
+
+        mostrarPanel("Formato 023 - Seguimiento", codigoGUI.getPanel());
+    }
+
+    /**
+     * Muestra el panel de seguimiento.
+     */
+    public void mostrarPanelGraficoInicio() {
+        contenidoPanel.setBackground(new Color(246, 246, 246)); // Color verde #39A900
+
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout(20, 0));
+        contenidoPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        AprendizDAO dao = new AprendizDAO();
+        Aprendiz aprendiz = dao.obtenerAprendiz();
+        int progreso = aprendiz != null ? aprendiz.calcularProgreso() : 0;
+
+        JPanel panelIzquierdo = new JPanel();
+        panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
+        panelIzquierdo.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+
+        JLabel titulo = new JLabel("Tu Progreso");
+        titulo.setFont(new Font("Calibri", Font.BOLD, 25));
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+
+        GraficoCircular grafico = new GraficoCircular(progreso);
+        grafico.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel fechaInicio = new JLabel("Fecha Inicio: " + (aprendiz != null ? aprendiz.getFechaInicio() : ""));
+        fechaInicio.setFont(new Font("Arial", Font.BOLD, 17));
+        fechaInicio.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel fechaFin = new JLabel("Fecha Final: " + (aprendiz != null ? aprendiz.getFechaFin() : ""));
+        fechaFin.setFont(new Font("Arial", Font.BOLD, 17));
+        fechaFin.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panelIzquierdo.add(titulo);
+        panelIzquierdo.add(grafico);
+        panelIzquierdo.add(Box.createRigidArea(new Dimension(0, 5)));
+        panelIzquierdo.add(fechaInicio);
+        panelIzquierdo.add(fechaFin);
+
+
+        JPanel panelDerecho = new JPanel();
+        panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
+        panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JButton botonPerfil = new JButton("Visualizar Perfil");
+        botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonPerfil.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonPerfil.setPreferredSize(new Dimension(200, 40)); // Ajusta según necesidad
+        botonPerfil.setMaximumSize(new Dimension(200, 40));
+
+
+        botonPerfil.setBackground(new Color(0, 122, 255));
+        botonPerfil.setForeground(Color.WHITE);
+        botonPerfil.setFont(new Font("Calibri", Font.BOLD, 20));
+        botonPerfil.setFocusPainted(true);
+        botonPerfil.setEnabled(true);
+
+
+        botonPerfil.setHorizontalTextPosition(SwingConstants.RIGHT);
+        botonPerfil.setVerticalTextPosition(SwingConstants.CENTER);
+        botonPerfil.setIconTextGap(10);
+
+
+        botonPerfil.addActionListener(e -> {
+            JDialog perfilDialog = new JDialog(frame, "Visualizar Perfil", true);
+            VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI();
+
+            perfilDialog.setContentPane(perfilGUI.panel1);
+            perfilDialog.pack();
+            perfilDialog.setLocationRelativeTo(frame);
+            perfilDialog.setVisible(true);
+        });
+        botonPerfil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonPerfil.setBackground(new Color(0, 100, 220));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonPerfil.setBackground(new Color(0, 122, 255));
+            }
+        });
+
+        panelDerecho.add(Box.createVerticalGlue());
+        panelDerecho.add(botonPerfil);
+        panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
+        panelDerecho.add(Box.createVerticalGlue());
+
+        contenidoPanel.add(panelIzquierdo, BorderLayout.CENTER);
+        contenidoPanel.add(panelDerecho, BorderLayout.EAST);
 
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-    public class VentanaPrincipal extends JPanel {
-        public VentanaPrincipal() {
-            setLayout(new BorderLayout());
-
-            AprendizDAO dao = new AprendizDAO();
-            Aprendiz aprendiz = dao.obtenerAprendiz();
-            int progreso = aprendiz != null ? aprendiz.calcularProgreso() : 0;
 
 
-            JLabel fechas = new JLabel(
-                    "<html>Fecha Inicio: " + (aprendiz != null ? aprendiz.getFechaInicio() : "") +
-                            "<br/>Fecha Final: " + (aprendiz != null ? aprendiz.getFechaFin() : "") + "</html>",
-                    SwingConstants.CENTER);
-
-            GraficoCircular grafico = new GraficoCircular(progreso);
-
-
-            add(grafico, BorderLayout.CENTER);
-            add(fechas, BorderLayout.SOUTH);
-        }
-
-        // Modified to return the panel itself instead of null
-        public Component getContentPane() {
-            return this;
-        }
-    }
 
     public void mostrarTablaAprendicesAsignados() {
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
@@ -557,6 +722,9 @@ public class Administrador {
                 pnlBtonRegisEmpr.setVisible(false);
                 pnlBtonPermiso.setVisible(false);
                 pnlBtonAprenContrat.setVisible(false);
+                panelAsigna.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "2": // Evaluador
                 aprendices.setVisible(false);
@@ -569,6 +737,10 @@ public class Administrador {
                 pnlBtonRegisEmpr.setVisible(false);
                 pnlBtonPermiso.setVisible(false);
                 pnlBtonAprenContrat.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
+
                 break;
             case "3": // Coevaluador
                 aprendices.setVisible(false);
@@ -580,15 +752,32 @@ public class Administrador {
                 pnlBtonCrearUsua.setVisible(false);
                 pnlBtonRegisEmpr.setVisible(false);
                 pnlBtonPermiso.setVisible(false);
+                panelAsigna.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
+
                 break;
             case "4": // Auxiliar
                 pnlBtonAprenContrat.setVisible(false);
+                panelAsigna.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "5": // Administrador
                 pnlBtonAprenContrat.setVisible(false);
+                panelAsigna.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "6": // Administrador del sistema
                 pnlBtonAprenContrat.setVisible(false);
+                panelAsigna.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             default:
                 // Rol desconocido: puedes mostrar un mensaje o panel de error
@@ -606,7 +795,7 @@ public class Administrador {
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
                 ocultarComponentesNoAsignado();
-                mostrarPanelSeguimiento();
+                mostrarPanelGraficoInicio();
                 break;
             case "2": // Evaluador
                 ocultarComponentesNoAsignado();
@@ -639,6 +828,9 @@ public class Administrador {
 
                 visible = aprendices.isVisible();
 
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 pnlBtonPerfil.setVisible(false);
                 pnlBtonInicio.setVisible(false);
                 logo.setVisible(false);
@@ -647,6 +839,7 @@ public class Administrador {
                 if (menuReducido) {
                     tamañoCompletoMenu();
 
+                    PanelFormato.setVisible(true);
                     pnlBtonPerfil.setVisible(true);
                     pnlBtonInicio.setVisible(true);
                     logo.setVisible(true);
@@ -663,6 +856,7 @@ public class Administrador {
 
                 visible = aprendices.isVisible();
 
+                asignaBoton.setVisible(false);
                 pnlBtonPerfil.setVisible(false);
                 pnlBtonInicio.setVisible(false);
                 logo.setVisible(false);
@@ -671,6 +865,7 @@ public class Administrador {
                 if (menuReducido) {
                     tamañoCompletoMenu();
 
+                    asignaBoton.setVisible(true);
                     pnlBtonPerfil.setVisible(true);
                     pnlBtonInicio.setVisible(true);
                     logo.setVisible(true);
@@ -808,13 +1003,21 @@ public class Administrador {
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
-                mostrarPanelSeguimiento();
+                mostrarPanelGraficoInicio();
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "2": // Evaluador
-                mostrarTablaAprendicesAsignados();
+                contenidoPanel.add(img_princi);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "3": // Coevaluador
                 contenidoPanel.add(img_princi);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "4": // Auxiliar
                 contenidoPanel.add(img_princi);
@@ -822,6 +1025,8 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(true);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "5": // Administrador
                 contenidoPanel.add(img_princi);
@@ -829,6 +1034,9 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             case "6": // Administrador del sistema
                 contenidoPanel.add(img_princi);
@@ -836,6 +1044,9 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                PanelFormato.setVisible(false);
+                f147.setVisible(false);
+                f023.setVisible(false);
                 break;
             default:
                 // Rol desconocido: puedes mostrar un mensaje o panel de error

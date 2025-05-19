@@ -1,4 +1,4 @@
-package Prueba3.Modelo.Conexion;
+package Seguimiento.Modelo.Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

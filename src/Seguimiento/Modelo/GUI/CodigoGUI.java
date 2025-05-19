@@ -1,7 +1,8 @@
-package Prueba3.Modelo.GUI;
+package Seguimiento.Modelo.GUI;
 
-import Prueba3.Modelo.Codigo;
-import Prueba3.Modelo.DAO.CodigoDAO;
+import Example_Screen.View.Login.LoginGUI;
+import Seguimiento.Modelo.Codigo;
+import Seguimiento.Modelo.DAO.CodigoDAO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -22,10 +23,11 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 /**
- * Interfaz gráfica para la gestión de archivos PDF (Formato 023).
- * Permite subir, visualizar, buscar y eliminar archivos PDF asociados a aprendices.
+ * Interfaz gráfica para la gestión de archivos PDF con formato 023.
+ * Proporciona funcionalidad para subir, visualizar, buscar y eliminar archivos PDF
+ * asociados a aprendices, mostrando solo los archivos del tipo 023.
  */
-public class CodigoGUI2 extends JFrame {
+public class CodigoGUI extends JFrame {
     private JPanel panelPrincipal;
     private JButton btnSubir;
     private JPanel panelArchivos;
@@ -38,6 +40,8 @@ public class CodigoGUI2 extends JFrame {
     private JPanel panelBusqueda;
     private List<Codigo> listaArchivosCompleta;
 
+    private String email;
+    private int idUsuario;
     private JLabel progressImageLabel;
 
     private final Color azul = Color.decode("#007AFF");
@@ -48,30 +52,52 @@ public class CodigoGUI2 extends JFrame {
     private final Font fuenteCalibri = new Font("Calibri", Font.PLAIN, 20);
 
     /**
-     * Constructor de la clase CodigoGUI.
-     * Inicializa los componentes y configura la ventana.
+     * Constructor principal que inicializa la interfaz para un usuario específico.
+     * @param email Correo electrónico del usuario que inicia sesión
      */
-    public CodigoGUI2() {
-        archivoDAO = new CodigoDAO();
-        listaArchivosCompleta = new ArrayList<>();
+    public CodigoGUI(String email) {
+        this.email = email;
+        this.archivoDAO = new CodigoDAO();
+
+        Map<String, String> infoUsuario = archivoDAO.obtenerInfoCompletaAprendiz(email);
+        this.idUsuario = Integer.parseInt(infoUsuario.get("id_usuario"));
 
         configurarVentana();
         configurarComponentes();
         cargarArchivos();
+
+        btnSubir.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+
     }
 
     /**
-     * Configura las propiedades básicas de la ventana.
+     * Constructor vacío para compatibilidad, utiliza un email vacío.
+     */
+    private CodigoGUI() {
+        this("");
+    }
+
+    /**
+     * Obtiene el panel principal de la interfaz.
+     * @return JPanel que contiene todos los componentes de la interfaz
+     */
+    public JPanel getPanel() {
+        return panelPrincipal;
+    }
+
+    /**
+     * Configura las propiedades básicas de la ventana principal.
      */
     private void configurarVentana() {
-        setTitle("Gestor de Archivos PDF");
+        setTitle("Gestor de Archivos PDF - Formato 023");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
     /**
-     * Configura y organiza los componentes gráficos de la interfaz.
+     * Configura y organiza todos los componentes gráficos de la interfaz.
      */
     private void configurarComponentes() {
         panelPrincipal = new JPanel(new BorderLayout());
@@ -81,31 +107,19 @@ public class CodigoGUI2 extends JFrame {
         JScrollPane scrollPane = new JScrollPane(panelArchivos);
         panelPrincipal.add(scrollPane, BorderLayout.CENTER);
 
-        panelBusqueda = new JPanel(new BorderLayout());
-
         ImageIcon icono = cargarImagen("C:\\Users\\Famil\\IdeaProjects\\Seguimiento\\src\\Prueba3\\Modelo\\Imagenes\\Grafico.png");
         JLabel lblImagen = new JLabel(icono);
         lblImagen.setHorizontalAlignment(JLabel.LEFT);
         JPanel panelImagen = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelImagen.add(lblImagen);
-        panelBusqueda.add(panelImagen, BorderLayout.WEST);
 
         JPanel panelControles = new JPanel();
         panelControles.setLayout(new BoxLayout(panelControles, BoxLayout.Y_AXIS));
 
-        JPanel panelBuscar = new JPanel(new FlowLayout(FlowLayout.LEFT));
         txtBuscarAprendiz = new JTextField(20);
         btnBuscar = new JButton("Buscar Aprendiz");
         estilizarBoton(btnBuscar, azul);
         btnBuscar.addActionListener(e -> filtrarArchivosPorAprendiz(txtBuscarAprendiz.getText().trim()));
-        panelBuscar.add(new JLabel("Buscar por Cédula/Nombre:"));
-        panelBuscar.add(txtBuscarAprendiz);
-        panelBuscar.add(btnBuscar);
-
-        panelControles.add(panelBuscar);
-        panelBusqueda.add(panelControles, BorderLayout.CENTER);
-
-        panelPrincipal.add(panelBusqueda, BorderLayout.NORTH);
 
         JPanel panelSubir = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnSubir = new JButton("Subir PDF");
@@ -123,10 +137,9 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Aplica estilos a un botón.
-     *
-     * @param boton Botón a estilizar
-     * @param colorFondo Color de fondo del botón
+     * Aplica estilos visuales a un botón.
+     * @param boton Componente JButton a estilizar
+     * @param colorFondo Color de fondo para el botón
      */
     private void estilizarBoton(JButton boton, Color colorFondo) {
         boton.setBackground(colorFondo);
@@ -144,7 +157,8 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Maneja el proceso de subida de un archivo PDF.
+     * Maneja el proceso completo de subida de un archivo PDF.
+     * Incluye selección de archivo, validaciones y almacenamiento en la base de datos.
      */
     private void subirArchivo() {
         if (fileChooser.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) return;
@@ -156,22 +170,12 @@ public class CodigoGUI2 extends JFrame {
         }
 
         String tipoFormato = "023";
-        if (tipoFormato == null) return;
-
-        String cedulaAprendizStr = JOptionPane.showInputDialog(this,
-                "Ingrese la cédula del aprendiz asignado:",
-                "Cédula del Aprendiz", JOptionPane.QUESTION_MESSAGE);
-        if (cedulaAprendizStr == null || cedulaAprendizStr.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar la cédula del aprendiz", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
         try {
-            int cedulaAprendiz = Integer.parseInt(cedulaAprendizStr);
-            Map<String, String> infoAprendiz = archivoDAO.obtenerInfoCompletaAprendizPorCedula(cedulaAprendiz);
+            Map<String, String> infoAprendiz = archivoDAO.obtenerInfoCompletaAprendiz(this.email);
 
             if (infoAprendiz.get("id") == null) {
-                JOptionPane.showMessageDialog(this, "No se encontró un aprendiz con esa cédula", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontró información del usuario", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -189,7 +193,7 @@ public class CodigoGUI2 extends JFrame {
 
             Codigo archivo = crearObjetoArchivo(
                     archivoSeleccionado, destino, tipoFormato, observaciones,
-                    nombreAprendiz, numeroDocumento, idAprendiz
+                    nombreAprendiz, numeroDocumento, this.idUsuario, idAprendiz
             );
 
             if (archivoDAO.insertar(archivo)) {
@@ -199,8 +203,6 @@ public class CodigoGUI2 extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Error al guardar en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "La cédula debe ser un número válido", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -208,10 +210,9 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Guarda una copia local del archivo PDF subido.
-     *
-     * @param archivo Archivo a guardar localmente
-     * @return File del archivo guardado o null si falla
+     * Guarda una copia local del archivo PDF en el sistema de archivos.
+     * @param archivo Archivo PDF a guardar localmente
+     * @return Referencia al archivo guardado, o null si ocurrió un error
      */
     private File guardarArchivoLocalmente(File archivo) {
         File directorio = new File("pdf_almacenados");
@@ -234,20 +235,20 @@ public class CodigoGUI2 extends JFrame {
 
     /**
      * Crea un objeto Codigo a partir de un archivo PDF.
-     *
      * @param archivoSeleccionado Archivo PDF seleccionado
-     * @param destino Archivo guardado localmente
-     * @param tipoFormato Tipo de formato del archivo
-     * @param observaciones Observaciones sobre el archivo
-     * @param nombreAprendiz Nombre del aprendiz asociado
-     * @param cedulaAprendiz Cédula del aprendiz asociado
-     * @param idAprendiz ID del aprendiz en la base de datos
-     * @return Objeto Codigo creado
+     * @param destino Ubicación donde se guardó el archivo
+     * @param tipoFormato Tipo de formato del documento (023)
+     * @param observaciones Comentarios sobre el archivo
+     * @param nombreAprendiz Nombre completo del aprendiz
+     * @param cedulaAprendiz Número de documento del aprendiz
+     * @param idUsuario Identificador del usuario que sube el archivo
+     * @param idAprendiz Identificador del aprendiz asociado
+     * @return Objeto Codigo configurado con toda la información
      * @throws IOException Si ocurre un error al leer el archivo
      */
     private Codigo crearObjetoArchivo(File archivoSeleccionado, File destino, String tipoFormato,
                                       String observaciones, String nombreAprendiz,
-                                      String cedulaAprendiz, int idAprendiz) throws IOException {
+                                      String cedulaAprendiz, int idUsuario, int idAprendiz) throws IOException {
         Codigo archivo = new Codigo();
         archivo.setNombreArchivo(archivoSeleccionado.getName());
         archivo.setRutaArchivo(destino.getAbsolutePath());
@@ -263,13 +264,13 @@ public class CodigoGUI2 extends JFrame {
         archivo.setFecha(new Date());
         archivo.setNombreAprendiz(nombreAprendiz);
         archivo.setCedulaAprendiz(cedulaAprendiz);
+        archivo.setIdUsuario(idUsuario);
         archivo.setIdAprendiz(idAprendiz);
-        archivo.setIdUsuario(obtenerIdUsuarioActual());
         return archivo;
     }
 
     /**
-     * Deshabilita temporalmente el botón de subir archivos.
+     * Deshabilita temporalmente el botón de subir archivos por 20 segundos.
      */
     private void deshabilitarSubidaTemporalmente() {
         subidaHabilitada = false;
@@ -286,26 +287,16 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Obtiene el ID del usuario actual (simulado).
-     *
-     * @return ID del usuario actual (valor temporal)
-     */
-    private int obtenerIdUsuarioActual() {
-        return 1;
-    }
-
-    /**
-     * Carga los archivos desde la base de datos y los muestra en la interfaz.
+     * Carga los archivos del usuario actual con formato 023 desde la base de datos.
      */
     private void cargarArchivos() {
-        listaArchivosCompleta = archivoDAO.listarTodos();
+        listaArchivosCompleta = archivoDAO.listarPorUsuarioYTipo(this.idUsuario, "023");
         mostrarArchivos(listaArchivosCompleta);
     }
 
     /**
      * Muestra la lista de archivos en el panel principal.
-     *
-     * @param archivos Lista de archivos a mostrar
+     * @param archivos Lista de objetos Codigo a mostrar
      */
     private void mostrarArchivos(List<Codigo> archivos) {
         panelArchivos.removeAll();
@@ -317,9 +308,8 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Agrega un archivo al panel de visualización.
-     *
-     * @param archivo Archivo a agregar al panel
+     * Agrega un archivo al panel de visualización con su información y controles.
+     * @param archivo Objeto Codigo que representa el archivo a mostrar
      */
     private void agregarArchivoAPanel(final Codigo archivo) {
         JPanel panelArchivo = new JPanel(new BorderLayout());
@@ -355,12 +345,14 @@ public class CodigoGUI2 extends JFrame {
         panelArchivo.add(panelBotones, BorderLayout.EAST);
 
         panelArchivos.add(panelArchivo);
+        btnVer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
     }
 
     /**
-     * Abre un archivo PDF para su previsualización.
-     *
-     * @param archivo Archivo a previsualizar
+     * Abre un archivo PDF en el visor predeterminado del sistema.
+     * @param archivo Objeto Codigo que contiene la ruta del archivo a abrir
      */
     private void previsualizarArchivo(Codigo archivo) {
         try {
@@ -380,10 +372,9 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Elimina un archivo de la base de datos y del sistema de archivos.
-     *
-     * @param archivo Archivo a eliminar
-     * @param panelArchivo Panel del archivo a remover de la interfaz
+     * Elimina un archivo tanto de la base de datos como del sistema de archivos.
+     * @param archivo Objeto Codigo que representa el archivo a eliminar
+     * @param panelArchivo Componente JPanel que contiene la visualización del archivo
      */
     private void eliminarArchivo(Codigo archivo, JPanel panelArchivo) {
         int confirmacion = JOptionPane.showConfirmDialog(this,
@@ -402,9 +393,8 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Filtra los archivos por cédula o nombre de aprendiz.
-     *
-     * @param busqueda Texto de búsqueda (cédula o nombre)
+     * Filtra los archivos mostrados según la cédula o nombre del aprendiz.
+     * @param busqueda Texto a buscar en cédula o nombre del aprendiz
      */
     private void filtrarArchivosPorAprendiz(String busqueda) {
         if (busqueda.isEmpty()) {
@@ -423,10 +413,9 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Carga una imagen desde una ruta especificada.
-     *
-     * @param ruta Ruta del archivo de imagen
-     * @return ImageIcon con la imagen cargada o null si falla
+     * Carga una imagen desde una ruta específica y la escala al tamaño adecuado.
+     * @param ruta Ruta completa del archivo de imagen
+     * @return ImageIcon con la imagen cargada, o null si hubo error
      */
     private ImageIcon cargarImagen(String ruta) {
         try {
@@ -441,11 +430,10 @@ public class CodigoGUI2 extends JFrame {
     }
 
     /**
-     * Método principal para ejecutar la aplicación.
-     *
-     * @param args Argumentos de línea de comandos
+     * Punto de entrada principal para ejecutar esta interfaz de forma independiente.
+     * @param args Argumentos de línea de comandos (no utilizados)
      */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new CodigoGUI2().setVisible(true));
+        SwingUtilities.invokeLater(() -> new CodigoGUI().setVisible(true));
     }
 }

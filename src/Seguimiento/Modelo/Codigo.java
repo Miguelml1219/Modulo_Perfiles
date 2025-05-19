@@ -1,4 +1,4 @@
-package Prueba3.Modelo;
+package Seguimiento.Modelo;
 
 import java.util.Arrays;
 import java.util.Date;

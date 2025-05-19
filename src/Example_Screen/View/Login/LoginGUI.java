@@ -25,6 +25,16 @@ public class LoginGUI {
     public static String cofigBotonInicioSegunRol= null;
     public static int traerIDusuario= 0;
 
+    //JEFFERSONNNNN
+
+    private static String usuarioActual;
+    private static int idUsuarioActual;
+    String usuario;
+
+    public LoginGUI(String usuario) {
+        this.usuario = usuario;
+    }
+
     public LoginGUI() {
 
 
@@ -59,7 +69,8 @@ public class LoginGUI {
         ingresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuario = TexfUsuario.getText().trim();
+                usuario = TexfUsuario.getText().trim();
+                usuarioActual = usuario;
                 String contraseña = new String(TexfContraseña.getPassword());
 
                 if (usuario.isEmpty() || contraseña.isEmpty()) {
@@ -75,13 +86,17 @@ public class LoginGUI {
                     ResultSet rs = stmt.executeQuery();
 
                     if (rs.next()) {
+
+                        // JEFFERSONNN Aquí obtenemos el ID del usuario de la base de datos
+                        idUsuarioActual = rs.getInt("ID_usuarios");
+
                         Usuario user = new Usuario(
                                 rs.getString("nombres"),
                                 cofigBotonInicioSegunRol= rs.getString("id_rol")
 
 
                         );
-                        traerIDusuario= rs.getInt("ID_usuarios");
+                        //traerIDusuario= rs.getInt("ID_usuarios");
 
                         guardarUsuario(usuario);
 
@@ -130,7 +145,11 @@ public class LoginGUI {
         });
     }
 
-    private void guardarUsuario(String usuario) {
+    public static String getUsuarioActual() {
+        return usuarioActual;
+    }
+
+    public void guardarUsuario(String usuario) {
         Properties props = new Properties();
         props.setProperty("usuario", usuario);
         try (FileOutputStream out = new FileOutputStream(CONFIG_PATH)) {
@@ -140,7 +159,7 @@ public class LoginGUI {
         }
     }
 
-    private void cargarUsuario() {
+    public void cargarUsuario() {
         Properties props = new Properties();
         try (FileInputStream in = new FileInputStream(CONFIG_PATH)) {
             props.load(in);
@@ -174,5 +193,15 @@ public class LoginGUI {
                 }
             }
         });
+    }
+
+    //JEFFERSONNNNNNNN
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 }
