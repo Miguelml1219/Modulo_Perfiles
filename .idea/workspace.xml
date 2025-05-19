@@ -4,168 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="uni el modulo de seguimiento">
-      <change afterPath="$PROJECT_DIR$/src/Example_Screen/View/AprendicesAsignados.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Example_Screen/img/img-inicio.png" afterDir="false" />
+    <list default="true" id="c9821d77-2647-4a7d-8b57-3f9a00280f9c" name="Changes" comment="se creo el perfil de coevaluador">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/Model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/Model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Usuarios_Registrados/VerUsuariosRegistrados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (1).png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="fabian" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;M4IK8&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
-    &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
-  }
-}</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Example_Screen/Model/DatabaseManager.java" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2vnBD7n2RpKTtOm2Y9tiQYwQIGI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.AdministradorAprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Aprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AsignacionGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CodigoGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Empresa.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EmpresaGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EmpresaPerfilAprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GestionPantalla.executor&quot;: &quot;Run&quot;,
-    &quot;Application.InicioAdministrador.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Instructor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.InstructorPerfilAprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.modalAprendizEmpresa.executor&quot;: &quot;Run&quot;,
-    &quot;Application.modalAprendizInstructor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.modalPerfilAprendiz.executor&quot;: &quot;Run&quot;,
-    &quot;Application.modalPerfilEmpresa.executor&quot;: &quot;Run&quot;,
-    &quot;Application.modalPerfilInstructor.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;184&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;273&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fabian&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/FABIAN/IdeaProjects/Modulo_Perfiles/src/mmmmm&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LoginGUI.executor": "Run",
+    "git-widget-placeholder": "fabian",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\FABIAN\IdeaProjects\Modulo_Perfiles\src\mmmmm" />
-      <recent name="C:\Users\Maikol88\IdeaProjects\Modulo_Perfiles\src\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Maikol88\IdeaProjects\Modulo_Perfiles\src\Example_Screen\img" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.LoginGUI">
-    <configuration name="Aprendiz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.Aprendiz.Aprendiz" />
-      <module name="Modulo_Perfiles" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.Aprendiz.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AsignacionGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AsignacionInstructor.AsignacionGUI" />
-      <module name="Modulo_Perfiles" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AsignacionInstructor.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CodigoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Prueba3.Modelo.GUI.CodigoGUI" />
-      <module name="Modulo_Perfiles" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Prueba3.Modelo.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EmpresaGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Empresas.Vista.EmpresaGUI" />
-      <module name="Modulo_Perfiles" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Empresas.Vista.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager">
     <configuration name="LoginGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Example_Screen.View.Login.LoginGUI" />
       <module name="Modulo_Perfiles" />
@@ -182,115 +46,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoginGUI" />
-        <item itemvalue="Application.CodigoGUI" />
-        <item itemvalue="Application.AsignacionGUI" />
-        <item itemvalue="Application.Aprendiz" />
-        <item itemvalue="Application.EmpresaGUI" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="664a7a91-3975-4d84-96e8-3eeeb86e3cce" name="Changes" comment="" />
-      <created>1744770834355</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1744770834355</updated>
-      <workItem from="1744770835429" duration="122000" />
-      <workItem from="1744770967560" duration="344000" />
-      <workItem from="1744812765034" duration="797000" />
-      <workItem from="1744813883196" duration="3009000" />
-      <workItem from="1744908455829" duration="16936000" />
-      <workItem from="1746664117299" duration="11814000" />
-      <workItem from="1746737754876" duration="6336000" />
-      <workItem from="1746762054402" duration="820000" />
-      <workItem from="1746821220641" duration="271000" />
-      <workItem from="1746822500624" duration="3790000" />
-      <workItem from="1746893800237" duration="17000" />
-      <workItem from="1746933252599" duration="4553000" />
-      <workItem from="1747088320357" duration="540000" />
-      <workItem from="1747093344957" duration="2077000" />
-      <workItem from="1747103447153" duration="3226000" />
-      <workItem from="1747107931971" duration="1071000" />
-      <workItem from="1747359311755" duration="5377000" />
-      <workItem from="1747501284601" duration="1270000" />
-      <workItem from="1747508422566" duration="8383000" />
-      <workItem from="1747533284951" duration="9713000" />
-    </task>
-    <task id="LOCAL-00001" summary="Modal">
-      <option name="closed" value="true" />
-      <created>1744823134183</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1744823134183</updated>
-    </task>
-    <task id="LOCAL-00002" summary="pantalla administrador">
-      <option name="closed" value="true" />
-      <created>1744842080880</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1744842080880</updated>
-    </task>
-    <task id="LOCAL-00003" summary="pantalla administrador">
-      <option name="closed" value="true" />
-      <created>1744843145306</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1744843145306</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Gestion de pantallas">
-      <option name="closed" value="true" />
-      <created>1744929598107</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1744929598128</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Organizar menu de aprendiz">
-      <option name="closed" value="true" />
-      <created>1746762282069</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1746762282069</updated>
-    </task>
-    <task id="LOCAL-00006" summary="uni el modulo de seguimiento">
-      <option name="closed" value="true" />
-      <created>1747105830219</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1747105830259</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modal" />
-    <MESSAGE value="pantalla administrador" />
-    <MESSAGE value="Pantalla Aprendiz 100&amp;" />
-    <MESSAGE value="Gestion de pantallas" />
-    <MESSAGE value="Organizar menu de aprendiz" />
-    <MESSAGE value="conectar el modulo empresa a nuestro codigo" />
-    <MESSAGE value="union del modulo asignar instructor" />
-    <MESSAGE value="uni el modulo de seguimiento" />
-    <MESSAGE value="uni el modulo de empresa actualizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="uni el modulo de empresa actualizado" />
+    <MESSAGE value="se creo el perfil de coevaluador" />
+    <option name="LAST_COMMIT_MESSAGE" value="se creo el perfil de coevaluador" />
   </component>
 </project>

@@ -95,6 +95,7 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                break;
             case "6": // Administrador del sistema
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
@@ -458,6 +459,7 @@ public class Administrador {
             case "4": // Auxiliar
                 break;
             case "5": // Administrador
+                break;
             case "6": // Administrador del sistema
                 break;
             default:
@@ -522,6 +524,7 @@ public class Administrador {
                 break;
             case "5": // Administrador
                 configBotonMenu();
+                break;
             case "6": // Administrador del sistema
                 configBotonMenu();
                 break;
@@ -594,6 +597,7 @@ public class Administrador {
                 break;
             case "5": // Administrador
                 tituloBienvenido.setText("Bienvenido Administrador");
+                break;
             case "6": // Administrador del sistema
                 tituloBienvenido.setText("Bienvenido Administrador del sistema");
                 break;
@@ -633,6 +637,7 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                break;
             case "6": // Administrador del sistema
                 contenidoPanel.add(img_princi);
                 aprendices.setVisible(false);
