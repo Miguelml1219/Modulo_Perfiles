@@ -92,10 +92,12 @@ public class LoginGUI {
                                 aprendiz.Admin_Screen();
                                 break;
                             case "2":
-                                Administrador coevaluador = new Administrador();
-                                coevaluador.Admin_Screen();
+                                Administrador evaluador = new Administrador();
+                                evaluador.Admin_Screen();
                                 break;
                             case "3":
+                                Administrador coevaluador = new Administrador();
+                                coevaluador.Admin_Screen();
                                 break;
                             case "4":
                                 Administrador auxiliar = new Administrador();
