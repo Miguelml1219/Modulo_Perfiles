@@ -9,9 +9,11 @@ import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
+
 import Example_Screen.View.VisualizarPerfilGUI;
 import Seguimiento.Modelo.GUI.CodigoGUI;
 import Seguimiento.Modelo.GUI.CodigoGUI2;
+
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
 import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
@@ -57,12 +59,16 @@ public class Administrador {
     private JButton botonAprendizContratado;
     private JPanel pnlBtonAprenContrat;
     private JLabel separadorInvisible;
+
+    private JComboBox comboBox1;
+
     private JPanel PanelFormato;
     private JButton FormatoBoton;
     private JButton f147;
     private JButton f023;
     private JPanel panelAsigna;
     private JButton asignaBoton;
+
     private JTable table1;
     private JFrame frame;
 
@@ -72,6 +78,8 @@ public class Administrador {
     public static int verUsuarioPorRol = 0;
     int anchoCompleto = 280;  // Ancho original del menú
     int anchoReducido = 80;   // Ancho reducido (30% aprox)
+
+    String tipoDeFormulario = "";
 
     boolean visible = Boolean.parseBoolean(null);
 
@@ -85,8 +93,17 @@ public class Administrador {
      * También ajusta algunas cosas dependiendo del rol del usuario que entró.
      */
     public Administrador() {
+        comboBox1.setVisible(false);
+
         cambiarTituloSegunRol();
         tamañoCompletoMenu();
+
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelesDeFormularios();
+            }
+        });
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
@@ -185,6 +202,7 @@ public class Administrador {
             public void mouseClicked(MouseEvent e) {
 
                 regresarInicio();
+                comboBox1.setVisible(false);
             }
         });
         CerrarSesion.addMouseListener(new MouseAdapter() {
@@ -202,6 +220,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
 
                 regresarInicio();
+                comboBox1.setVisible(false);
             }
         });
 
@@ -211,6 +230,7 @@ public class Administrador {
 
                 configBotonMenuSegunRol();
 
+
             }
         });
 
@@ -219,6 +239,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 1;
                 mostrarPanelUsuarios();
+                comboBox1.setVisible(false);
             }
         });
         evaluadores.addActionListener(new ActionListener() {
@@ -226,6 +247,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 2;
                 mostrarPanelUsuarios();
+                comboBox1.setVisible(false);
 
             }
         });
@@ -234,6 +256,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 3;
                 mostrarPanelUsuarios();
+                comboBox1.setVisible(false);
             }
         });
         auxiliares.addActionListener(new ActionListener() {
@@ -241,6 +264,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 4;
                 mostrarPanelUsuarios();
+                comboBox1.setVisible(false);
             }
         });
 
@@ -248,25 +272,32 @@ public class Administrador {
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelEditar();
+                mostrarPanelEditar();comboBox1.setVisible(false);
             }
         });
         permisosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                configurarBotonPermisos();
+                configurarBotonPermisos();comboBox1.setVisible(false);
             }
         });
         registrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelEmpresa();
+                mostrarPanelEmpresa();comboBox1.setVisible(false);
             }
         });
         AsignarIntructorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelAsignarInstructor();
+                mostrarPanelAsignarInstructor();comboBox1.setVisible(false);
+            }
+        });
+        crearUsuariosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelesDeFormularios();
+                comboBox1.setVisible(true);
             }
         });
         f147.addActionListener(new ActionListener() {
@@ -311,7 +342,10 @@ public class Administrador {
                 permisosButton.setBackground(new Color(57, 169, 0));
             }
         });
+
     }
+
+
 
     /**
      * Muestra el panel para editar la información del administrador.
@@ -461,8 +495,6 @@ public class Administrador {
         mostrarPanel("Formato 023 - Seguimiento", codigoGUI.getPanel());
     }
 
-
-
     /**
      * Muestra el panel de seguimiento.
      */
@@ -561,6 +593,7 @@ public class Administrador {
     }
 
 
+
     public void mostrarTablaAprendicesAsignados() {
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
         AprendicesAsignados asignados = new AprendicesAsignados();
@@ -576,6 +609,100 @@ public class Administrador {
 
         vista.mostrarRol("Aprendices Asignados");
 
+    }
+
+    public void mostrarPanelCrearUsuario() {
+        CrearUsuarioGUI crearUsuarioGUI = new CrearUsuarioGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(crearUsuarioGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void mostrarPanelCrearEmpresa() {
+        CrearEmpresa crearEmpresa = new CrearEmpresa();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(crearEmpresa.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void mostrarPanelCrearModalidad() {
+        CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(modalidadGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void mostrarPanelCrearProgramas() {
+        CrearProgramaGUI crearProgramaGUI = new CrearProgramaGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(crearProgramaGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void mostrarPanelCrearFichas() {
+        CrearFichasGUI crearFichasGUI = new CrearFichasGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(crearFichasGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    public void mostrarPanelCrearSedes() {
+        CrearSedesGUI crearSedesGUI = new CrearSedesGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(crearSedesGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+
+    public void mostrarPanelesDeFormularios() {
+        tipoDeFormulario = (String) comboBox1.getSelectedItem();
+        switch (tipoDeFormulario) {
+            case "Crear usuario":
+                mostrarPanelCrearUsuario();
+                break;
+            case "Crear fichas":
+                mostrarPanelCrearFichas();
+                break;
+            case "Crear modalidad":
+                mostrarPanelCrearModalidad();
+                break;
+            case "Crear programas":
+                mostrarPanelCrearProgramas();
+                break;
+            case "Crear sedes":
+                mostrarPanelCrearSedes();
+                break;
+            case "Crear empresas":
+                mostrarPanelCrearEmpresa();
+                break;
+            default:
+                // Rol desconocido: puedes mostrar un mensaje o panel de error
+                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
+        }
     }
     /**
      * Este metodo sirve para ocultar un montón de botones y paneles del menú.

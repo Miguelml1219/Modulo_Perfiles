@@ -17,7 +17,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="2768f" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="2768f" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="40" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="2" row-span="6" col-span="3" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
@@ -51,6 +51,21 @@
                   <icon value="Example_Screen/img/Diseño sin título (7).png"/>
                   <text value=""/>
                   <verticalTextPosition value="0"/>
+                </properties>
+              </component>
+              <component id="27aa4" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value="Crear usuario"/>
+                    <item value="Crear fichas"/>
+                    <item value="Crear modalidad"/>
+                    <item value="Crear programas"/>
+                    <item value="Crear sedes"/>
+                    <item value="Crear empresas"/>
+                  </model>
                 </properties>
               </component>
             </children>
@@ -176,7 +191,9 @@
                           <iconTextGap value="4"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
+
                           <text value="  Crear "/>
+
                         </properties>
                       </component>
                     </children>
