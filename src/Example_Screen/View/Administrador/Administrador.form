@@ -395,7 +395,7 @@
                           <iconTextGap value="4"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
-                          <text value="  Ver usuarios"/>
+                          <text value=" Ver usuarios"/>
                         </properties>
                       </component>
                     </children>
