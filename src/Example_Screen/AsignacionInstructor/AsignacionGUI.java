@@ -1,6 +1,7 @@
-package AsignacionInstructor;
+package Example_Screen.AsignacionInstructor;
 
-import AsignacionInstructor.Conexion.Conexion;
+
+import Example_Screen.Connection.DBConnection;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -16,17 +17,18 @@ import java.util.List;
  */
 public class AsignacionGUI {
 
-    private JPanel panelAsignarInstructor;
+    private JPanel pnlAsigna;
     private JTable table1;
     private JTextField campoBusqueda;
-    private static JFrame frame;
+    private JFrame frame;
     private JFrame parentFrame;
-    private Conexion conexion = new Conexion();
+    private DBConnection dbConnection = new DBConnection();
     private TableRowSorter<DefaultTableModel> sorter;
     private  NonEditableTableModel modelo;
 
-    public JPanel getPanel(){return panelAsignarInstructor;}
-
+    public JPanel getPanel() {
+        return pnlAsigna;
+    }
 
     /**
      * Constructor de la clase AsignacionGUI.
@@ -43,7 +45,7 @@ public class AsignacionGUI {
         table1.setModel(modelo);
         table1.setRowSorter(sorter);
 
-        panelAsignarInstructor.setBackground(Color.decode("#F6F6F6"));
+        pnlAsigna.setBackground(Color.decode("#F6F6F6"));
 
         JTableHeader header = table1.getTableHeader();
         header.setBackground(Color.decode("#39A900"));
@@ -66,14 +68,13 @@ public class AsignacionGUI {
             }
         });
 
-        // Cargar datos al iniciar
+        // Cargar datos iniciales al abrir la pantalla
         try {
-            List<Asignacion> asignaciones = buscarGeneral(""); // Búsqueda sin filtro
-            actualizarTabla(asignaciones);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar los datos: " + e.getMessage());
+            List<Asignacion> asignacionesIniciales = buscarGeneral("");
+            actualizarTabla(asignacionesIniciales);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar datos iniciales: " + ex.getMessage());
         }
-
 
 
 
@@ -90,7 +91,7 @@ public class AsignacionGUI {
         List<Asignacion> asignacion = new ArrayList<>();
 
         try {
-            Connection con = conexion.getConnection();
+            Connection con = dbConnection.getConnection();
 
             String sql = "SELECT a.ID_numeroAprendices, ua.numero, " +
                     "CONCAT(ua.nombres, ' ', ua.apellidos) AS nombre_aprendiz, " +
@@ -104,10 +105,12 @@ public class AsignacionGUI {
                     "WHERE ua.ID_rol = 1 AND (" +
                     "LOWER(ua.numero) LIKE ? OR " +
                     "LOWER(f.codigo) LIKE ? OR " +
-                    "LOWER(CONCAT(ua.nombres, ' ', ua.apellidos)) LIKE ?)";
+                    "LOWER(CONCAT(ua.nombres, ' ', ua.apellidos)) LIKE ? OR " +
+                    "LOWER(p.nombre_programa) LIKE ? OR " +
+                    "LOWER(CONCAT(ui.nombres, ' ', ui.apellidos)) LIKE ?) ";
 
             consulta = con.prepareStatement(sql);
-            for (int i = 1; i <= 3; i++) {
+            for (int i = 1; i <= 5; i++) {
                 consulta.setString(i, "%" + terminoBusqueda + "%");
             }
             resultado = consulta.executeQuery();
@@ -233,7 +236,7 @@ public class AsignacionGUI {
          * @throws SQLException si ocurre un error al consultar la base de datos.
          */
         public int obtenerIdEvaluador(String nombreEvaluador) throws SQLException {
-            try (Connection con = conexion.getConnection()) {
+            try (Connection con = dbConnection.getConnection()) {
                 String sql = "SELECT ID_usuarios FROM usuarios WHERE CONCAT(nombres, ' ', apellidos) = ?";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, nombreEvaluador);
@@ -304,12 +307,15 @@ public class AsignacionGUI {
      *
      * @param asignacion lista de asignaciones a mostrar.
      */
+    // Modifica la función actualizarTabla para usar NonEditableTableModel en lugar de DefaultTableModel
     public void actualizarTabla(List<Asignacion> asignacion) {
         modelo.setRowCount(0);
         if (sorter != null) {
             table1.setRowSorter(null);
         }
-        DefaultTableModel modelo = new DefaultTableModel();
+
+
+        modelo = new NonEditableTableModel();
 
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
@@ -321,14 +327,11 @@ public class AsignacionGUI {
         sorter = new TableRowSorter<>(modelo);
         table1.setRowSorter(sorter);
 
-
         if (!campoBusqueda.getText().trim().isEmpty()) {
             campoBusqueda.setText(campoBusqueda.getText());
         }
 
-
         for (Asignacion asignacion1 : asignacion) {
-
             modelo.addRow(new Object[]{
                     asignacion1.getID_numeroAprendices(),
                     asignacion1.getNombre(),
@@ -340,6 +343,11 @@ public class AsignacionGUI {
             });
         }
         table1.setModel(modelo);
+
+
+        JTableHeader tableHeader = table1.getTableHeader();
+        tableHeader.setReorderingAllowed(false);
+
         table1.getColumn("Asignar").setCellRenderer(new ButtonRenderer());
         table1.getColumn("Asignar").setCellEditor(new ButtonEditor(new JCheckBox()));
         table1.revalidate();
@@ -348,17 +356,23 @@ public class AsignacionGUI {
         table1.setRowSorter(sorter);
         table1.revalidate();
         table1.repaint();
-    }
 
+        // Ocultar la columna "ID"
+        TableColumnModel columnModel = table1.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+    }
     /**
      * Método principal para ejecutar la interfaz gráfica.
      *
      * @param args argumentos de línea de comandos.
      */
     public static void main(String[] args) {
-        AsignacionGUI asignacionGUI = new AsignacionGUI(frame);
+
         JFrame frame = new JFrame("Asignación Instructor");
-        frame.setContentPane(asignacionGUI.panelAsignarInstructor);
+        AsignacionGUI asignacionGUI = new AsignacionGUI(frame);
+        frame.setContentPane(asignacionGUI.pnlAsigna);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
