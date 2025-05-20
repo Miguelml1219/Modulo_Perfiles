@@ -97,6 +97,8 @@ public class Administrador {
 
         cambiarTituloSegunRol();
         tamañoCompletoMenu();
+        pnlBtonPermiso.setVisible(false);
+
 
         comboBox1.addActionListener(new ActionListener() {
             @Override
@@ -521,7 +523,7 @@ public class Administrador {
         GraficoCircular grafico = new GraficoCircular(progreso);
         grafico.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel fechaInicio = new JLabel("Fecha Inicio: " + (aprendiz != null ? aprendiz.getFechaInicio() : ""));
+        JLabel fechaInicio = new JLabel("Fecha Inicio: " + (aprendiz != null ? aprendiz.getFecha_fin_lec() : ""));
         fechaInicio.setFont(new Font("Arial", Font.BOLD, 17));
         fechaInicio.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -759,6 +761,7 @@ public class Administrador {
 
                 break;
             case "4": // Auxiliar
+
                 pnlBtonAprenContrat.setVisible(false);
                 panelAsigna.setVisible(false);
                 PanelFormato.setVisible(false);
