@@ -1,17 +1,16 @@
 package Example_Screen.Model;
 
 import Example_Screen.Connection.DBConnection;
-import Example_Screen.View.Login.LoginGUI;
 import java.sql.*;
 import java.time.LocalDate;
 
 public class AprendizDAO {
-    public Aprendiz obtenerAprendiz() {
+    public Aprendiz obtenerAprendiz(int idUsuario) {
         String query = "SELECT f.fecha_fin_lec, f.fecha_final, u.nombres " +
                 "FROM fichas f " +
                 "JOIN aprendices a ON f.ID_Fichas = a.ID_Fichas " +
                 "JOIN usuarios u ON a.ID_usuarios = u.ID_usuarios " +
-                "WHERE u.ID_usuarios = " + LoginGUI.traerIDusuario;
+                "WHERE u.ID_usuarios = " + idUsuario;
 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -25,6 +24,7 @@ public class AprendizDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener datos del aprendiz: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }

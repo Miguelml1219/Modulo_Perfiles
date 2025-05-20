@@ -13,6 +13,7 @@ import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
 import Example_Screen.View.VisualizarPerfilGUI;
 import Seguimiento.Modelo.GUI.CodigoGUI;
 import Seguimiento.Modelo.GUI.CodigoGUI2;
+import Usuarios.*;
 
 
 import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
@@ -508,7 +509,7 @@ public class Administrador {
         contenidoPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         AprendizDAO dao = new AprendizDAO();
-        Aprendiz aprendiz = dao.obtenerAprendiz();
+        Aprendiz aprendiz = dao.obtenerAprendiz(LoginGUI.idUsuarioActual);
         int progreso = aprendiz != null ? aprendiz.calcularProgreso() : 0;
 
         JPanel panelIzquierdo = new JPanel();
