@@ -1,6 +1,6 @@
 package Example_Screen.View.Administrador;
 
-import AsignacionInstructor.AsignacionGUI;
+import Example_Screen.AsignacionInstructor.AsignacionGUI;
 import Empresas.Vista.EmpresaGUI;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;

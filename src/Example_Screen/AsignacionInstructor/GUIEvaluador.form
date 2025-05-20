@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="AsignacionInstructor.GUIEvaluador">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Example_Screen.AsignacionInstructor.GUIEvaluador">
   <grid id="27dc6" binding="main" layout-manager="GridLayoutManager" row-count="8" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="478" height="400"/>
+      <xy x="20" y="20" width="607" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -87,24 +87,24 @@
           <text value="Búsqueda"/>
         </properties>
       </component>
-      <component id="4da6d" class="javax.swing.JButton" binding="asignarButton" default-binding="true">
-        <constraints>
-          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Calibri" size="16"/>
-          <foreground color="-1"/>
-          <text value="Asignar"/>
-        </properties>
-      </component>
       <component id="52ffb" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
         <constraints>
           <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Calibri" size="16"/>
+          <font name="Calibri" size="12"/>
           <foreground color="-1"/>
-          <text value="Eliminar"/>
+          <text value="ELIMINAR ASIGNACIÓN"/>
+        </properties>
+      </component>
+      <component id="4da6d" class="javax.swing.JButton" binding="asignarButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="12"/>
+          <foreground color="-1"/>
+          <text value=" ASIGNAR EVALUADOR"/>
         </properties>
       </component>
     </children>
