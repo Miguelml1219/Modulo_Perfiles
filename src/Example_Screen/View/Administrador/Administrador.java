@@ -61,7 +61,6 @@ public class Administrador {
     private JPanel pnlBtonAprenContrat;
     private JLabel separadorInvisible;
 
-    private JComboBox comboBox1;
 
     private JPanel PanelFormato;
     private JButton FormatoBoton;
@@ -69,6 +68,11 @@ public class Administrador {
     private JButton f023;
     private JPanel panelAsigna;
     private JButton asignaBoton;
+    private JButton botonCrearUsuario;
+    private JButton botonCrearFicha;
+    private JButton botonCrearPrograma;
+    private JButton botonCrearSede;
+    private JButton botonCrearModalidad;
 
     private JTable table1;
     private JFrame frame;
@@ -94,19 +98,11 @@ public class Administrador {
      * También ajusta algunas cosas dependiendo del rol del usuario que entró.
      */
     public Administrador() {
-        comboBox1.setVisible(false);
 
         cambiarTituloSegunRol();
         tamañoCompletoMenu();
         pnlBtonPermiso.setVisible(false);
 
-
-        comboBox1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPanelesDeFormularios();
-            }
-        });
 
         switch (cofigBotonInicioSegunRol) {
             case "1": // Aprendiz
@@ -123,6 +119,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -132,6 +133,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -141,6 +147,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -155,7 +166,8 @@ public class Administrador {
         CerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
-                aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023, botonAprendizContratado};
+                aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023, botonAprendizContratado, botonCrearSede,
+                botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha};
 
         for (JButton btn : botones) {
             btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -187,6 +199,7 @@ public class Administrador {
                 evaluadores.setVisible(!visible);
                 coevaluadores.setVisible(!visible);
                 auxiliares.setVisible(!visible);
+                botonCrearUsuario.setVisible(!visible);
 
             }
         });
@@ -205,7 +218,6 @@ public class Administrador {
             public void mouseClicked(MouseEvent e) {
 
                 regresarInicio();
-                comboBox1.setVisible(false);
             }
         });
         CerrarSesion.addMouseListener(new MouseAdapter() {
@@ -223,7 +235,6 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
 
                 regresarInicio();
-                comboBox1.setVisible(false);
             }
         });
 
@@ -242,7 +253,6 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 1;
                 mostrarPanelUsuarios();
-                comboBox1.setVisible(false);
             }
         });
         evaluadores.addActionListener(new ActionListener() {
@@ -250,7 +260,6 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 2;
                 mostrarPanelUsuarios();
-                comboBox1.setVisible(false);
 
             }
         });
@@ -259,7 +268,6 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 3;
                 mostrarPanelUsuarios();
-                comboBox1.setVisible(false);
             }
         });
         auxiliares.addActionListener(new ActionListener() {
@@ -267,7 +275,6 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 4;
                 mostrarPanelUsuarios();
-                comboBox1.setVisible(false);
             }
         });
 
@@ -275,32 +282,35 @@ public class Administrador {
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelEditar();comboBox1.setVisible(false);
+                mostrarPanelEditar();
             }
         });
         permisosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                configurarBotonPermisos();comboBox1.setVisible(false);
+                configurarBotonPermisos();
             }
         });
         registrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelEmpresa();comboBox1.setVisible(false);
+                mostrarPanelEmpresa();
             }
         });
         AsignarIntructorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelAsignarInstructor();comboBox1.setVisible(false);
+                mostrarPanelAsignarInstructor();
             }
         });
         crearUsuariosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelesDeFormularios();
-                comboBox1.setVisible(true);
+                boolean visible = botonCrearFicha.isVisible();;
+                botonCrearFicha.setVisible(!visible);
+                botonCrearModalidad.setVisible(!visible);;
+                botonCrearPrograma.setVisible(!visible);
+                botonCrearSede.setVisible(!visible);
             }
         });
         f147.addActionListener(new ActionListener() {
@@ -313,6 +323,38 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarPanelSeguimiento023();
+            }
+        });
+        botonCrearUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearUsuario();
+            }
+        });
+
+        botonCrearFicha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearFichas();
+            }
+        });
+        botonCrearPrograma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearProgramas();
+            }
+        });
+        botonCrearSede.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearSedes();
+            }
+        });
+
+        botonCrearModalidad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearModalidad();
             }
         });
     }
@@ -680,33 +722,6 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-
-    public void mostrarPanelesDeFormularios() {
-        tipoDeFormulario = (String) comboBox1.getSelectedItem();
-        switch (tipoDeFormulario) {
-            case "Crear usuario":
-                mostrarPanelCrearUsuario();
-                break;
-            case "Crear fichas":
-                mostrarPanelCrearFichas();
-                break;
-            case "Crear modalidad":
-                mostrarPanelCrearModalidad();
-                break;
-            case "Crear programas":
-                mostrarPanelCrearProgramas();
-                break;
-            case "Crear sedes":
-                mostrarPanelCrearSedes();
-                break;
-            case "Crear empresas":
-                mostrarPanelCrearEmpresa();
-                break;
-            default:
-                // Rol desconocido: puedes mostrar un mensaje o panel de error
-                System.out.println("Rol desconocido: " + cofigBotonInicioSegunRol);
-        }
-    }
     /**
      * Este metodo sirve para ocultar un montón de botones y paneles del menú.
      * para que no vea opciones que no le corresponden.
@@ -719,6 +734,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -734,6 +754,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -750,6 +775,11 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
+                botonCrearUsuario.setVisible(false);
+                botonCrearModalidad.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearSede.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -944,6 +974,11 @@ public class Administrador {
         coevaluadores.setVisible(false);
         auxiliares.setVisible(false);
         AsignarIntructorButton.setVisible(false);
+        botonCrearUsuario.setVisible(false);
+        botonCrearModalidad.setVisible(false);
+        botonCrearFicha.setVisible(false);
+        botonCrearPrograma.setVisible(false);
+        botonCrearSede.setVisible(false);
         separadorInvisible.setVisible(false);
 
         if (menuReducido) {
