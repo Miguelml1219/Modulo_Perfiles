@@ -12,7 +12,6 @@ import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
 import Example_Screen.View.Administrador.*;
-import Example_Screen.View.Aprendiz.AprendizGUI;
 //import Example_Screen.View.Aprendiz.*;
 
 public class LoginGUI {

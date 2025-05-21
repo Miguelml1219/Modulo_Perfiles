@@ -5,7 +5,6 @@ import Empresas.Vista.EmpresaGUI;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
-import Example_Screen.View.Aprendiz.AprendizGUI;
 import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
@@ -166,7 +165,7 @@ public class Administrador {
         CerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
-                aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023, botonAprendizContratado, botonCrearSede,
+                aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023,asignaBoton, botonAprendizContratado, botonCrearSede,
                 botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha};
 
         for (JButton btn : botones) {
@@ -185,6 +184,7 @@ public class Administrador {
         aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
         aplicarEfectoHover(FormatoBoton, colorHover, colorBase);
         aplicarEfectoHover(botonAprendizContratado, colorHover, colorBase);
+        aplicarEfectoHover(asignaBoton, colorHover, colorBase);
 
 
         /**
@@ -355,6 +355,13 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarPanelCrearModalidad();
+            }
+        });
+
+        asignaBoton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarTablaAprendicesAsignados();
             }
         });
     }
@@ -645,7 +652,7 @@ public class Administrador {
 
         asignados.obtenerAprendicesAsignados(traerIDusuario, vista);
 
-// Mostrar la vista en el panel principal
+        // Mostrar la vista en el panel principal
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
         contenidoPanel.add(vista.getPanel(), BorderLayout.CENTER);
@@ -667,16 +674,16 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-    public void mostrarPanelCrearEmpresa() {
-        CrearEmpresa crearEmpresa = new CrearEmpresa();
-
-        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
-        contenidoPanel.removeAll();
-        contenidoPanel.setLayout(new BorderLayout());
-        contenidoPanel.add(crearEmpresa.getPanel(), BorderLayout.CENTER);
-        contenidoPanel.revalidate();
-        contenidoPanel.repaint();
-    }
+//    public void mostrarPanelCrearEmpresa() {
+//        CrearEmpresa crearEmpresa = new CrearEmpresa();
+//
+//        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+//        contenidoPanel.removeAll();
+//        contenidoPanel.setLayout(new BorderLayout());
+//        contenidoPanel.add(crearEmpresa.getPanel(), BorderLayout.CENTER);
+//        contenidoPanel.revalidate();
+//        contenidoPanel.repaint();
+//    }
 
     public void mostrarPanelCrearModalidad() {
         CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
@@ -833,7 +840,7 @@ public class Administrador {
                 break;
             case "2": // Evaluador
                 ocultarComponentesNoAsignado();
-                mostrarTablaAprendicesAsignados();
+                //mostrarTablaAprendicesAsignados();
                 break;
             case "3": // Coevaluador
                 ocultarComponentesNoAsignado();
@@ -1021,7 +1028,7 @@ public class Administrador {
                 tituloBienvenido.setText("Bienvenido Auxiliar");
                 break;
             case "5": // Administrador
-                tituloBienvenido.setText("Bienvenido Administrador");
+                tituloBienvenido.setText("Bienvenido Funcionario");
                 break;
             case "6": // Administrador del sistema
                 tituloBienvenido.setText("Bienvenido Administrador del sistema");
@@ -1060,6 +1067,11 @@ public class Administrador {
                 break;
             case "4": // Auxiliar
                 contenidoPanel.add(img_princi);
+                botonCrearUsuario.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearSede.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearModalidad.setVisible(false);
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
@@ -1069,6 +1081,11 @@ public class Administrador {
                 break;
             case "5": // Administrador
                 contenidoPanel.add(img_princi);
+                botonCrearUsuario.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearSede.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearModalidad.setVisible(false);
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
@@ -1079,6 +1096,11 @@ public class Administrador {
                 break;
             case "6": // Administrador del sistema
                 contenidoPanel.add(img_princi);
+                botonCrearUsuario.setVisible(false);
+                botonCrearFicha.setVisible(false);
+                botonCrearSede.setVisible(false);
+                botonCrearPrograma.setVisible(false);
+                botonCrearModalidad.setVisible(false);
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);

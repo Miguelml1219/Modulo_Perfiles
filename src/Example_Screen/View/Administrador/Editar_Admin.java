@@ -47,6 +47,7 @@ public class Editar_Admin{
     private String originalRol;
     private String originalEstado;
     private int userID; // Para almacenar el ID del usuario actual
+    private int rolUsuario;
 
     /**
      * Este metodo es para que otras partes del programa puedan agarrar el panel principal
@@ -119,22 +120,25 @@ public class Editar_Admin{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                nombre.setBorder(bottom);
-                apellido.setBorder(bottom);
-                num_doc.setBorder(bottom);
-                email.setBorder(bottom);
-                direc.setBorder(bottom);
-                conta.setBorder(bottom);
 
-                nombre.setEnabled(true);
-                apellido.setEnabled(true);
-                tipo_doc.setEnabled(true);
-                num_doc.setEnabled(true);
-                email.setEnabled(true);
-                direc.setEnabled(true);
-                conta.setEnabled(true);
-                rol.setEnabled(true);
-                estado.setEnabled(true);
+                configurarPermisosPorRol();
+
+//                nombre.setBorder(bottom);
+//                apellido.setBorder(bottom);
+//                num_doc.setBorder(bottom);
+//                email.setBorder(bottom);
+//                direc.setBorder(bottom);
+//                conta.setBorder(bottom);
+//
+//                nombre.setEnabled(true);
+//                apellido.setEnabled(true);
+//                tipo_doc.setEnabled(true);
+//                num_doc.setEnabled(true);
+//                email.setEnabled(true);
+//                direc.setEnabled(true);
+//                conta.setEnabled(true);
+//                rol.setEnabled(true);
+//                estado.setEnabled(true);
 
                 editarPerfil️Button.setEnabled(false);
                 confirmar️Button.setEnabled(true);
@@ -201,6 +205,143 @@ public class Editar_Admin{
         });
     }
 
+    private void configurarPermisosPorRol() {
+        Border bottom = BorderFactory.createMatteBorder(0, 0, 2, 0, Color.decode("#39A900"));
+        Border bottomDisabled = BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode("#39A900"));
+
+        switch(rolUsuario) {
+            case 1: // APRENDIZ - Solo puede editar datos básicos
+                // Permitir editar
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+
+                // NO permitir editar (mantener deshabilitados)
+                nombre.setEnabled(false);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(false);
+                apellido.setBorder(bottom);
+                tipo_doc.setEnabled(false);
+                tipo_doc.setBorder(bottomDisabled);
+                num_doc.setEnabled(false);
+                num_doc.setBorder(bottomDisabled);
+                rol.setEnabled(false);
+                estado.setEnabled(false);
+                break;
+
+            case 2: // EVALUADOR - Puede editar más campos que aprendiz
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+
+                // NO permitir editar (mantener deshabilitados)
+                nombre.setEnabled(false);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(false);
+                apellido.setBorder(bottom);
+                tipo_doc.setEnabled(false);
+                tipo_doc.setBorder(bottomDisabled);
+                num_doc.setEnabled(false);
+                num_doc.setBorder(bottomDisabled);
+                rol.setEnabled(false);
+                estado.setEnabled(false);
+
+            case 3: // COEVALUADOR - Mismo nivel que evaluador
+                // Permitir editar
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+
+
+                // NO permitir editar
+                nombre.setEnabled(false);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(false);
+                apellido.setBorder(bottom);
+                tipo_doc.setEnabled(false);
+                num_doc.setEnabled(false);
+                num_doc.setBorder(bottom);
+                rol.setEnabled(false);
+                estado.setEnabled(false);
+                break;
+
+            case 4: // AUXILIAR - Similar a evaluador
+            case 5: // ADMINISTRADOR - Más permisos
+                // Permitir editar
+                nombre.setEnabled(true);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(true);
+                apellido.setBorder(bottom);
+                tipo_doc.setEnabled(true);
+                num_doc.setEnabled(true);
+                num_doc.setBorder(bottom);
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+
+                // Administrador puede cambiar estado pero no rol
+                if(rolUsuario == 5) {
+                    estado.setEnabled(true);
+                } else {
+                    estado.setEnabled(false);
+                }
+                rol.setEnabled(false);
+                break;
+
+            case 6: // ADMINISTRADOR DEL SISTEMA - Todos los permisos
+                // Permitir editar TODO
+                nombre.setEnabled(true);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(true);
+                apellido.setBorder(bottom);
+                tipo_doc.setEnabled(true);
+                num_doc.setEnabled(true);
+                num_doc.setBorder(bottom);
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+                rol.setEnabled(true);
+                estado.setEnabled(true);
+                break;
+
+            default:
+                // Por seguridad, si no reconoce el rol, no permitir editar nada crítico
+                nombre.setEnabled(true);
+                nombre.setBorder(bottom);
+                apellido.setEnabled(true);
+                apellido.setBorder(bottom);
+                email.setEnabled(true);
+                email.setBorder(bottom);
+                direc.setEnabled(true);
+                direc.setBorder(bottom);
+                conta.setEnabled(true);
+                conta.setBorder(bottom);
+
+                tipo_doc.setEnabled(false);
+                tipo_doc.setBorder(bottomDisabled);
+                num_doc.setEnabled(false);
+                num_doc.setBorder(bottomDisabled);
+                rol.setEnabled(false);
+                estado.setEnabled(false);
+                break;
+        }
+    }
+
     public void cargarDatosUsuario()
     {
         String usuarioEmail = obtenerUsuarioActual();
@@ -219,6 +360,8 @@ public class Editar_Admin{
             if (rs.next()) {
                 // Almacenar ID para futuras actualizaciones
                 userID = rs.getInt("ID_usuarios");
+                //NUEVO: Almacenar el rol del Usuario
+                rolUsuario=rs.getInt("ID_rol");
 
                 // Cargar datos a los campos
                 nombre.setText(rs.getString("nombres"));
