@@ -381,13 +381,16 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarPanelAdministrarEmpesa();
+            }
+
+        });
 
 
         asignaBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarTablaAprendicesAsignados();
-r
+
             }
         });
     }
@@ -717,7 +720,7 @@ r
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-          
+
     public void mostrarPanelCrearModalidad() {
         CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
 
@@ -1222,4 +1225,6 @@ r
         });
     }
 
+
 }
+
