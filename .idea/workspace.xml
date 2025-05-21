@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca3c09e0-4534-467b-8aaa-190991ed0909" name="Changes" comment="cree el perfil de coevaluador y arreglo de algunos bug">
+    <list default="true" id="ca3c09e0-4534-467b-8aaa-190991ed0909" name="Changes" comment="ahora el modulo de usuarios funciona por medio de botones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Controlador/ActualizarEmpresaDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresas/Controlador/ActualizarEmpresaDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Empresas/Vista/EmpresaGUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
     </list>
@@ -46,20 +49,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LoginGUI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "181",
-    "git-widget-placeholder": "fabian1",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LoginGUI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;181&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fabian1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\FABIAN\IdeaProjects\Modulo_Perfiles\src\Usuarios" />
@@ -104,7 +107,17 @@
       <workItem from="1747625246609" duration="284000" />
       <workItem from="1747629169788" duration="1128000" />
       <workItem from="1747631219487" duration="8774000" />
+      <workItem from="1747860325587" duration="2267000" />
     </task>
+    <task id="LOCAL-00001" summary="ahora el modulo de usuarios funciona por medio de botones">
+      <option name="closed" value="true" />
+      <created>1747793964938</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747793964957</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +125,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cree el perfil de coevaluador y arreglo de algunos bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="cree el perfil de coevaluador y arreglo de algunos bug" />
+    <MESSAGE value="ahora el modulo de usuarios funciona por medio de botones" />
+    <option name="LAST_COMMIT_MESSAGE" value="ahora el modulo de usuarios funciona por medio de botones" />
   </component>
 </project>
