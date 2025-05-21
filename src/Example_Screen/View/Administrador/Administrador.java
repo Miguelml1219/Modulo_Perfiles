@@ -1,7 +1,8 @@
 package Example_Screen.View.Administrador;
 
+import Empresas.Vista.AdministrarGUI;
+import Empresas.Vista.CrearGUI;
 import Example_Screen.AsignacionInstructor.AsignacionGUI;
-import Empresas.Vista.EmpresaGUI;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
@@ -73,6 +74,8 @@ public class Administrador {
     private JButton botonCrearPrograma;
     private JButton botonCrearSede;
     private JButton botonCrearModalidad;
+    private JButton botonCrearEmpresa;
+    private JButton botonAdministrarEmpresa;
 
     private JTable table1;
     private JFrame frame;
@@ -124,6 +127,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -138,6 +143,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -152,6 +159,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -167,7 +176,7 @@ public class Administrador {
 
         JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
                 aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023, botonAprendizContratado, botonCrearSede,
-                botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha};
+                botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha ,botonCrearEmpresa, botonAdministrarEmpresa};
 
         for (JButton btn : botones) {
             btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -294,7 +303,9 @@ public class Administrador {
         registrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPanelEmpresa();
+                boolean visible = botonCrearEmpresa.isVisible();;
+                botonCrearEmpresa.setVisible(!visible);
+                botonAdministrarEmpresa.setVisible(!visible);
             }
         });
         AsignarIntructorButton.addActionListener(new ActionListener() {
@@ -355,6 +366,20 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarPanelCrearModalidad();
+            }
+        });
+        botonCrearEmpresa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelCrearEmpresa();
+
+            }
+        });
+        botonAdministrarEmpresa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelAdministrarEmpesa();
+
             }
         });
     }
@@ -448,21 +473,39 @@ public class Administrador {
         verUsuarios.tipoDeUsuarioRegistrado();
         verUsuarios.componentesPersonalizado();
     }
+
     /**
-     * Muestra el panel para registrar o ver empresas.
-     * Carga la pantalla de EmpresaGUI.
+     * Muestra el panel para crear empresas.
+     * Carga la pantalla de AdministrarGUI.
      */
-    public void mostrarPanelEmpresa() {
-            EmpresaGUI empresaGUI = new EmpresaGUI();
+    public void mostrarPanelCrearEmpresa() {
+        CrearGUI crearGUI = new CrearGUI();
 
         // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
-        contenidoPanel.add(empresaGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.add(crearGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
+    /**
+     * Muestra el panel para Administrar  y ver empresas.
+     * Carga la pantalla de AdministrarGUI.
+     */
+
+    public void mostrarPanelAdministrarEmpesa() {
+        AdministrarGUI administrarGUI = new AdministrarGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(administrarGUI.getPanel(), BorderLayout.CENTER);
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
 
     }
+
     /**
      * Muestra el panel para asignar instructores.
      * Carga la pantalla de AsignacionGUI.
@@ -667,17 +710,6 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-    public void mostrarPanelCrearEmpresa() {
-        CrearEmpresa crearEmpresa = new CrearEmpresa();
-
-        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
-        contenidoPanel.removeAll();
-        contenidoPanel.setLayout(new BorderLayout());
-        contenidoPanel.add(crearEmpresa.getPanel(), BorderLayout.CENTER);
-        contenidoPanel.revalidate();
-        contenidoPanel.repaint();
-    }
-
     public void mostrarPanelCrearModalidad() {
         CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
 
@@ -739,6 +771,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -759,6 +793,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -780,6 +816,8 @@ public class Administrador {
                 botonCrearFicha.setVisible(false);
                 botonCrearPrograma.setVisible(false);
                 botonCrearSede.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 pnlBtonAsigInstru.setVisible(false);
                 pnlBtonVerUsua.setVisible(false);
                 pnlBtonCrearUsua.setVisible(false);
@@ -979,6 +1017,8 @@ public class Administrador {
         botonCrearFicha.setVisible(false);
         botonCrearPrograma.setVisible(false);
         botonCrearSede.setVisible(false);
+        botonCrearEmpresa.setVisible(false);
+        botonAdministrarEmpresa.setVisible(false);
         separadorInvisible.setVisible(false);
 
         if (menuReducido) {
@@ -1064,6 +1104,8 @@ public class Administrador {
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(true);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
@@ -1074,6 +1116,8 @@ public class Administrador {
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
                 PanelFormato.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
@@ -1084,6 +1128,8 @@ public class Administrador {
                 coevaluadores.setVisible(false);
                 auxiliares.setVisible(false);
                 PanelFormato.setVisible(false);
+                botonCrearEmpresa.setVisible(false);
+                botonAdministrarEmpresa.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
