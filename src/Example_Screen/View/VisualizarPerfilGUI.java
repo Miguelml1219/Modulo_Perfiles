@@ -29,16 +29,47 @@ public class VisualizarPerfilGUI {
     private JLabel datoFich;
     private JLabel datoModal;
     private JButton irAlPerfilButton;
-    private int userID; // Para almacenar el ID del usuario actual
+    private JLabel fich;
+    private JLabel empr;
+    private JLabel prog;
+    private int userID;
     private DBConnection dbConnection = new DBConnection();
 
 
     public VisualizarPerfilGUI(int idUsuario, int idRol) {
 
+        inicializarVisibilidadElementos();
 
         cargarDatosUsuario(idUsuario);
         cargarDatosAprendiz(idUsuario, idRol);
+
+        configurarVisibilidadAprendiz(idRol);
+
     }
+
+    private void configurarVisibilidadAprendiz(int idRol) {
+        boolean esAprendiz = (idRol == 1);
+
+        // Mostrar/ocultar botón
+        irAlPerfilButton.setVisible(esAprendiz);
+
+        // Mostrar/ocultar datos específicos de aprendiz
+        empr.setVisible(esAprendiz);
+        fich.setVisible(esAprendiz);
+        prog.setVisible(esAprendiz);
+        modalidad.setVisible(esAprendiz);
+    }
+
+    private void inicializarVisibilidadElementos() {
+        // Inicializar elementos como ocultos por defecto
+        irAlPerfilButton.setVisible(false);
+        empr.setVisible(false);
+        fich.setVisible(false);
+        prog.setVisible(false);
+        modalidad.setVisible(false);
+    }
+
+
 
     public void cargarDatosUsuario(int idUsuario)
     {
@@ -85,6 +116,7 @@ public class VisualizarPerfilGUI {
             JOptionPane.showMessageDialog(null, "Error al cargar los datos del usuario: " + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+
 
     }
 

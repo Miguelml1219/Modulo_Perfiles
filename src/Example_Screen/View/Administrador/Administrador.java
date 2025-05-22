@@ -273,7 +273,6 @@ public class Administrador {
         inicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 regresarInicio();
             }
         });
