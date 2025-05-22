@@ -94,13 +94,20 @@ public class Administrador {
 
     private boolean menuReducido = false; // Estado inicial
 
+
+    private JButton submenuActivo = null;
+    private Color colorSubmenuNormal = new Color(57, 169, 0);
+
+    private static final String ICONO_FLECHA_DERECHA = "▶";
+    private static final String ICONO_FLECHA_ABAJO = "▼";
+    private static final Color COLOR_FLECHA = Color.WHITE;
     /**
      * Constructor de la clase Administrador.
      * Aquí es donde se arma toda la interfaz y se configuran los botones y eventos.
      * También ajusta algunas cosas dependiendo del rol del usuario que entró.
      */
     public Administrador() {
-
+        configurarFlechasBotones();
         cambiarTituloSegunRol();
         tamañoCompletoMenu();
         pnlBtonPermiso.setVisible(false);
@@ -210,6 +217,11 @@ public class Administrador {
                 coevaluadores.setVisible(!visible);
                 auxiliares.setVisible(!visible);
                 botonCrearUsuario.setVisible(!visible);
+                String textoBase = verUsuariosButton.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();
+                verUsuariosButton.setText(textoBase + "  " + (visible ? ICONO_FLECHA_DERECHA : ICONO_FLECHA_ABAJO));
+                if (visible) {
+                    resaltarSubmenu(null);
+                }
 
             }
         });
@@ -220,6 +232,11 @@ public class Administrador {
                 boolean visible = f147.isVisible();
                 f147.setVisible(!visible);
                 f023.setVisible(!visible);
+                String textoBase = FormatoBoton.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();
+                FormatoBoton.setText(textoBase + "  " + (visible ? ICONO_FLECHA_DERECHA : ICONO_FLECHA_ABAJO));
+                if (visible) {
+                    resaltarSubmenu(null);
+                }
             }
         });
 
@@ -262,6 +279,7 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 1;
+                resaltarSubmenu(aprendices);
                 mostrarPanelUsuarios();
             }
         });
@@ -269,6 +287,7 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 2;
+                resaltarSubmenu(evaluadores);
                 mostrarPanelUsuarios();
 
             }
@@ -277,6 +296,7 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 3;
+                resaltarSubmenu(coevaluadores);
                 mostrarPanelUsuarios();
             }
         });
@@ -284,6 +304,7 @@ public class Administrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 verUsuarioPorRol = 4;
+                resaltarSubmenu(auxiliares);
                 mostrarPanelUsuarios();
             }
         });
@@ -307,6 +328,11 @@ public class Administrador {
                 boolean visible = botonCrearEmpresa.isVisible();;
                 botonCrearEmpresa.setVisible(!visible);
                 botonAdministrarEmpresa.setVisible(!visible);
+                String textoBase = registrarEmpresa.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();
+                registrarEmpresa.setText(textoBase + "  " + (visible ? ICONO_FLECHA_DERECHA : ICONO_FLECHA_ABAJO));
+                if (visible) {
+                    resaltarSubmenu(null);
+                }
             }
         });
         AsignarIntructorButton.addActionListener(new ActionListener() {
@@ -323,23 +349,31 @@ public class Administrador {
                 botonCrearModalidad.setVisible(!visible);;
                 botonCrearPrograma.setVisible(!visible);
                 botonCrearSede.setVisible(!visible);
+                String textoBase = crearUsuariosButton.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();
+                crearUsuariosButton.setText(textoBase + "  " + (visible ? ICONO_FLECHA_DERECHA : ICONO_FLECHA_ABAJO));
+                if (visible) {
+                    resaltarSubmenu(null);
+                }
             }
         });
         f147.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(f147);
                 mostrarPanelSeguimiento147();
             }
         });
         f023.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(f023);
                 mostrarPanelSeguimiento023();
             }
         });
         botonCrearUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearUsuario);
                 mostrarPanelCrearUsuario();
             }
         });
@@ -347,18 +381,21 @@ public class Administrador {
         botonCrearFicha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearFicha);
                 mostrarPanelCrearFichas();
             }
         });
         botonCrearPrograma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearPrograma);
                 mostrarPanelCrearProgramas();
             }
         });
         botonCrearSede.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearSede);
                 mostrarPanelCrearSedes();
             }
         });
@@ -366,6 +403,7 @@ public class Administrador {
         botonCrearModalidad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearModalidad);
                 mostrarPanelCrearModalidad();
             }
         });
@@ -373,6 +411,7 @@ public class Administrador {
         botonCrearEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonCrearEmpresa);
                 mostrarPanelCrearEmpresa();
 
             }
@@ -380,6 +419,7 @@ public class Administrador {
         botonAdministrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resaltarSubmenu(botonAdministrarEmpresa);
                 mostrarPanelAdministrarEmpesa();
             }
 
@@ -691,7 +731,30 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
+    public void resaltarSubmenu(JButton botonSubmenu) {
 
+        if (submenuActivo != null) {
+            submenuActivo.setBackground(colorSubmenuNormal);
+        }
+
+        if (botonSubmenu != null) {
+            botonSubmenu.setBackground(new Color(30, 150, 75));
+        }
+        submenuActivo = botonSubmenu;
+    }
+    private void configurarFlechasBotones() {
+
+        verUsuariosButton.setText(verUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
+        crearUsuariosButton.setText(crearUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
+        registrarEmpresa.setText(registrarEmpresa.getText() + "  " + ICONO_FLECHA_DERECHA);
+        FormatoBoton.setText(FormatoBoton.getText() + "  " + ICONO_FLECHA_DERECHA);
+
+
+        verUsuariosButton.setForeground(COLOR_FLECHA);
+        crearUsuariosButton.setForeground(COLOR_FLECHA);
+        registrarEmpresa.setForeground(COLOR_FLECHA);
+        FormatoBoton.setForeground(COLOR_FLECHA);
+    }
 
     public void mostrarTablaAprendicesAsignados() {
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
@@ -1088,6 +1151,10 @@ public class Administrador {
      * Para el aprendiz, es su panel de seguimiento.
      */
     public void regresarInicio(){
+        if (submenuActivo != null) {
+            submenuActivo.setBackground(colorSubmenuNormal);
+            submenuActivo = null;
+        }
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
 
