@@ -721,7 +721,8 @@ public class Administrador {
 
         botonPerfil.addActionListener(e -> {
             JDialog perfilDialog = new JDialog(frame, "Visualizar Perfil", true);
-            VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI();
+
+            VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
 
             perfilDialog.setContentPane(perfilGUI.panel1);
             perfilDialog.pack();
