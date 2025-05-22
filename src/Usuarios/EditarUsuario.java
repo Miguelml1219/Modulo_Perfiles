@@ -19,6 +19,7 @@ public class EditarUsuario {
     private JComboBox<String> tipo_doc;
     private JButton confirmarButton;
     private JButton cancelar;
+    private JTextField email_insti;
 
     private UsuariosDAO dao = new UsuariosDAO();
     private Usuarios_getset usuarioActual;
@@ -59,6 +60,7 @@ public class EditarUsuario {
         tipo_doc.setSelectedItem(usuarioActual.getTipo_dc());
         rol.setSelectedIndex(usuarioActual.getID_rol() - 1); // o con nombre si tienes un mapa
         email.setText(usuarioActual.getEmail());
+        email_insti.setText(usuarioActual.getEmail_insti());  // Cargar email institucional
         direccion.setText(usuarioActual.getDireccion());
         contacto1.setText(usuarioActual.getContacto1());
         contacto2.setText(usuarioActual.getContacto2());
@@ -74,6 +76,7 @@ public class EditarUsuario {
         usuarioActual.setTipo_dc((String) tipo_doc.getSelectedItem());
         usuarioActual.setID_rol(rol.getSelectedIndex() + 1);
         usuarioActual.setEmail(email.getText());
+        usuarioActual.setEmail_insti(email_insti.getText());  // Actualizar email institucional
         usuarioActual.setDireccion(direccion.getText());
         usuarioActual.setContacto1(contacto1.getText());
         usuarioActual.setContacto2(contacto2.getText());

@@ -1,6 +1,9 @@
 package Example_Screen.View.Usuarios_Registrados;
 
 import Example_Screen.Connection.DBConnection;
+import Usuarios.EditarUsuario;
+import Usuarios.UsuariosDAO;
+import Usuarios.Usuarios_getset;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -11,10 +14,16 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.table.*;
 
 import static Example_Screen.View.Administrador.Administrador.verUsuarioPorRol;
 
@@ -90,7 +99,7 @@ public class VerUsuariosRegistrados {
         DefaultTableModel model = new DefaultTableModel() {
             // Para evitar que las celdas sean editables
             public boolean isCellEditable(int row, int column) {
-                return column == 5;
+                return column == 5 || column == 6;
             }
         };
 
@@ -100,20 +109,23 @@ public class VerUsuariosRegistrados {
         model.addColumn("Apellidos");
         model.addColumn("Email");
         model.addColumn("Ver Perfil");  // Nueva columna
+        model.addColumn("Editar");  // Nueva columna
 
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT tipo_dc, numero, nombres, apellidos, email FROM usuarios WHERE id_rol = " + verUsuarioPorRol);
+            ResultSet rs = stmt.executeQuery("SELECT tipo_dc, numero, nombres, apellidos, email_insti FROM usuarios WHERE id_rol = " + verUsuarioPorRol);
 
             while (rs.next()) {
-                Object[] dato = new Object[6];
+                Object[] dato = new Object[7];
                 dato[0] = rs.getString(1);
                 dato[1] = rs.getString(2);
                 dato[2] = rs.getString(3);
                 dato[3] = rs.getString(4);
                 dato[4] = rs.getString(5);
                 dato[5] = "Ver Perfil"; // El texto del botón
+                dato[6] = "Editar"; // Texto del nuevo botón
+
                 model.addRow(dato);
             }
 
@@ -124,6 +136,12 @@ public class VerUsuariosRegistrados {
             // Renderizador y editor para el botón
             table1.getColumn("Ver Perfil").setCellRenderer(new ButtonRenderer());
             table1.getColumn("Ver Perfil").setCellEditor(new ButtonEditor(new JCheckBox()));
+            // Renderizador y editor para el botón
+            table1.getColumn("Editar").setCellRenderer(new ButtonRenderer());
+            table1.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
+
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -145,42 +163,74 @@ public class VerUsuariosRegistrados {
         }
     }
 
-    // Editor con botón de fondo blanco
+    // Clase ButtonEditor mejorada para manejar diferentes acciones
     class ButtonEditor extends DefaultCellEditor {
-        private JButton button;
-        private String numero;
-        private boolean clicked;
+        protected JButton button;
+        private String label;
+        private boolean isPushed;
         private JTable table;
+        private int selectedRow;
+        private int selectedColumn;
 
         public ButtonEditor(JCheckBox checkBox) {
             super(checkBox);
             button = new JButton();
             button.setOpaque(true);
-            button.setBackground(Color.WHITE);
-            button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 
-            button.addActionListener(e -> fireEditingStopped());
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    fireEditingStopped();
+                }
+            });
         }
 
-        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
-                                                     int row, int column) {
+        public Component getTableCellEditorComponent(JTable table, Object value,
+                                                     boolean isSelected, int row, int column) {
             this.table = table;
-            numero = table.getValueAt(row, 1).toString();
-            button.setText("Ver Perfil");
-            clicked = true;
+            this.selectedRow = row;
+            this.selectedColumn = column;
+
+            if (isSelected) {
+                button.setForeground(table.getSelectionForeground());
+                button.setBackground(table.getSelectionBackground());
+            } else {
+                button.setForeground(table.getForeground());
+                button.setBackground(table.getBackground());
+            }
+
+            label = (value == null) ? "" : value.toString();
+            button.setText(label);
+            isPushed = true;
             return button;
         }
 
         public Object getCellEditorValue() {
-            if (clicked) {
-                abrirPerfilUsuario(numero);
+            if (isPushed) {
+                // Obtener los datos de la fila seleccionada
+                String tipoDoc = (String) table.getValueAt(selectedRow, 0);
+                String numeroDoc = (String) table.getValueAt(selectedRow, 1);
+                String nombres = (String) table.getValueAt(selectedRow, 2);
+                String apellidos = (String) table.getValueAt(selectedRow, 3);
+                String email = (String) table.getValueAt(selectedRow, 4);
+
+                // Determinar qué botón fue presionado
+                String columnName = table.getColumnName(selectedColumn);
+
+                if ("Ver Perfil".equals(columnName)) {
+                    // Acción para Ver Perfil (tu código existente)
+                    JOptionPane.showMessageDialog(button, "Ver perfil de: " + nombres + " " + apellidos);
+
+                } else if ("Editar".equals(columnName)) {
+                    // Acción para Editar Usuario
+                    editarUsuario(tipoDoc, numeroDoc);
+                }
             }
-            clicked = false;
-            return "Ver Perfil";
+            isPushed = false;
+            return new String(label);
         }
 
         public boolean stopCellEditing() {
-            clicked = false;
+            isPushed = false;
             return super.stopCellEditing();
         }
 
@@ -188,10 +238,100 @@ public class VerUsuariosRegistrados {
             super.fireEditingStopped();
         }
 
-        private void abrirPerfilUsuario(String numeroDocumento) {
-            JOptionPane.showMessageDialog(button, "Abrir perfil de usuario con Número: " + numeroDocumento);
+        // Método para editar usuario
+        private void editarUsuario(String tipoDoc, String numeroDoc) {
+            try {
+                // Crear instancia del DAO
+                UsuariosDAO dao = new UsuariosDAO();
+
+                // Buscar el usuario completo por tipo y número de documento
+                Usuarios_getset usuario = dao.obtenerUsuarioPorDocumento(tipoDoc, numeroDoc);
+
+                if (usuario != null) {
+                    // Crear y mostrar la ventana de edición
+                    JFrame frameEditar = new JFrame("Editar Usuario");
+                    EditarUsuario editarUsuario = new EditarUsuario(usuario);
+                    frameEditar.setContentPane(editarUsuario.getMainPanel());
+                    frameEditar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frameEditar.pack();
+                    frameEditar.setLocationRelativeTo(null);
+                    frameEditar.setVisible(true);
+
+                    // Opcional: Actualizar la tabla después de cerrar la ventana de edición
+                    frameEditar.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                            // Refrescar la tabla
+                            obtenerDatosUsuario();
+                        }
+                    });
+
+                } else {
+                    JOptionPane.showMessageDialog(button,
+                            "No se pudo encontrar el usuario con los datos proporcionados.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(button,
+                        "Error al abrir el formulario de edición: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
+
+
+
+    // Editor con botón de fondo blanco
+//    class ButtonEditor extends DefaultCellEditor {
+//        private JButton button;
+//        private String numero;
+//        private boolean clicked;
+//        private JTable table;
+//
+//        public ButtonEditor(JCheckBox checkBox) {
+//            super(checkBox);
+//            button = new JButton();
+//            button.setOpaque(true);
+//            button.setBackground(Color.WHITE);
+//            button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+//
+//            button.addActionListener(e -> fireEditingStopped());
+//        }
+//
+//        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
+//                                                     int row, int column) {
+//            this.table = table;
+//            numero = table.getValueAt(row, 1).toString();
+//            button.setText("Ver Perfil");
+//            clicked = true;
+//            return button;
+//        }
+//
+//        public Object getCellEditorValue() {
+//            if (clicked) {
+//                abrirPerfilUsuario(numero);
+//            }
+//            clicked = false;
+//            return "Ver Perfil";
+//        }
+//
+//        public boolean stopCellEditing() {
+//            clicked = false;
+//            return super.stopCellEditing();
+//        }
+//
+//        protected void fireEditingStopped() {
+//            super.fireEditingStopped();
+//        }
+//
+//        private void abrirPerfilUsuario(String numeroDocumento) {
+//            JOptionPane.showMessageDialog(button, "Abrir perfil de usuario con Número: " + numeroDocumento);
+//        }
+//    }
 
     String rol = null;
 

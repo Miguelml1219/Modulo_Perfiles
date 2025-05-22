@@ -268,25 +268,6 @@
                   </grid>
                   <component id="3ed31" class="javax.swing.JButton" binding="aprendices">
                     <constraints>
-                      <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-12998400"/>
-                      <borderPainted value="false"/>
-                      <focusPainted value="false"/>
-                      <font name="Calibri" size="18" style="1"/>
-                      <foreground color="-1"/>
-                      <horizontalAlignment value="2"/>
-                      <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
-                      <iconTextGap value="4"/>
-                      <margin top="0" left="0" bottom="0" right="0"/>
-                      <requestFocusEnabled value="false"/>
-                      <text value=" Aprendices"/>
-                    </properties>
-                  </component>
-                  <component id="df077" class="javax.swing.JButton" binding="evaluadores">
-                    <constraints>
                       <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
@@ -301,10 +282,10 @@
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
-                      <text value=" Evaluadores"/>
+                      <text value=" Ver Aprendices"/>
                     </properties>
                   </component>
-                  <component id="5cf6" class="javax.swing.JButton" binding="coevaluadores">
+                  <component id="df077" class="javax.swing.JButton" binding="evaluadores">
                     <constraints>
                       <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
@@ -320,10 +301,10 @@
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
-                      <text value=" Coevaluadores"/>
+                      <text value=" Ver Evaluadores"/>
                     </properties>
                   </component>
-                  <component id="78066" class="javax.swing.JButton" binding="auxiliares">
+                  <component id="5cf6" class="javax.swing.JButton" binding="coevaluadores">
                     <constraints>
                       <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
@@ -339,7 +320,26 @@
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
-                      <text value=" Auxiliares"/>
+                      <text value=" Ver Coevaluadores"/>
+                    </properties>
+                  </component>
+                  <component id="78066" class="javax.swing.JButton" binding="auxiliares">
+                    <constraints>
+                      <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12998400"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="Calibri" size="18" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="11"/>
+                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <iconTextGap value="4"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <requestFocusEnabled value="false"/>
+                      <text value=" Ver Auxiliares"/>
                     </properties>
                   </component>
                   <grid id="f76a5" binding="pnlBtonPermiso" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -640,25 +640,6 @@
                       </component>
                     </children>
                   </grid>
-                  <component id="3b5bf" class="javax.swing.JButton" binding="botonCrearUsuario">
-                    <constraints>
-                      <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-12998400"/>
-                      <borderPainted value="false"/>
-                      <focusPainted value="false"/>
-                      <font name="Calibri" size="18" style="1"/>
-                      <foreground color="-1"/>
-                      <horizontalAlignment value="2"/>
-                      <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
-                      <iconTextGap value="4"/>
-                      <margin top="0" left="0" bottom="0" right="0"/>
-                      <requestFocusEnabled value="false"/>
-                      <text value=" Crear Usuarios"/>
-                    </properties>
-                  </component>
                   <component id="fe160" class="javax.swing.JButton" binding="botonCrearFicha">
                     <constraints>
                       <grid row="11" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
@@ -771,6 +752,25 @@
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
                       <text value=" Administrar"/>
+                    </properties>
+                  </component>
+                  <component id="42b38" class="javax.swing.JButton" binding="botonCrearUsuario">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12998400"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="Calibri" size="18" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="11"/>
+                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <iconTextGap value="4"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <requestFocusEnabled value="false"/>
+                      <text value=" Crear Usuarios"/>
                     </properties>
                   </component>
                 </children>
