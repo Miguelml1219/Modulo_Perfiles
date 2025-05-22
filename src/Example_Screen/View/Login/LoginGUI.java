@@ -95,7 +95,7 @@ public class LoginGUI {
 
 
                         );
-                        //traerIDusuario= rs.getInt("ID_usuarios");
+                        traerIDusuario= rs.getInt("ID_usuarios");
 
                         guardarUsuario(usuario);
 

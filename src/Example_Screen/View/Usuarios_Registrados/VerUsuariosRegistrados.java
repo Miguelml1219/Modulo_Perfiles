@@ -1,6 +1,7 @@
 package Example_Screen.View.Usuarios_Registrados;
 
 import Example_Screen.Connection.DBConnection;
+import Example_Screen.View.VisualizarPerfilGUI;
 import Usuarios.EditarUsuario;
 import Usuarios.UsuariosDAO;
 import Usuarios.Usuarios_getset;
@@ -217,8 +218,8 @@ public class VerUsuariosRegistrados {
                 String columnName = table.getColumnName(selectedColumn);
 
                 if ("Ver Perfil".equals(columnName)) {
-                    // Acción para Ver Perfil (tu código existente)
-                    JOptionPane.showMessageDialog(button, "Ver perfil de: " + nombres + " " + apellidos);
+                    // Acción para Ver Perfil - MODIFICADO
+                    abrirPerfilUsuario(numeroDoc, tipoDoc);
 
                 } else if ("Editar".equals(columnName)) {
                     // Acción para Editar Usuario
@@ -229,6 +230,7 @@ public class VerUsuariosRegistrados {
             return new String(label);
         }
 
+
         public boolean stopCellEditing() {
             isPushed = false;
             return super.stopCellEditing();
@@ -237,6 +239,35 @@ public class VerUsuariosRegistrados {
         protected void fireEditingStopped() {
             super.fireEditingStopped();
         }
+
+        private void abrirPerfilUsuario(String numeroDoc, String tipoDoc) {
+            try {
+                // Crear una nueva ventana modal
+                JDialog dialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(button),
+                        "Perfil de Usuario", true);
+
+                // Crear instancia de VisualizarPerfilGUI modificada para usuario específico
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI();
+
+                // Cargar los datos del usuario específico
+                perfilGUI.cargarDatosUsuarioEspecifico(numeroDoc, tipoDoc);
+
+                // Configurar la ventana modal
+                dialog.setContentPane(perfilGUI.panel1);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.pack();
+                dialog.setLocationRelativeTo(button);
+                dialog.setVisible(true);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(button,
+                        "Error al abrir el perfil del usuario: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
 
         // Método para editar usuario
         private void editarUsuario(String tipoDoc, String numeroDoc) {

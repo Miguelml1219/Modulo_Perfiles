@@ -103,7 +103,7 @@ public class EditarUsuario {
                 frameEditarAprendiz.setLocationRelativeTo(null);
                 frameEditarAprendiz.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Este usuario no está registrado como aprendiz.");
+                //JOptionPane.showMessageDialog(null, "Este usuario no está registrado como aprendiz.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar usuario.");

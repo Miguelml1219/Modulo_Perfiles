@@ -83,6 +83,46 @@ public class VisualizarPerfilGUI {
 
     }
 
+    // Agregar este método a la clase VisualizarPerfilGUI
+    public void cargarDatosUsuarioEspecifico(String numeroDoc, String tipoDoc) {
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT u.*, r.rol FROM usuarios u " +
+                    "INNER JOIN rol r ON u.ID_rol = r.ID_rol " +
+                    "WHERE u.numero = ? AND u.tipo_dc = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, numeroDoc);
+            stmt.setString(2, tipoDoc);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Almacenar ID para futuras actualizaciones
+                userID = rs.getInt("ID_usuarios");
+
+                // Cargar datos a los campos
+                nombre.setText(rs.getString("nombres"));
+                apellido.setText(rs.getString("apellidos"));
+                num_doc.setText(rs.getString("numero"));
+                email.setText(rs.getString("email"));
+                email_insti.setText(rs.getString("email_insti"));
+                direc.setText(rs.getString("direccion"));
+                conta.setText(rs.getString("contacto1"));
+                tipo_doc.setText(rs.getString("tipo_dc"));
+                rol.setText(rs.getString("rol"));
+                estado.setText(rs.getString("estado"));
+
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "No se encontró información del usuario con documento: " + numeroDoc,
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Error al cargar los datos del usuario: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     public String obtenerUsuarioActual() {
         Properties props = new Properties();
