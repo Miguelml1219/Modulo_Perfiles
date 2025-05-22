@@ -9,8 +9,10 @@ import java.util.ArrayList;
 public class UsuariosDAO {
     private static DBConnection dbConnection = new DBConnection();
 
-    // Agregar usuario (asume que el ID es autoincremental en la base de datos)
+    // Agregar usuario (con validaciones)
     public boolean agregarUsuario(Usuarios_getset usuario) {
+        if (!validarUsuario(usuario, false)) return false;
+
         String query = "INSERT INTO usuarios (ID_rol, tipo_dc, numero, nombres, apellidos, email, email_insti, direccion, contacto1, contacto2, clave, estado) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = dbConnection.getConnection();
@@ -37,8 +39,10 @@ public class UsuariosDAO {
         }
     }
 
-    // Actualizar usuario por ID
+    // Actualizar usuario por ID (con validaciones)
     public boolean actualizarUsuario(Usuarios_getset usuario) {
+        if (!validarUsuario(usuario, true)) return false;
+
         String query = "UPDATE usuarios SET ID_rol = ?, tipo_dc = ?, numero = ?, nombres = ?, apellidos = ?, email = ?, email_insti = ?, direccion = ?, contacto1 = ?, contacto2 = ?, clave = ?, estado = ? WHERE ID_usuarios = ?";
         try (Connection con = dbConnection.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
@@ -112,7 +116,7 @@ public class UsuariosDAO {
         return null;
     }
 
-    // Listar todos los usuarios
+    // Listar todos los usuarios por rol
     public ArrayList<Usuarios_getset> listarUsuariosPorRol(String rol) {
         ArrayList<Usuarios_getset> lista = new ArrayList<>();
         String query = "SELECT * FROM usuarios WHERE ID_rol = (SELECT ID_rol FROM rol WHERE rol =?)";
@@ -147,57 +151,140 @@ public class UsuariosDAO {
         return lista;
     }
 
-    // Agregar este método a tu clase UsuariosDAO
+    public ArrayList<Usuarios_getset> obtenerUltimoAprendiz(String rol) {
+        ArrayList<Usuarios_getset> lista = new ArrayList<>();
+        String query = "SELECT * FROM usuarios WHERE ID_rol = (SELECT ID_rol FROM rol WHERE rol =?) ORDER BY ID_usuarios DESC LIMIT 1";
+        try (Connection con = dbConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            pst.setString(1, rol);
+            try (ResultSet rs = pst.executeQuery()) {
+
+                while (rs.next()) {
+                    Usuarios_getset usuario = new Usuarios_getset(
+                            rs.getInt("ID_usuarios"),
+                            rs.getInt("ID_rol"),
+                            rs.getString("tipo_dc"),
+                            rs.getString("numero"),
+                            rs.getString("nombres"),
+                            rs.getString("apellidos"),
+                            rs.getString("email"),
+                            rs.getString("email_insti"),
+                            rs.getString("direccion"),
+                            rs.getString("contacto1"),
+                            rs.getString("contacto2"),
+                            rs.getString("clave"),
+                            rs.getString("estado")
+                    );
+                    lista.add(usuario);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
     public Usuarios_getset obtenerUsuarioPorDocumento(String tipoDoc, String numeroDoc) {
         Usuarios_getset usuario = null;
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuarios WHERE tipo_dc = ? AND numero = ?")) {
 
-        try {
-            con = DBConnection.getConnection();
-            String query = "SELECT * FROM usuarios WHERE tipo_dc = ? AND numero = ?";
-            stmt = con.prepareStatement(query);
             stmt.setString(1, tipoDoc);
             stmt.setString(2, numeroDoc);
 
-            rs = stmt.executeQuery();
-
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                // Usando el constructor completo con todos los campos
                 usuario = new Usuarios_getset(
-                        rs.getInt("id_usuarios"),           // ID_usuarios
-                        rs.getInt("id_rol"),                // ID_rol
-                        rs.getString("tipo_dc"),            // tipo_dc
-                        rs.getString("numero"),             // documento
-                        rs.getString("nombres"),            // nombres
-                        rs.getString("apellidos"),          // apellidos
-                        rs.getString("email"),              // email (personal)
-                        rs.getString("email_insti"),        // email_insti (institucional)
-                        rs.getString("direccion"),          // direccion
-                        rs.getString("contacto1"),          // contacto1
-                        rs.getString("contacto2"),          // contacto2
-                        rs.getString("clave"),              // clave
-                        rs.getString("estado")              // estado
+                        rs.getInt("id_usuarios"),
+                        rs.getInt("id_rol"),
+                        rs.getString("tipo_dc"),
+                        rs.getString("numero"),
+                        rs.getString("nombres"),
+                        rs.getString("apellidos"),
+                        rs.getString("email"),
+                        rs.getString("email_insti"),
+                        rs.getString("direccion"),
+                        rs.getString("contacto1"),
+                        rs.getString("contacto2"),
+                        rs.getString("clave"),
+                        rs.getString("estado")
                 );
             }
-
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener usuario: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,
-                    "Error al obtener usuario: " + e.getMessage(),
-                    "Error de Base de Datos",
-                    JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (con != null) con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        }
+        return usuario;
+    }
+
+    // Validaciones
+    private boolean validarUsuario(Usuarios_getset usuario, boolean esActualizacion) {
+        if (usuario.getDocumento().isEmpty() || usuario.getNombres().isEmpty() || usuario.getApellidos().isEmpty()
+                || usuario.getEmail().isEmpty() || usuario.getEmail_insti().isEmpty() || usuario.getDireccion().isEmpty()
+                || usuario.getContacto1().isEmpty() || usuario.getClave().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos obligatorios deben estar llenos.");
+            return false;
         }
 
-        return usuario;
+        if (!usuario.getDocumento().matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(null, "El número de documento debe tener exactamente 10 dígitos numéricos.");
+            return false;
+        }
+
+        if (!usuario.getContacto1().matches("\\d+") || (!usuario.getContacto2().isEmpty() && !usuario.getContacto2().matches("\\d+"))) {
+            JOptionPane.showMessageDialog(null, "Los contactos deben contener solo números.");
+            return false;
+        }
+
+        if (!usuario.getEmail().contains("@") || !usuario.getEmail_insti().contains("@")) {
+            JOptionPane.showMessageDialog(null, "Los correos deben contener el carácter '@'.");
+            return false;
+        }
+
+        if (existeDocumento(usuario.getDocumento(), esActualizacion ? usuario.getID_usuarios() : -1)) {
+            JOptionPane.showMessageDialog(null, "El número de documento ya está registrado.");
+            return false;
+        }
+
+        if (existeCorreo(usuario.getEmail(), "email", esActualizacion ? usuario.getID_usuarios() : -1)) {
+            JOptionPane.showMessageDialog(null, "El correo personal ya está registrado.");
+            return false;
+        }
+
+        if (existeCorreo(usuario.getEmail_insti(), "email_insti", esActualizacion ? usuario.getID_usuarios() : -1)) {
+            JOptionPane.showMessageDialog(null, "El correo institucional ya está registrado.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean existeDocumento(String numero, int idExcluido) {
+        String query = "SELECT 1 FROM usuarios WHERE numero = ? AND ID_usuarios <> ?";
+        try (Connection con = dbConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            pst.setString(1, numero);
+            pst.setInt(2, idExcluido);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    private boolean existeCorreo(String correo, String campo, int idExcluido) {
+        String query = "SELECT 1 FROM usuarios WHERE " + campo + " = ? AND ID_usuarios <> ?";
+        try (Connection con = dbConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            pst.setString(1, correo);
+            pst.setInt(2, idExcluido);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+        }
     }
 }
