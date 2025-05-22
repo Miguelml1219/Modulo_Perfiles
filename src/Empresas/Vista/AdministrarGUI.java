@@ -46,8 +46,8 @@ public class AdministrarGUI {
         // Personalización visual de la JTable
         table1.setBackground(new Color(245, 245, 245));
         table1.setForeground(Color.BLACK);
-        table1.setSelectionBackground(new Color(119, 119, 119));
-        table1.setSelectionForeground(Color.WHITE);
+        //table1.setSelectionBackground(new Color(119, 119, 119));
+        //table1.setSelectionForeground(Color.WHITE);
         table1.setGridColor(new Color(220, 220, 220));
         table1.setShowGrid(true);
 
