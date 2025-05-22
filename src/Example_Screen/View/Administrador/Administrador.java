@@ -203,7 +203,18 @@ public class Administrador {
         aplicarEfectoHover(registrarEmpresa, colorHover, colorBase);
         aplicarEfectoHover(FormatoBoton, colorHover, colorBase);
         aplicarEfectoHover(botonAprendizContratado, colorHover, colorBase);
-        aplicarEfectoHover(asignaBoton, colorHover, colorBase);
+        aplicarEfectoHover(botonAdministrarEmpresa, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearEmpresa, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearFicha, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearModalidad, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearSede, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearUsuario, colorHover, colorBase);
+        aplicarEfectoHover(botonCrearPrograma, colorHover, colorBase);
+        aplicarEfectoHover(aprendices, colorHover, colorBase);
+        aplicarEfectoHover(auxiliares, colorHover, colorBase);
+        aplicarEfectoHover(coevaluadores, colorHover, colorBase);
+        aplicarEfectoHover(evaluadores, colorHover, colorBase);
+
 
 
         /**
