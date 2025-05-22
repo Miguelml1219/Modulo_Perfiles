@@ -6,6 +6,7 @@ import Example_Screen.AsignacionInstructor.AsignacionGUI;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
+import Example_Screen.View.AprendicesContratados;
 import Example_Screen.View.GraficoCircular;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.Usuarios_Registrados.VerUsuariosRegistrados;
@@ -434,6 +435,14 @@ public class Administrador {
 
             }
         });
+
+        botonAprendizContratado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarTablaAprendicesContratados();
+
+            }
+        });
     }
 
 
@@ -773,6 +782,26 @@ public class Administrador {
         vista.mostrarRol("Aprendices Asignados");
 
     }
+
+    public void mostrarTablaAprendicesContratados() {
+
+        VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
+        vista.mostrarRol("Aprendices Contratados");
+
+        // 2. Obtener y mostrar los datos de aprendices contratados
+        AprendicesContratados aprendicesContratados = new AprendicesContratados();
+        aprendicesContratados.obtenerAprendicesContratados(traerIDusuario, vista);
+
+        // 3. Limpiar y configurar el panel principal
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(vista.getPanel(), BorderLayout.CENTER);
+
+        // 4. Actualizar la interfaz
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
 
     public void mostrarPanelCrearUsuario() {
         CrearUsuarioGUI crearUsuarioGUI = new CrearUsuarioGUI();
