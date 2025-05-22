@@ -3,8 +3,6 @@ package Example_Screen.View;
 import Example_Screen.Connection.DBConnection;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,17 +23,24 @@ public class VisualizarPerfilGUI {
     private JLabel tipo_doc;
     private JLabel apellido;
     private JLabel email_insti;
+    private JLabel modalidad;
+    private JLabel datoEmpre;
+    private JLabel datoProg;
+    private JLabel datoFich;
+    private JLabel datoModal;
+    private JButton irAlPerfilButton;
     private int userID; // Para almacenar el ID del usuario actual
+    private DBConnection dbConnection = new DBConnection();
 
 
-    public VisualizarPerfilGUI() {
+    public VisualizarPerfilGUI(int idUsuario, int idRol) {
 
 
-        cargarDatosUsuario();
-
+        cargarDatosUsuario(idUsuario);
+        cargarDatosAprendiz(idUsuario, idRol);
     }
 
-    public void cargarDatosUsuario()
+    public void cargarDatosUsuario(int idUsuario)
     {
         String usuarioEmail = obtenerUsuarioActual();
         if (usuarioEmail == null || usuarioEmail.isEmpty()) {
@@ -122,6 +127,37 @@ public class VisualizarPerfilGUI {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    private void cargarDatosAprendiz(int idUsuario, int idRol) {
+        if (idRol != 1) return; // Solo si es Aprendiz
+
+        try (Connection conn = dbConnection.getConnection()) {
+            String sql = """
+            SELECT e.nombre_empresa, f.codigo, 
+                   p.nombre_programa, m.modalidad AS modalidadContrato
+            FROM aprendices a
+            LEFT JOIN empresas e ON a.ID_empresas = e.ID_empresas
+            LEFT JOIN fichas f ON a.ID_Fichas = f.ID_Fichas
+            LEFT JOIN programas p ON f.ID_programas = p.ID_programas
+            LEFT JOIN modalidad m ON a.ID_modalidad = m.ID_modalidad
+            WHERE a.ID_usuarios = ?
+        """;
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                datoEmpre.setText(rs.getString("nombre_empresa"));
+                datoFich.setText(rs.getString("codigo"));
+                datoProg.setText(rs.getString("nombre_programa"));
+                datoModal.setText(rs.getString("modalidadContrato"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 
 
     public String obtenerUsuarioActual() {

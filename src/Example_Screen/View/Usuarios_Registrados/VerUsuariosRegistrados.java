@@ -1,6 +1,7 @@
 package Example_Screen.View.Usuarios_Registrados;
 
 import Example_Screen.Connection.DBConnection;
+import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.VisualizarPerfilGUI;
 import Usuarios.EditarUsuario;
 import Usuarios.UsuariosDAO;
@@ -27,6 +28,8 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 import static Example_Screen.View.Administrador.Administrador.verUsuarioPorRol;
+import static Example_Screen.View.Login.LoginGUI.idUsuarioActual;
+import static Example_Screen.View.Login.LoginGUI.traerIDusuario;
 
 public class VerUsuariosRegistrados {
     private JTable table1;
@@ -246,8 +249,11 @@ public class VerUsuariosRegistrados {
                 JDialog dialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(button),
                         "Perfil de Usuario", true);
 
+
                 // Crear instancia de VisualizarPerfilGUI modificada para usuario específico
-                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI();
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
+
+                // Solo mostrar datos extra si se está en la tabla de aprendices
 
                 // Cargar los datos del usuario específico
                 perfilGUI.cargarDatosUsuarioEspecifico(numeroDoc, tipoDoc);
@@ -266,6 +272,13 @@ public class VerUsuariosRegistrados {
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
+        }
+
+        // Este método debe validar si se está en la vista de aprendices
+        private boolean esTablaAprendicesActiva() {
+            // Aquí puedes validar por nombre de tabla, contexto o pestaña activa
+            // Este es un ejemplo básico, ajústalo según tu implementación real
+            return true; // Retornar true solo si la tabla mostrada es la de aprendices
         }
 
 
@@ -314,55 +327,6 @@ public class VerUsuariosRegistrados {
         }
     }
 
-
-
-    // Editor con botón de fondo blanco
-//    class ButtonEditor extends DefaultCellEditor {
-//        private JButton button;
-//        private String numero;
-//        private boolean clicked;
-//        private JTable table;
-//
-//        public ButtonEditor(JCheckBox checkBox) {
-//            super(checkBox);
-//            button = new JButton();
-//            button.setOpaque(true);
-//            button.setBackground(Color.WHITE);
-//            button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-//
-//            button.addActionListener(e -> fireEditingStopped());
-//        }
-//
-//        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
-//                                                     int row, int column) {
-//            this.table = table;
-//            numero = table.getValueAt(row, 1).toString();
-//            button.setText("Ver Perfil");
-//            clicked = true;
-//            return button;
-//        }
-//
-//        public Object getCellEditorValue() {
-//            if (clicked) {
-//                abrirPerfilUsuario(numero);
-//            }
-//            clicked = false;
-//            return "Ver Perfil";
-//        }
-//
-//        public boolean stopCellEditing() {
-//            clicked = false;
-//            return super.stopCellEditing();
-//        }
-//
-//        protected void fireEditingStopped() {
-//            super.fireEditingStopped();
-//        }
-//
-//        private void abrirPerfilUsuario(String numeroDocumento) {
-//            JOptionPane.showMessageDialog(button, "Abrir perfil de usuario con Número: " + numeroDocumento);
-//        }
-//    }
 
     String rol = null;
 
