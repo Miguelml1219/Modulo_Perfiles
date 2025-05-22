@@ -22,6 +22,8 @@ import java.util.Timer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import static Example_Screen.View.Login.LoginGUI.cofigBotonInicioSegunRol;
+
 /**
  * Interfaz gráfica para la gestión de archivos PDF (Formato 023).
  * Permite subir, visualizar, buscar y eliminar archivos PDF asociados a aprendices.
@@ -346,6 +348,8 @@ public class CodigoGUI2 extends JFrame {
         estilizarBoton(btnEliminar, rojo);
         btnEliminar.addActionListener(e -> eliminarArchivo(archivo, panelArchivo));
 
+
+
         // Botón de validación
         JButton btnValidar = new JButton("Validar");
         estilizarBoton(btnValidar, Color.BLUE);
@@ -536,6 +540,8 @@ public class CodigoGUI2 extends JFrame {
         // Puedes obtenerlo del LoginGUI o de la sesión
         return LoginGUI.cofigBotonInicioSegunRol;
     }
+
+
 
 
     /**
