@@ -1,10 +1,15 @@
 package Usuarios;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AprendizGUI {
 
@@ -28,27 +33,33 @@ public class AprendizGUI {
 
     public AprendizGUI() {
         UsuariosDAO usuariosDAO = new UsuariosDAO();
+        ficha.setEditable(true); // importante
+        empresa.setEditable(true); // importante
 
         // Lista de aprendices
-        listaAprendices = usuariosDAO.listarUsuariosPorRol("aprendiz");
+        listaAprendices = usuariosDAO.obtenerUltimoAprendiz("aprendiz");
         DefaultComboBoxModel<String> modeloAprendiz = new DefaultComboBoxModel<>();
         for (Usuarios_getset u : listaAprendices) {
             modeloAprendiz.addElement(u.getNombres() + " " + u.getApellidos());
         }
         aprendiz.setModel(modeloAprendiz);
 
-        // Lista de instructores
-        listaInstructores = usuariosDAO.listarUsuariosPorRol("evaluador");
-        DefaultComboBoxModel<String> modeloEvaluador = new DefaultComboBoxModel<>();
-        for (Usuarios_getset u : listaInstructores) {
-            modeloEvaluador.addElement(u.getNombres() + " " + u.getApellidos());
-        }
-        evaluador.setModel(modeloEvaluador);
+//        // Lista de instructores
+//        listaInstructores = usuariosDAO.listarUsuariosPorRol("evaluador");
+//        DefaultComboBoxModel<String> modeloEvaluador = new DefaultComboBoxModel<>();
+//        for (Usuarios_getset u : listaInstructores) {
+//            modeloEvaluador.addElement(u.getNombres() + " " + u.getApellidos());
+//        }
+//        evaluador.setModel(modeloEvaluador);
 
         // Cargar empresas, fichas y modalidades
+        // Lógica en el constructor
         cargarEmpresas();
-        cargarFichas();
+        new AutoCompleteComboBox(empresa);
+        cargarFichas(); // Se llena el combo
+        new AutoCompleteComboBox(ficha); // Y ahora se le aplica el autocompletado
         cargarModalidad();
+
 
         confirmarButton.addActionListener(new ActionListener() {
             @Override
@@ -95,13 +106,6 @@ public class AprendizGUI {
                     JOptionPane.showMessageDialog(main, "Error en los datos ingresados");
                     ex.printStackTrace();
                 }
-            }
-        });
-
-        cancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                limpiarCampos();
             }
         });
     }
@@ -183,6 +187,59 @@ public class AprendizGUI {
             ex.printStackTrace();
         }
     }
+    public static class AutoCompleteComboBox {
+        private final JComboBox<String> comboBox;
+        private final List<String> originalItems = new ArrayList<>();
+        private boolean isAdjusting = false;
+
+        public AutoCompleteComboBox(JComboBox<String> comboBox) {
+            this.comboBox = comboBox;
+            init();
+        }
+
+        private void init() {
+            // Guardar todos los elementos actuales del ComboBox
+            for (int i = 0; i < comboBox.getItemCount(); i++) {
+                originalItems.add(comboBox.getItemAt(i));
+            }
+
+            comboBox.setEditable(true);
+            JTextField textField = (JTextField) comboBox.getEditor().getEditorComponent();
+
+            textField.getDocument().addDocumentListener(new DocumentListener() {
+                public void insertUpdate(DocumentEvent e) { updateModel(); }
+                public void removeUpdate(DocumentEvent e) { updateModel(); }
+                public void changedUpdate(DocumentEvent e) { updateModel(); }
+
+                private void updateModel() {
+                    if (isAdjusting) return;
+
+                    SwingUtilities.invokeLater(() -> {
+                        String input = textField.getText();
+                        isAdjusting = true;
+
+                        DefaultComboBoxModel<String> filteredModel = new DefaultComboBoxModel<>();
+                        for (String item : originalItems) {
+                            if (item.toLowerCase().contains(input.toLowerCase())) {
+                                filteredModel.addElement(item);
+                            }
+                        }
+
+                        comboBox.setModel(filteredModel);
+                        comboBox.setSelectedItem(input);
+                        textField.setSelectionStart(input.length());
+                        textField.setSelectionEnd(input.length());
+
+                        comboBox.showPopup();
+                        isAdjusting = false;
+                    });
+                }
+            });
+        }
+    }
+
+
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Crear Aprendiz");
