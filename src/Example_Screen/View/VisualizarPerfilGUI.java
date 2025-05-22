@@ -3,6 +3,9 @@ package Example_Screen.View;
 import Example_Screen.Connection.DBConnection;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -38,6 +41,13 @@ public class VisualizarPerfilGUI {
 
     public VisualizarPerfilGUI(int idUsuario, int idRol) {
 
+        irAlPerfilButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Color colorHover = new Color(0, 120, 50);
+        Color colorBase = new Color(57, 169, 0);
+
+
+        aplicarEfectoHover(irAlPerfilButton, colorHover, colorBase);
+
         inicializarVisibilidadElementos();
 
         cargarDatosUsuario(idUsuario);
@@ -45,6 +55,20 @@ public class VisualizarPerfilGUI {
 
         configurarVisibilidadAprendiz(idRol);
 
+    }
+
+    public void aplicarEfectoHover(JButton boton, Color colorHover, Color colorBase) {
+        boton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                boton.setBackground(colorHover);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                boton.setBackground(colorBase);
+            }
+        });
     }
 
     private void configurarVisibilidadAprendiz(int idRol) {

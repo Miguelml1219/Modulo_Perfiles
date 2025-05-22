@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import Example_Screen.View.Login.LoginGUI;
 /**
  * Esta clase es para la pantalla donde el administrador,puede ver y cambiar sus propios datos.
  */
@@ -36,6 +37,14 @@ public class Editar_Admin{
     private JTextField apellido;
     private JTextField textField1;
     private JTextField email_insti;
+    private JLabel modal;
+    private JLabel ficha;
+    private JLabel progra;
+    private JLabel empre;
+    private JTextField datoEmpre;
+    private JTextField datoProgra;
+    private JTextField datoFicha;
+    private JTextField datoModal;
 
     // Variables para almacenar los datos originales
     private String originalNombre;
@@ -50,6 +59,8 @@ public class Editar_Admin{
     private String originalEstado;
     private int userID; // Para almacenar el ID del usuario actual
     private int rolUsuario;
+    private int idUsuario;
+    private int idRol;
 
     /**
      * Este metodo es para que otras partes del programa puedan agarrar el panel principal
@@ -64,7 +75,27 @@ public class Editar_Admin{
      * Aquí se configuran los botones, se cargan los datos del usuario
      * y se preparan las acciones para cuando el usuario hace clic.
      */
-    public Editar_Admin(){
+    public Editar_Admin(int idUsuario, int idRol){
+
+        this.idUsuario = idUsuario;
+        this.idRol = idRol;
+        cargarDatosAprendiz(this.idUsuario, this.idRol);
+
+        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
+        if (LoginGUI.idUsuarioActual != 1) {
+
+            modal.setVisible(false);
+            datoModal.setVisible(false);
+
+            empre.setVisible(false);
+            datoEmpre.setVisible(false);
+
+            progra.setVisible(false);
+            datoProgra.setVisible(false);
+
+            ficha.setVisible(false);
+            datoFicha.setVisible(false);
+        }
 
         textField1.setVisible(false);
         confirmar️Button.setEnabled(false);
@@ -76,6 +107,10 @@ public class Editar_Admin{
         num_doc.setEnabled(false);
         email.setEnabled(false);
         email_insti.setEnabled(false);
+        datoModal.setEnabled(false);
+        datoFicha.setEnabled(false);
+        datoProgra.setEnabled(false);
+        datoEmpre.setEnabled(false);
         direc.setEnabled(false);
         conta.setEnabled(false);
         rol.setEnabled(false);
@@ -108,6 +143,10 @@ public class Editar_Admin{
         num_doc.setBorder(bottom1);
         email.setBorder(bottom1);
         email_insti.setBorder(bottom1);
+        datoFicha.setBorder(bottom1);
+        datoProgra.setBorder(bottom1);
+        datoEmpre.setBorder(bottom1);
+        datoModal.setBorder(bottom1);
         direc.setBorder(bottom1);
         conta.setBorder(bottom1);
 
@@ -127,22 +166,6 @@ public class Editar_Admin{
 
                 configurarPermisosPorRol();
 
-//                nombre.setBorder(bottom);
-//                apellido.setBorder(bottom);
-//                num_doc.setBorder(bottom);
-//                email.setBorder(bottom);
-//                direc.setBorder(bottom);
-//                conta.setBorder(bottom);
-//
-//                nombre.setEnabled(true);
-//                apellido.setEnabled(true);
-//                tipo_doc.setEnabled(true);
-//                num_doc.setEnabled(true);
-//                email.setEnabled(true);
-//                direc.setEnabled(true);
-//                conta.setEnabled(true);
-//                rol.setEnabled(true);
-//                estado.setEnabled(true);
 
                 editarPerfil️Button.setEnabled(false);
                 confirmar️Button.setEnabled(true);
@@ -162,6 +185,10 @@ public class Editar_Admin{
                 num_doc.setEnabled(false);
                 email.setEnabled(false);
                 email_insti.setEnabled(false);
+                datoModal.setEnabled(false);
+                datoFicha.setEnabled(false);
+                datoProgra.setEnabled(false);
+                datoEmpre.setEnabled(false);
                 direc.setEnabled(false);
                 conta.setEnabled(false);
                 rol.setEnabled(false);
@@ -177,6 +204,10 @@ public class Editar_Admin{
                 num_doc.setBorder(bottom1);
                 email.setBorder(bottom1);
                 email_insti.setBorder(bottom1);
+                datoModal.setBorder(bottom1);
+                datoFicha.setBorder(bottom1);
+                datoProgra.setBorder(bottom1);
+                datoEmpre.setBorder(bottom1);
                 direc.setBorder(bottom1);
                 conta.setBorder(bottom1);
             }
@@ -192,6 +223,10 @@ public class Editar_Admin{
                 num_doc.setEnabled(false);
                 email.setEnabled(false);
                 email_insti.setEnabled(false);
+                datoModal.setEnabled(false);
+                datoFicha.setEnabled(false);
+                datoProgra.setEnabled(false);
+                datoEmpre.setEnabled(false);
                 direc.setEnabled(false);
                 conta.setEnabled(false);
                 rol.setEnabled(false);
@@ -207,6 +242,10 @@ public class Editar_Admin{
                 num_doc.setBorder(bottom1);
                 email.setBorder(bottom1);
                 email_insti.setBorder(bottom1);
+                datoModal.setBorder(bottom1);
+                datoFicha.setBorder(bottom1);
+                datoProgra.setBorder(bottom1);
+                datoEmpre.setBorder(bottom1);
                 direc.setBorder(bottom1);
                 conta.setBorder(bottom1);
             }
@@ -234,6 +273,14 @@ public class Editar_Admin{
                 apellido.setBorder(bottom);
                 email_insti.setEnabled(false);
                 email_insti.setBorder(bottom);
+                datoModal.setEnabled(false);
+                datoModal.setBorder(bottom);
+                datoFicha.setEnabled(false);
+                datoFicha.setBorder(bottom);
+                datoProgra.setEnabled(false);
+                datoProgra.setBorder(bottom);
+                datoEmpre.setEnabled(false);
+                datoEmpre.setBorder(bottom);
                 tipo_doc.setEnabled(false);
                 tipo_doc.setBorder(bottomDisabled);
                 num_doc.setEnabled(false);
@@ -257,6 +304,14 @@ public class Editar_Admin{
                 apellido.setBorder(bottom);
                 email_insti.setEnabled(false);
                 email_insti.setBorder(bottom);
+                modal.setVisible(false);
+                ficha.setVisible(false);
+                progra.setVisible(false);
+                empre.setVisible(false);
+                datoModal.setVisible(false);
+                datoFicha.setVisible(false);
+                datoProgra.setVisible(false);
+                datoEmpre.setVisible(false);
                 tipo_doc.setEnabled(false);
                 tipo_doc.setBorder(bottomDisabled);
                 num_doc.setEnabled(false);
@@ -281,6 +336,14 @@ public class Editar_Admin{
                 apellido.setBorder(bottom);
                 email_insti.setEnabled(false);
                 email_insti.setBorder(bottom);
+                modal.setVisible(false);
+                ficha.setVisible(false);
+                progra.setVisible(false);
+                empre.setVisible(false);
+                datoModal.setVisible(false);
+                datoFicha.setVisible(false);
+                datoProgra.setVisible(false);
+                datoEmpre.setVisible(false);
                 tipo_doc.setEnabled(false);
                 num_doc.setEnabled(false);
                 num_doc.setBorder(bottom);
@@ -302,6 +365,14 @@ public class Editar_Admin{
                 email.setBorder(bottom);
                 email_insti.setEnabled(true);
                 email_insti.setBorder(bottom);
+                modal.setVisible(false);
+                ficha.setVisible(false);
+                progra.setVisible(false);
+                empre.setVisible(false);
+                datoModal.setVisible(false);
+                datoFicha.setVisible(false);
+                datoProgra.setVisible(false);
+                datoEmpre.setVisible(false);
                 direc.setEnabled(true);
                 direc.setBorder(bottom);
                 conta.setEnabled(true);
@@ -329,6 +400,14 @@ public class Editar_Admin{
                 email.setBorder(bottom);
                 email_insti.setEnabled(true);
                 email_insti.setBorder(bottom);
+                modal.setVisible(false);
+                ficha.setVisible(false);
+                progra.setVisible(false);
+                empre.setVisible(false);
+                datoModal.setVisible(false);
+                datoFicha.setVisible(false);
+                datoProgra.setVisible(false);
+                datoEmpre.setVisible(false);
                 direc.setEnabled(true);
                 direc.setBorder(bottom);
                 conta.setEnabled(true);
@@ -435,6 +514,8 @@ public class Editar_Admin{
 
     }
 
+
+
     public void guardarValoresOriginales() {
         originalNombre = nombre.getText();
         originalApellido = apellido.getText();
@@ -526,6 +607,39 @@ public class Editar_Admin{
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    private void cargarDatosAprendiz(int idUsuario, int idRol) {
+        if (idRol != 1) return; // Solo si es Aprendiz
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = """
+        SELECT e.nombre_empresa, f.codigo, 
+               p.nombre_programa, m.modalidad AS modalidadContrato
+        FROM aprendices a
+        LEFT JOIN empresas e ON a.ID_empresas = e.ID_empresas
+        LEFT JOIN fichas f ON a.ID_Fichas = f.ID_Fichas
+        LEFT JOIN programas p ON f.ID_programas = p.ID_programas
+        LEFT JOIN modalidad m ON a.ID_modalidad = m.ID_modalidad
+        WHERE a.ID_usuarios = ?
+        """;
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                datoEmpre.setText(rs.getString("nombre_empresa"));
+                datoFicha.setText(rs.getString("codigo"));
+                datoProgra.setText(rs.getString("nombre_programa"));
+                datoModal.setText(rs.getString("modalidadContrato"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
 
     public void actualizarConfigSiEmailCambio(String nuevoEmail) {
         String usuarioActual = obtenerUsuarioActual();

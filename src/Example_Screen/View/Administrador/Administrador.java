@@ -493,7 +493,10 @@ public class Administrador {
      * Limpia el panel de contenido y carga el de "Editar_Admin".
      */
     public void mostrarPanelEditar() {
-        Editar_Admin editarAdmin = new Editar_Admin();
+
+        int idUsuario = LoginGUI.idUsuarioActual; // o traerIDusuario
+        int idRol = 1; // Si ya sabes que es Aprendiz
+        Editar_Admin editarAdmin = new Editar_Admin(idUsuario,idRol);
 
         // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
         contenidoPanel.removeAll();
@@ -514,12 +517,16 @@ public class Administrador {
         boton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                boton.setBackground(colorHover);
+                if (!boton.equals(submenuActivo)) {
+                    boton.setBackground(colorHover);
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                boton.setBackground(colorBase);
+                if (!boton.equals(submenuActivo)) {
+                    boton.setBackground(colorBase);
+                }
             }
         });
     }
@@ -672,7 +679,8 @@ public class Administrador {
         panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
         panelIzquierdo.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
-        JLabel titulo = new JLabel("Tu Progreso");
+
+        JLabel titulo = new JLabel("Progreso de "+aprendiz.getNombre());
         titulo.setFont(new Font("Calibri", Font.BOLD, 25));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
@@ -697,53 +705,99 @@ public class Administrador {
 
         JPanel panelDerecho = new JPanel();
         panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
-        panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
+        // Crear y configurar botón Visualizar Perfil
         JButton botonPerfil = new JButton("Visualizar Perfil");
         botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonPerfil.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonPerfil.setPreferredSize(new Dimension(200, 40)); // Ajusta según necesidad
+        botonPerfil.setPreferredSize(new Dimension(200, 40));
         botonPerfil.setMaximumSize(new Dimension(200, 40));
-
-
-        botonPerfil.setBackground(new Color(0, 122, 255));
+        botonPerfil.setBackground(new Color(0x39A900)); // Verde
         botonPerfil.setForeground(Color.WHITE);
         botonPerfil.setFont(new Font("Calibri", Font.BOLD, 20));
-        botonPerfil.setFocusPainted(true);
-        botonPerfil.setEnabled(true);
+        botonPerfil.setFocusPainted(false);
 
-
-        botonPerfil.setHorizontalTextPosition(SwingConstants.RIGHT);
-        botonPerfil.setVerticalTextPosition(SwingConstants.CENTER);
-        botonPerfil.setIconTextGap(10);
-
-
+// Acción del botón Perfil
         botonPerfil.addActionListener(e -> {
             JDialog perfilDialog = new JDialog(frame, "Visualizar Perfil", true);
-
             VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
-
             perfilDialog.setContentPane(perfilGUI.panel1);
             perfilDialog.pack();
             perfilDialog.setLocationRelativeTo(frame);
             perfilDialog.setVisible(true);
         });
+
+// Efecto hover
         botonPerfil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                botonPerfil.setBackground(new Color(0, 100, 220));
+                botonPerfil.setBackground(new Color(0, 120, 50));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                botonPerfil.setBackground(new Color(0, 122, 255));
+                botonPerfil.setBackground(new Color(0x39A900));
             }
         });
 
+// Crear y configurar botón Bitácoras
+        JButton botonBitacoras = new JButton("Ver Bitácoras");
+        botonBitacoras.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonBitacoras.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonBitacoras.setPreferredSize(new Dimension(200, 40));
+        botonBitacoras.setMaximumSize(new Dimension(200, 40));
+        botonBitacoras.setBackground(new Color(0x007BFF)); // Azul
+        botonBitacoras.setForeground(Color.WHITE);
+        botonBitacoras.setFont(new Font("Calibri", Font.BOLD, 20));
+        botonBitacoras.setFocusPainted(false);
+
+// Hover efecto
+        botonBitacoras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonBitacoras.setBackground(new Color(0x339EFF));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonBitacoras.setBackground(new Color(0x007BFF));
+            }
+        });
+
+// Crear y configurar botón Seguimiento
+        JButton botonSeguimiento = new JButton("Ver Seguimiento");
+        botonSeguimiento.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonSeguimiento.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonSeguimiento.setPreferredSize(new Dimension(200, 40));
+        botonSeguimiento.setMaximumSize(new Dimension(200, 40));
+        botonSeguimiento.setBackground(new Color(0x003366)); // Azul oscuro
+        botonSeguimiento.setForeground(Color.WHITE);
+        botonSeguimiento.setFont(new Font("Calibri", Font.BOLD, 20));
+        botonSeguimiento.setFocusPainted(false);
+
+// Hover efecto
+        botonSeguimiento.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonSeguimiento.setBackground(new Color(0x1A4D80));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonSeguimiento.setBackground(new Color(0x003366));
+            }
+        });
+
+// Añadir botones al panel con espacio entre ellos
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(botonPerfil);
         panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
+        panelDerecho.add(botonBitacoras);
+        panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
+        panelDerecho.add(botonSeguimiento);
         panelDerecho.add(Box.createVerticalGlue());
+
 
         contenidoPanel.add(panelIzquierdo, BorderLayout.CENTER);
         contenidoPanel.add(panelDerecho, BorderLayout.EAST);
@@ -753,15 +807,17 @@ public class Administrador {
     }
 
     public void resaltarSubmenu(JButton botonSubmenu) {
-
-        if (submenuActivo != null) {
+        if (submenuActivo != null && !submenuActivo.equals(botonSubmenu)) {
             submenuActivo.setBackground(colorSubmenuNormal);
         }
 
+
         if (botonSubmenu != null) {
             botonSubmenu.setBackground(new Color(30, 150, 75));
+            submenuActivo = botonSubmenu;
+        } else {
+            submenuActivo = null;
         }
-        submenuActivo = botonSubmenu;
     }
     private void configurarFlechasBotones() {
 
@@ -1196,6 +1252,11 @@ public class Administrador {
             submenuActivo.setBackground(colorSubmenuNormal);
             submenuActivo = null;
         }
+
+        verUsuariosButton.setText(verUsuariosButton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        crearUsuariosButton.setText(crearUsuariosButton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        registrarEmpresa.setText(registrarEmpresa.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        FormatoBoton.setText(FormatoBoton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
 
