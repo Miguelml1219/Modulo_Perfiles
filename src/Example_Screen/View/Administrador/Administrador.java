@@ -111,6 +111,7 @@ public class Administrador {
         cambiarTituloSegunRol();
         tamañoCompletoMenu();
         pnlBtonPermiso.setVisible(false);
+        botonCrearModalidad.setVisible(false);
 
 
         switch (cofigBotonInicioSegunRol) {
@@ -346,7 +347,7 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 boolean visible = botonCrearFicha.isVisible();;
                 botonCrearFicha.setVisible(!visible);
-                botonCrearModalidad.setVisible(!visible);;
+                //botonCrearModalidad.setVisible(!visible);;
                 botonCrearPrograma.setVisible(!visible);
                 botonCrearSede.setVisible(!visible);
                 String textoBase = crearUsuariosButton.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();

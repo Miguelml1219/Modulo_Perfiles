@@ -19,6 +19,7 @@ public class CrearUsuarioGUI {
     private JTextField clave;
     private JTextField apellido;
     private JTextField direccion;
+    private JTextField email_insti;
 
     public JPanel getPanel(){return pnlCrearUsuario;}
 
@@ -35,6 +36,7 @@ public class CrearUsuarioGUI {
                             nombre.getText(),
                             apellido.getText(),
                             email.getText(),
+                            email_insti.getText(),
                             direccion.getText(),
                             contacto1.getText(),
                             contacto2.getText(),
@@ -63,6 +65,7 @@ public class CrearUsuarioGUI {
                         nombre.setText("");
                         apellido.setText("");
                         email.setText("");
+                        email_insti.setText("");
                         direccion.setText("");
                         contacto1.setText("");
                         contacto2.setText("");
@@ -88,6 +91,7 @@ public class CrearUsuarioGUI {
                 nombre.setText("");
                 apellido.setText("");
                 email.setText("");
+                email_insti.setText("");
                 direccion.setText("");
                 contacto1.setText("");
                 contacto2.setText("");

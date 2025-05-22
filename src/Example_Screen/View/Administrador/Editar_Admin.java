@@ -35,6 +35,7 @@ public class Editar_Admin{
     private JButton cancelar;
     private JTextField apellido;
     private JTextField textField1;
+    private JTextField email_insti;
 
     // Variables para almacenar los datos originales
     private String originalNombre;
@@ -42,6 +43,7 @@ public class Editar_Admin{
     private String originalTipoDoc;
     private String originalNumDoc;
     private String originalEmail;
+    private String originalEmail_Insti;
     private String originalDireccion;
     private String originalContacto;
     private String originalRol;
@@ -73,6 +75,7 @@ public class Editar_Admin{
         tipo_doc.setEnabled(false);
         num_doc.setEnabled(false);
         email.setEnabled(false);
+        email_insti.setEnabled(false);
         direc.setEnabled(false);
         conta.setEnabled(false);
         rol.setEnabled(false);
@@ -104,6 +107,7 @@ public class Editar_Admin{
         tipo_doc.setBorder(bottom1);
         num_doc.setBorder(bottom1);
         email.setBorder(bottom1);
+        email_insti.setBorder(bottom1);
         direc.setBorder(bottom1);
         conta.setBorder(bottom1);
 
@@ -157,6 +161,7 @@ public class Editar_Admin{
                 tipo_doc.setEnabled(false);
                 num_doc.setEnabled(false);
                 email.setEnabled(false);
+                email_insti.setEnabled(false);
                 direc.setEnabled(false);
                 conta.setEnabled(false);
                 rol.setEnabled(false);
@@ -171,6 +176,7 @@ public class Editar_Admin{
                 tipo_doc.setBorder(bottom1);
                 num_doc.setBorder(bottom1);
                 email.setBorder(bottom1);
+                email_insti.setBorder(bottom1);
                 direc.setBorder(bottom1);
                 conta.setBorder(bottom1);
             }
@@ -185,6 +191,7 @@ public class Editar_Admin{
                 tipo_doc.setEnabled(false);
                 num_doc.setEnabled(false);
                 email.setEnabled(false);
+                email_insti.setEnabled(false);
                 direc.setEnabled(false);
                 conta.setEnabled(false);
                 rol.setEnabled(false);
@@ -199,6 +206,7 @@ public class Editar_Admin{
                 tipo_doc.setBorder(bottom1);
                 num_doc.setBorder(bottom1);
                 email.setBorder(bottom1);
+                email_insti.setBorder(bottom1);
                 direc.setBorder(bottom1);
                 conta.setBorder(bottom1);
             }
@@ -224,6 +232,8 @@ public class Editar_Admin{
                 nombre.setBorder(bottom);
                 apellido.setEnabled(false);
                 apellido.setBorder(bottom);
+                email_insti.setEnabled(false);
+                email_insti.setBorder(bottom);
                 tipo_doc.setEnabled(false);
                 tipo_doc.setBorder(bottomDisabled);
                 num_doc.setEnabled(false);
@@ -245,6 +255,8 @@ public class Editar_Admin{
                 nombre.setBorder(bottom);
                 apellido.setEnabled(false);
                 apellido.setBorder(bottom);
+                email_insti.setEnabled(false);
+                email_insti.setBorder(bottom);
                 tipo_doc.setEnabled(false);
                 tipo_doc.setBorder(bottomDisabled);
                 num_doc.setEnabled(false);
@@ -267,6 +279,8 @@ public class Editar_Admin{
                 nombre.setBorder(bottom);
                 apellido.setEnabled(false);
                 apellido.setBorder(bottom);
+                email_insti.setEnabled(false);
+                email_insti.setBorder(bottom);
                 tipo_doc.setEnabled(false);
                 num_doc.setEnabled(false);
                 num_doc.setBorder(bottom);
@@ -286,6 +300,8 @@ public class Editar_Admin{
                 num_doc.setBorder(bottom);
                 email.setEnabled(true);
                 email.setBorder(bottom);
+                email_insti.setEnabled(true);
+                email_insti.setBorder(bottom);
                 direc.setEnabled(true);
                 direc.setBorder(bottom);
                 conta.setEnabled(true);
@@ -311,6 +327,8 @@ public class Editar_Admin{
                 num_doc.setBorder(bottom);
                 email.setEnabled(true);
                 email.setBorder(bottom);
+                email_insti.setEnabled(true);
+                email_insti.setBorder(bottom);
                 direc.setEnabled(true);
                 direc.setBorder(bottom);
                 conta.setEnabled(true);
@@ -327,6 +345,8 @@ public class Editar_Admin{
                 apellido.setBorder(bottom);
                 email.setEnabled(true);
                 email.setBorder(bottom);
+                email_insti.setEnabled(true);
+                email_insti.setBorder(bottom);
                 direc.setEnabled(true);
                 direc.setBorder(bottom);
                 conta.setEnabled(true);
@@ -368,6 +388,7 @@ public class Editar_Admin{
                 apellido.setText(rs.getString("apellidos"));
                 num_doc.setText(rs.getString("numero"));
                 email.setText(rs.getString("email"));
+                email_insti.setText(rs.getString("email_insti"));
                 direc.setText(rs.getString("direccion"));
                 conta.setText(rs.getString("contacto1"));
 
@@ -420,6 +441,7 @@ public class Editar_Admin{
         originalTipoDoc = tipo_doc.getSelectedItem().toString();
         originalNumDoc = num_doc.getText();
         originalEmail = email.getText();
+        originalEmail_Insti = email_insti.getText();
         originalDireccion = direc.getText();
         originalContacto = conta.getText();
         originalRol = rol.getSelectedItem().toString();
@@ -440,6 +462,7 @@ public class Editar_Admin{
 
         num_doc.setText(originalNumDoc);
         email.setText(originalEmail);
+        email_insti.setText(originalEmail_Insti);
         direc.setText(originalDireccion);
         conta.setText(originalContacto);
 
@@ -463,7 +486,7 @@ public class Editar_Admin{
     public void actualizarDatosUsuario() {
         try (Connection conn = DBConnection.getConnection()) {
             String sql = "UPDATE usuarios SET nombres = ?, apellidos = ?, tipo_dc = ?, numero = ?, " +
-                    "email = ?, direccion = ?, contacto1 = ?, ID_rol = ?, estado = ? WHERE ID_usuarios = ?";
+                    "email = ?, email_insti = ?,direccion = ?, contacto1 = ?, ID_rol = ?, estado = ? WHERE ID_usuarios = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nombre.getText());
@@ -471,16 +494,17 @@ public class Editar_Admin{
             stmt.setString(3, tipo_doc.getSelectedItem().toString());
             stmt.setString(4, num_doc.getText());
             stmt.setString(5, email.getText());
-            stmt.setString(6, direc.getText());
-            stmt.setString(7, conta.getText());
+            stmt.setString(6, email_insti.getText());
+            stmt.setString(7, direc.getText());
+            stmt.setString(8, conta.getText());
 
             // Obtener el ID del rol seleccionado
             // Esto podría necesitar ajustes dependiendo de cómo estén organizados tus comboBox
             int selectedRolIndex = rol.getSelectedIndex() + 1;
-            stmt.setInt(8, selectedRolIndex);
+            stmt.setInt(9, selectedRolIndex);
 
-            stmt.setString(9, estado.getSelectedItem().toString());
-            stmt.setInt(10, userID);
+            stmt.setString(10, estado.getSelectedItem().toString());
+            stmt.setInt(11, userID);
 
             int filasAfectadas = stmt.executeUpdate();
             if (filasAfectadas > 0) {

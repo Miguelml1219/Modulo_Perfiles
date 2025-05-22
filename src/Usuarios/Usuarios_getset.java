@@ -8,6 +8,7 @@ public class Usuarios_getset {
     private String nombres;
     private String apellidos;
     private String email;
+    private String email_insti;
     private String direccion;
     private String contacto1;
     private String contacto2;
@@ -16,7 +17,7 @@ public class Usuarios_getset {
 
     // Constructor completo (con ID)
     public Usuarios_getset(int ID_usuarios, int ID_rol, String tipo_dc, String documento, String nombres,
-                           String apellidos, String email, String direccion, String contacto1,
+                           String apellidos, String email, String email_insti, String direccion, String contacto1,
                            String contacto2, String clave, String estado) {
         this.ID_usuarios = ID_usuarios;
         this.ID_rol = ID_rol;
@@ -25,6 +26,7 @@ public class Usuarios_getset {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.email = email;
+        this.email_insti = email_insti;
         this.direccion = direccion;
         this.contacto1 = contacto1;
         this.contacto2 = contacto2;
@@ -34,7 +36,7 @@ public class Usuarios_getset {
 
     // Constructor sin ID (para nuevos registros)
     public Usuarios_getset(int ID_rol, String tipo_dc, String documento, String nombres,
-                           String apellidos, String email, String direccion, String contacto1,
+                           String apellidos, String email,  String email_insti, String direccion, String contacto1,
                            String contacto2, String clave, String estado) {
         this.ID_rol = ID_rol;
         this.tipo_dc = tipo_dc;
@@ -42,6 +44,7 @@ public class Usuarios_getset {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.email = email;
+        this.email_insti = email_insti;
         this.direccion = direccion;
         this.contacto1 = contacto1;
         this.contacto2 = contacto2;
@@ -104,6 +107,14 @@ public class Usuarios_getset {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEmail_insti() {
+        return email_insti;
+    }
+
+    public void setEmail_insti(String email_insti) {
+        this.email_insti = email_insti;
     }
 
     public String getDireccion() {
