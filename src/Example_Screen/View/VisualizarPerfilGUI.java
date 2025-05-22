@@ -24,6 +24,7 @@ public class VisualizarPerfilGUI {
     private JLabel rol;
     private JLabel tipo_doc;
     private JLabel apellido;
+    private JLabel email_insti;
     private int userID; // Para almacenar el ID del usuario actual
 
 
@@ -62,6 +63,7 @@ public class VisualizarPerfilGUI {
                 apellido.setText(rs.getString("apellidos"));
                 num_doc.setText(rs.getString("numero"));
                 email.setText(rs.getString("email"));
+                email_insti.setText(rs.getString("email_insti"));
                 direc.setText(rs.getString("direccion"));
                 conta.setText(rs.getString("contacto1"));
                 tipo_doc.setText(rs.getString("tipo_dc"));

@@ -8,8 +8,8 @@ public class UsuariosDAO {
 
     // Agregar usuario (asume que el ID es autoincremental en la base de datos)
     public boolean agregarUsuario(Usuarios_getset usuario) {
-        String query = "INSERT INTO usuarios (ID_rol, tipo_dc, numero, nombres, apellidos, email, direccion, contacto1, contacto2, clave, estado) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO usuarios (ID_rol, tipo_dc, numero, nombres, apellidos, email, email_insti, direccion, contacto1, contacto2, clave, estado) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = conexion.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
 
@@ -19,11 +19,12 @@ public class UsuariosDAO {
             pst.setString(4, usuario.getNombres());
             pst.setString(5, usuario.getApellidos());
             pst.setString(6, usuario.getEmail());
-            pst.setString(7, usuario.getDireccion());
-            pst.setString(8, usuario.getContacto1());
-            pst.setString(9, usuario.getContacto2());
-            pst.setString(10, usuario.getClave());
-            pst.setString(11, usuario.getEstado());
+            pst.setString(7, usuario.getEmail_insti());
+            pst.setString(8, usuario.getDireccion());
+            pst.setString(9, usuario.getContacto1());
+            pst.setString(10, usuario.getContacto2());
+            pst.setString(11, usuario.getClave());
+            pst.setString(12, usuario.getEstado());
 
             pst.executeUpdate();
             return true;
@@ -35,7 +36,7 @@ public class UsuariosDAO {
 
     // Actualizar usuario por ID
     public boolean actualizarUsuario(Usuarios_getset usuario) {
-        String query = "UPDATE usuarios SET ID_rol = ?, tipo_dc = ?, numero = ?, nombres = ?, apellidos = ?, email = ?, direccion = ?, contacto1 = ?, contacto2 = ?, clave = ?, estado = ? WHERE ID_usuarios = ?";
+        String query = "UPDATE usuarios SET ID_rol = ?, tipo_dc = ?, numero = ?, nombres = ?, apellidos = ?, email = ?, email_insti = ?, direccion = ?, contacto1 = ?, contacto2 = ?, clave = ?, estado = ? WHERE ID_usuarios = ?";
         try (Connection con = conexion.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
 
@@ -45,12 +46,13 @@ public class UsuariosDAO {
             pst.setString(4, usuario.getNombres());
             pst.setString(5, usuario.getApellidos());
             pst.setString(6, usuario.getEmail());
-            pst.setString(7, usuario.getDireccion());
-            pst.setString(8, usuario.getContacto1());
-            pst.setString(9, usuario.getContacto2());
-            pst.setString(10, usuario.getClave());
-            pst.setString(11, usuario.getEstado());
-            pst.setInt(12, usuario.getID_usuarios());
+            pst.setString(7, usuario.getEmail_insti());
+            pst.setString(8, usuario.getDireccion());
+            pst.setString(9, usuario.getContacto1());
+            pst.setString(10, usuario.getContacto2());
+            pst.setString(11, usuario.getClave());
+            pst.setString(12, usuario.getEstado());
+            pst.setInt(13, usuario.getID_usuarios());
 
             pst.executeUpdate();
             return true;
@@ -92,6 +94,7 @@ public class UsuariosDAO {
                             rs.getString("nombres"),
                             rs.getString("apellidos"),
                             rs.getString("email"),
+                            rs.getString("email_insti"),
                             rs.getString("direccion"),
                             rs.getString("contacto1"),
                             rs.getString("contacto2"),
@@ -125,6 +128,7 @@ public class UsuariosDAO {
                             rs.getString("nombres"),
                             rs.getString("apellidos"),
                             rs.getString("email"),
+                            rs.getString("email_insti"),
                             rs.getString("direccion"),
                             rs.getString("contacto1"),
                             rs.getString("contacto2"),
