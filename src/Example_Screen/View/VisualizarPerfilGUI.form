@@ -254,7 +254,7 @@
                   <text value="Modalidad:"/>
                 </properties>
               </component>
-              <component id="e19ab" class="javax.swing.JLabel">
+              <component id="e19ab" class="javax.swing.JLabel" binding="fich">
                 <constraints>
                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -264,9 +264,11 @@
                   <text value="Ficha:"/>
                 </properties>
               </component>
-              <component id="77a1e" class="javax.swing.JLabel">
+              <component id="77a1e" class="javax.swing.JLabel" binding="prog">
                 <constraints>
-                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="77" height="30"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font name="Calibri" size="18" style="1"/>
@@ -274,7 +276,7 @@
                   <text value="Programa:"/>
                 </properties>
               </component>
-              <component id="51f5" class="javax.swing.JLabel">
+              <component id="51f5" class="javax.swing.JLabel" binding="empr">
                 <constraints>
                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -306,7 +308,9 @@
               </component>
               <component id="5a49" class="javax.swing.JLabel" binding="datoProg">
                 <constraints>
-                  <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="0" height="30"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font name="Calibri" size="18" style="1"/>

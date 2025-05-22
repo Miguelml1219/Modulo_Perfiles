@@ -18,10 +18,7 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -245,15 +242,16 @@ public class VerUsuariosRegistrados {
 
         private void abrirPerfilUsuario(String numeroDoc, String tipoDoc) {
             try {
+                // Obtener el rol del usuario específico desde la base de datos
+                int rolUsuario = obtenerRolUsuario(numeroDoc, tipoDoc);
+                int idUsuario = obtenerIdUsuario(numeroDoc, tipoDoc);
+
                 // Crear una nueva ventana modal
                 JDialog dialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(button),
                         "Perfil de Usuario", true);
 
-
-                // Crear instancia de VisualizarPerfilGUI modificada para usuario específico
-                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
-
-                // Solo mostrar datos extra si se está en la tabla de aprendices
+                // Crear instancia de VisualizarPerfilGUI con el rol correcto del usuario específico
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(idUsuario, rolUsuario);
 
                 // Cargar los datos del usuario específico
                 perfilGUI.cargarDatosUsuarioEspecifico(numeroDoc, tipoDoc);
@@ -274,11 +272,39 @@ public class VerUsuariosRegistrados {
             }
         }
 
-        // Este método debe validar si se está en la vista de aprendices
-        private boolean esTablaAprendicesActiva() {
-            // Aquí puedes validar por nombre de tabla, contexto o pestaña activa
-            // Este es un ejemplo básico, ajústalo según tu implementación real
-            return true; // Retornar true solo si la tabla mostrada es la de aprendices
+        private int obtenerRolUsuario(String numeroDoc, String tipoDoc) {
+            try (Connection conn = DBConnection.getConnection()) {
+                String sql = "SELECT ID_rol FROM usuarios WHERE numero = ? AND tipo_dc = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, numeroDoc);
+                stmt.setString(2, tipoDoc);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    return rs.getInt("ID_rol");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return 0; // Valor por defecto si no se encuentra
+        }
+
+        // Método auxiliar para obtener el ID del usuario
+        private int obtenerIdUsuario(String numeroDoc, String tipoDoc) {
+            try (Connection conn = DBConnection.getConnection()) {
+                String sql = "SELECT ID_usuarios FROM usuarios WHERE numero = ? AND tipo_dc = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, numeroDoc);
+                stmt.setString(2, tipoDoc);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    return rs.getInt("ID_usuarios");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return 0; // Valor por defecto si no se encuentra
         }
 
 
