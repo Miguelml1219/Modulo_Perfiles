@@ -18,7 +18,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="51a6b" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="51a6b" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="20" left="20" bottom="20" right="20"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -60,7 +60,7 @@
               </component>
               <component id="20fda" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="Calibri" size="18" style="1"/>
@@ -68,19 +68,9 @@
                   <text value="Estado:"/>
                 </properties>
               </component>
-              <component id="a3309" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font name="Calibri" size="18" style="1"/>
-                  <foreground color="-16777216"/>
-                  <text value="Evaluador"/>
-                </properties>
-              </component>
               <component id="bae5d" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="Calibri" size="18" style="1"/>
@@ -90,7 +80,7 @@
               </component>
               <component id="e059a" class="javax.swing.JComboBox" binding="estado">
                 <constraints>
-                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-986896"/>
@@ -135,32 +125,14 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="b7455" class="javax.swing.JComboBox" binding="evaluador">
+              <component id="4d91e" class="javax.swing.JComboBox" binding="modalidad">
                 <constraints>
                   <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
-              <component id="4d91e" class="javax.swing.JComboBox" binding="modalidad">
-                <constraints>
-                  <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
             </children>
           </grid>
-          <component id="a8049" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
-            <constraints>
-              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-12998400"/>
-              <focusPainted value="false"/>
-              <font name="Calibri" size="20" style="1"/>
-              <foreground color="-1"/>
-              <text value="Confirmar "/>
-            </properties>
-          </component>
           <component id="83504" class="javax.swing.JLabel">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -177,16 +149,16 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="5a3a1" class="javax.swing.JButton" binding="cancelar">
+          <component id="a8049" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12998400"/>
               <focusPainted value="false"/>
               <font name="Calibri" size="20" style="1"/>
               <foreground color="-1"/>
-              <text value="Volver"/>
+              <text value="Confirmar "/>
             </properties>
           </component>
         </children>
