@@ -1,9 +1,13 @@
 package Usuarios;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.*;
 import java.text.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class EditarFichas {
     private JPanel main;
@@ -36,6 +40,10 @@ public class EditarFichas {
         this.fichaActual = ficha;
         cargarCombos();
         cargarDatosFicha();
+        idprograma.setEditable(true); // importante
+        idsede.setEditable(true); // importante
+        new AprendizGUI.AutoCompleteComboBox(idprograma);
+        new AprendizGUI.AutoCompleteComboBox(idsede);
 
         cancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(main);
@@ -191,6 +199,57 @@ public class EditarFichas {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar los cambios: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public static class AutoCompleteComboBox {
+        private final JComboBox<String> comboBox;
+        private final List<String> originalItems = new ArrayList<>();
+        private boolean isAdjusting = false;
+
+        public AutoCompleteComboBox(JComboBox<String> comboBox) {
+            this.comboBox = comboBox;
+            init();
+        }
+
+        private void init() {
+            // Guardar todos los elementos actuales del ComboBox
+            for (int i = 0; i < comboBox.getItemCount(); i++) {
+                originalItems.add(comboBox.getItemAt(i));
+            }
+
+            comboBox.setEditable(true);
+            JTextField textField = (JTextField) comboBox.getEditor().getEditorComponent();
+
+            textField.getDocument().addDocumentListener(new DocumentListener() {
+                public void insertUpdate(DocumentEvent e) { updateModel(); }
+                public void removeUpdate(DocumentEvent e) { updateModel(); }
+                public void changedUpdate(DocumentEvent e) { updateModel(); }
+
+                private void updateModel() {
+                    if (isAdjusting) return;
+
+                    SwingUtilities.invokeLater(() -> {
+                        String input = textField.getText();
+                        isAdjusting = true;
+
+                        DefaultComboBoxModel<String> filteredModel = new DefaultComboBoxModel<>();
+                        for (String item : originalItems) {
+                            if (item.toLowerCase().contains(input.toLowerCase())) {
+                                filteredModel.addElement(item);
+                            }
+                        }
+
+                        comboBox.setModel(filteredModel);
+                        comboBox.setSelectedItem(input);
+                        textField.setSelectionStart(input.length());
+                        textField.setSelectionEnd(input.length());
+
+                        comboBox.showPopup();
+                        isAdjusting = false;
+                    });
+                }
+            });
         }
     }
 }
