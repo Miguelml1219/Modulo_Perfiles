@@ -99,8 +99,8 @@ public class Administrador {
     private JButton submenuActivo = null;
     private Color colorSubmenuNormal = new Color(57, 169, 0);
 
-    private static final String ICONO_FLECHA_DERECHA = "▶";
-    private static final String ICONO_FLECHA_ABAJO = "▼";
+    private static final String ICONO_FLECHA_DERECHA = "     ▸";
+    private static final String ICONO_FLECHA_ABAJO = "     ▾";
     private static final Color COLOR_FLECHA = Color.WHITE;
     /**
      * Constructor de la clase Administrador.
@@ -239,6 +239,10 @@ public class Administrador {
             }
         });
 
+        /**
+         * Este ActionListener controla el comportamiento del botón cuando se hace clic en él.
+         * Su función es com tal alternar la visibilidad de dos componentes (f147 y f023) y
+         */
         FormatoBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -334,6 +338,11 @@ public class Administrador {
                 configurarBotonPermisos();
             }
         });
+
+        /**
+         * Este evento se ejecuta cuando el usuario hace clic en el botón.
+         * Esta pues Cambia la visibilidad de los botones botonCrearEmpresa y botonAdministrarEmpresa.
+         */
         registrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -353,6 +362,12 @@ public class Administrador {
                 mostrarPanelAsignarInstructor();
             }
         });
+
+        /**
+         * Este evento como tal se activa cuando el usuario hace clic en el botón.
+         * Al presionar el botón, se muestra u oculta un conjunto de botones relacionados
+         * con la creación de usuarios (como crear ficha, programa y sede).
+         */
         crearUsuariosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -647,13 +662,22 @@ public class Administrador {
 
 
     // ------------­ LLAMADAS ESPECÍFICAS --------------
+    /**
+     * Muestra en pantalla el panel correspondiente al Formato 147 - Bitácoras.
+     * Este metodo obtiene el usuario que ha iniciado sesión, crea una instancia
+     * del panel de seguimiento 147 usando ese usuario, y lo muestra con el título adecuado.
+     */
     public void mostrarPanelSeguimiento147() {
         String usuario = LoginGUI.getUsuarioActual();
         CodigoGUI2 codigoGUI = new CodigoGUI2(usuario);
 
         mostrarPanel("Formato 147 - Bitácoras", codigoGUI.getPanel());
     }
-
+    /**
+     * Muestra en pantalla el panel correspondiente al Formato 023 - Seguimiento.
+     * Al igual que el anterior, este método consigue el nombre del usuario
+     * que está usando el sistema, crea el panel del Formato 023, y lo muestra en la interfaz.
+     */
     public void mostrarPanelSeguimiento023() {
         String usuario = LoginGUI.getUsuarioActual();
         CodigoGUI codigoGUI = new CodigoGUI(usuario);
@@ -662,7 +686,9 @@ public class Administrador {
     }
 
     /**
-     * Muestra el panel de seguimiento.
+     * Muestra el panel gráfico de inicio para el usuario actual (aprendiz).
+     * Este metodo se encarga de limpiar el panel principal y mostrar un resumen visual
+     * del progreso del aprendiz que ha iniciado sesión.
      */
     public void mostrarPanelGraficoInicio() {
         contenidoPanel.setBackground(new Color(246, 246, 246)); // Color verde #39A900
@@ -805,7 +831,12 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Como tal lo que hace es que resalta visualmente un submenú cuando se selecciona.
+     * Este metodo cambia el color de fondo del botón del submenú seleccionado para que
+     * el usuario vea cuál está activo. También restaura el color del submenú anterior
+     * si era diferente.
+     */
     public void resaltarSubmenu(JButton botonSubmenu) {
         if (submenuActivo != null && !submenuActivo.equals(botonSubmenu)) {
             submenuActivo.setBackground(colorSubmenuNormal);
@@ -819,11 +850,17 @@ public class Administrador {
             submenuActivo = null;
         }
     }
-    private void configurarFlechasBotones() {
 
-        verUsuariosButton.setText(verUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
-        crearUsuariosButton.setText(crearUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
-        registrarEmpresa.setText(registrarEmpresa.getText() + "  " + ICONO_FLECHA_DERECHA);
+    /**
+     * Agrega una flecha al texto de ciertos botones del menú y cambia su color.
+     * Este metodo se usa para que los botones principales del sistema tengan una flecha
+     * (→) al lado de su texto,este indicando que se puede desplegar un submenú.
+     */
+    public void configurarFlechasBotones() {
+
+        verUsuariosButton.setText(verUsuariosButton.getText() + "    " + ICONO_FLECHA_DERECHA);
+        crearUsuariosButton.setText(crearUsuariosButton.getText() + "        " + ICONO_FLECHA_DERECHA);
+        registrarEmpresa.setText(registrarEmpresa.getText() + " " + ICONO_FLECHA_DERECHA);
         FormatoBoton.setText(FormatoBoton.getText() + "  " + ICONO_FLECHA_DERECHA);
 
 
@@ -833,6 +870,11 @@ public class Administrador {
         FormatoBoton.setForeground(COLOR_FLECHA);
     }
 
+    /**
+     * Muestra en pantalla la tabla con los aprendices que están asignados a un usuario.
+     * Este metodo se encarga de obtener los aprendices relacionados con el usuario actual,
+     * y luego mostrar esa información en una tabla dentro del panel principal de la interfaz.
+     */
     public void mostrarTablaAprendicesAsignados() {
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
         AprendicesAsignados asignados = new AprendicesAsignados();
@@ -849,7 +891,10 @@ public class Administrador {
         vista.mostrarRol("Aprendices Asignados");
 
     }
-
+    /**
+     * Muestra en el panel principal una tabla con los aprendices que han sido contratados por un usuario específico.
+     * Este metodo obtiene los datos de los aprendices contratados y los muestra en una vista tipo tabla.
+     */
     public void mostrarTablaAprendicesContratados() {
 
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
@@ -869,7 +914,11 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear un nuevo usuario.
+     * Este metodo crea una nueva instancia de la pantalla para crear usuarios,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de usuario.
+     */
     public void mostrarPanelCrearUsuario() {
         CrearUsuarioGUI crearUsuarioGUI = new CrearUsuarioGUI();
 
@@ -880,7 +929,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear una nueva modalidad.
+     * Este metodo crea una nueva instancia de la pantalla para crear modalidades,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de modalidad.
+     */
     public void mostrarPanelCrearModalidad() {
         CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
 
@@ -891,7 +944,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear un nuevo programa.
+     * Este metodo crea una nueva instancia de la pantalla para crear programas,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de programa.
+     */
     public void mostrarPanelCrearProgramas() {
         CrearProgramaGUI crearProgramaGUI = new CrearProgramaGUI();
 
@@ -902,7 +959,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz para crear nuevas fichas.
+     * Este metodo crea una nueva instancia de la pantalla para crear fichas,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de fichas.
+     */
     public void mostrarPanelCrearFichas() {
         CrearFichasGUI crearFichasGUI = new CrearFichasGUI();
 
@@ -913,7 +974,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz para crear nuevas sedes.
+     * Este metodo crea una nueva instancia del formulario para crear sedes,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de sedes.
+     */
     public void mostrarPanelCrearSedes() {
         CrearSedesGUI crearSedesGUI = new CrearSedesGUI();
 
