@@ -15,7 +15,7 @@ public class Programas_getset {
     }
 
 
-    public int getID_programas() {
+    public Integer getID_programas() {
         return ID_programas;
     }
 

@@ -9,10 +9,12 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class AdminSedesGUI {
-    private JPanel main;
+    private JPanel adminsedes;
     private JTable tablesedes;
     private JTextField textField1;
     private TableRowSorter<TableModel> sorter;
+
+    public JPanel getPanel(){return adminsedes;}
 
     public AdminSedesGUI() {
         configurarTabla();
@@ -141,13 +143,13 @@ public class AdminSedesGUI {
     // MAIN para probar interfaz
     public static void main(String[] args) {
         JFrame frame = new JFrame("Administración de Sedes");
-        frame.setContentPane(new AdminSedesGUI().main);
+        frame.setContentPane(new AdminSedesGUI().adminsedes);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
     }
 
     public JPanel getMainPanel() {
-        return main;
+        return adminsedes;
     }
 }

@@ -16,9 +16,7 @@ public class FichasDAO {
         String sql = """
             INSERT INTO fichas (ID_programas, ID_sede, codigo, modalidad, jornada, nivel_formacion, estado, fecha_inicio, fecha_fin_lec, fecha_final)
             VALUES (
-                (SELECT ID_programas FROM programas WHERE nombre_programa = ?),
-                (SELECT ID_sede FROM sedes WHERE nombre_sede = ?),
-                ?, ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )
         """;
 
@@ -29,10 +27,11 @@ public class FichasDAO {
             stmt.setString(4, ficha.getModalidad());
             stmt.setString(5, ficha.getJornada());
             stmt.setString(6, ficha.getNivel_formacion());
-            stmt.setDate(7, new java.sql.Date(ficha.getFecha_inicio().getTime()));
-            stmt.setDate(8, new java.sql.Date(ficha.getFecha_fin_lec().getTime()));
-            stmt.setDate(9, new java.sql.Date(ficha.getFecha_final().getTime()));
-            stmt.setString(10, ficha.getEstado());
+            stmt.setString(7, ficha.getEstado());
+            stmt.setDate(8, new java.sql.Date(ficha.getFecha_inicio().getTime()));
+            stmt.setDate(9, new java.sql.Date(ficha.getFecha_fin_lec().getTime()));
+            stmt.setDate(10, new java.sql.Date(ficha.getFecha_final().getTime()));
+
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -128,13 +127,13 @@ public class FichasDAO {
     // Método para actualizar una ficha (resuelve nombres a IDs)
     public boolean actualizarFicha(Fichas_setget ficha) {
         String sql = """
-            UPDATE fichas
-            SET ID_programas = (SELECT ID_programas FROM programas WHERE nombre_programa = ?),
-                ID_sede = (SELECT ID_sede FROM sedes WHERE nombre_sede = ?),
-                codigo = ?, modalidad = ?, jornada = ?, nivel_formacion = ?, estado = ?,
-                fecha_inicio = ?, fecha_fin_lec = ?, fecha_final = ?
-            WHERE ID_Fichas = ?
-        """;
+        UPDATE fichas
+        SET ID_programas = ?,
+            ID_sede = ?,
+            codigo = ?, modalidad = ?, jornada = ?, nivel_formacion = ?, estado = ?,
+            fecha_inicio = ?, fecha_fin_lec = ?, fecha_final = ?
+        WHERE ID_Fichas = ?
+    """;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, ficha.getNombre_programa());
@@ -143,11 +142,11 @@ public class FichasDAO {
             stmt.setString(4, ficha.getModalidad());
             stmt.setString(5, ficha.getJornada());
             stmt.setString(6, ficha.getNivel_formacion());
-            stmt.setDate(7, new java.sql.Date(ficha.getFecha_inicio().getTime()));
-            stmt.setDate(8, new java.sql.Date(ficha.getFecha_fin_lec().getTime()));
-            stmt.setDate(9, new java.sql.Date(ficha.getFecha_final().getTime()));
-            stmt.setInt(10, ficha.getID_Fichas());
-            stmt.setString(11, ficha.getEstado());
+            stmt.setString(7, ficha.getEstado());           // ✅ Posición 7
+            stmt.setDate(8, new java.sql.Date(ficha.getFecha_inicio().getTime()));
+            stmt.setDate(9, new java.sql.Date(ficha.getFecha_fin_lec().getTime()));
+            stmt.setDate(10, new java.sql.Date(ficha.getFecha_final().getTime()));
+            stmt.setInt(11, ficha.getID_Fichas());          // ✅ Posición 11
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

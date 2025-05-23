@@ -3,12 +3,10 @@ package Usuarios;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 public class CrearFichasGUI {
     private JPanel pnlCrearFichas;
@@ -24,11 +22,14 @@ public class CrearFichasGUI {
     private JComboBox modalidad;
     private JComboBox jornada;
     private JComboBox nivelformacion;
-    private java.util.List<String> listaIDSede = new java.util.ArrayList<>();
-    private java.util.List<String> listaIDPrograma = new java.util.ArrayList<>();
 
-    public JPanel getPanel(){return pnlCrearFichas;}
+    // Usamos HashMap para mapear nombre -> ID
+    private HashMap<String, String> mapaSedes = new HashMap<>();
+    private HashMap<String, String> mapaProgramas = new HashMap<>();
 
+    public JPanel getPanel() {
+        return pnlCrearFichas;
+    }
 
     public CrearFichasGUI() {
 
@@ -40,17 +41,22 @@ public class CrearFichasGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-                    String inicioTexto = fechainicio.getText().replace("/", "-");
-                    String finLectivaTexto = fechafinlectiva.getText().replace("/", "-");
-                    String finTexto = fechafin.getText().replace("/", "-");
 
-                    Date fechaInicio = formatoFecha.parse(inicioTexto);
-                    Date fechaFinLectiva = formatoFecha.parse(finLectivaTexto);
-                    Date fechaFinal = formatoFecha.parse(finTexto);
+                    Date fechaInicio = formatoFecha.parse(fechainicio.getText().replace("/", "-"));
+                    Date fechaFinLectiva = formatoFecha.parse(fechafinlectiva.getText().replace("/", "-"));
+                    Date fechaFinal = formatoFecha.parse(fechafin.getText().replace("/", "-"));
 
-                    Fichas_setget fichas = new Fichas_setget(
-                            listaIDPrograma.get(idprograma.getSelectedIndex()),
-                            listaIDSede.get(idsede.getSelectedIndex()),
+                    // Obtener los nombres seleccionados
+                    String nombrePrograma = idprograma.getSelectedItem().toString();
+                    String nombreSede = idsede.getSelectedItem().toString();
+
+                    // Obtener los IDs correspondientes desde el HashMap
+                    String idPrograma = mapaProgramas.get(nombrePrograma);
+                    String idSede = mapaSedes.get(nombreSede);
+
+                    Fichas_setget ficha = new Fichas_setget(
+                            idPrograma,
+                            idSede,
                             codigo.getText(),
                             modalidad.getSelectedItem().toString(),
                             jornada.getSelectedItem().toString(),
@@ -67,7 +73,7 @@ public class CrearFichasGUI {
 
                     try (Connection conn = DriverManager.getConnection(url, user, password)) {
                         FichasDAO dao = new FichasDAO(conn);
-                        boolean exito = dao.insertarFicha(fichas);
+                        boolean exito = dao.insertarFicha(ficha);
 
                         if (exito) {
                             JOptionPane.showMessageDialog(null, "Ficha creada correctamente");
@@ -85,14 +91,14 @@ public class CrearFichasGUI {
             }
         });
 
-
         cancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Opcional: limpiar campos o cerrar ventana
+                // Aquí puedes limpiar los campos si deseas
             }
         });
     }
+
     private void cargarSedes() {
         String url = "jdbc:mysql://localhost:3306/saep";
         String user = "root";
@@ -102,15 +108,17 @@ public class CrearFichasGUI {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT ID_sede, nombre_sede FROM sede")) {
 
-            DefaultComboBoxModel<String> modeloSede = new DefaultComboBoxModel<>();
-            listaIDSede.clear();
+            DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+            mapaSedes.clear();
 
             while (rs.next()) {
-                listaIDSede.add(rs.getString("ID_sede"));
-                modeloSede.addElement(rs.getString("nombre_sede"));
+                String id = rs.getString("ID_sede");
+                String nombre = rs.getString("nombre_sede");
+                mapaSedes.put(nombre, id);
+                modelo.addElement(nombre);
             }
 
-            idsede.setModel(modeloSede);
+            idsede.setModel(modelo);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(pnlCrearFichas, "Error al cargar sedes");
@@ -127,15 +135,17 @@ public class CrearFichasGUI {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT ID_programas, nombre_programa FROM programas")) {
 
-            DefaultComboBoxModel<String> modeloPrograma = new DefaultComboBoxModel<>();
-            listaIDPrograma.clear();
+            DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+            mapaProgramas.clear();
 
             while (rs.next()) {
-                listaIDPrograma.add(rs.getString("ID_programas"));
-                modeloPrograma.addElement(rs.getString("nombre_programa"));
+                String id = rs.getString("ID_programas");
+                String nombre = rs.getString("nombre_programa");
+                mapaProgramas.put(nombre, id);
+                modelo.addElement(nombre);
             }
 
-            idprograma.setModel(modeloPrograma);
+            idprograma.setModel(modelo);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(pnlCrearFichas, "Error al cargar programas");
@@ -143,13 +153,12 @@ public class CrearFichasGUI {
         }
     }
 
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("Creación de Fichas");
         frame.setContentPane(new CrearFichasGUI().pnlCrearFichas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setLocationRelativeTo(null); // Centrar ventana
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

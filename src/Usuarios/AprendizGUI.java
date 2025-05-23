@@ -72,12 +72,6 @@ public class AprendizGUI {
                     }
                     int idUsuario = listaAprendices.get(selectedIndexAprendiz).getID_usuarios();
 
-                    int selectedIndexEvaluador = evaluador.getSelectedIndex();
-                    if (selectedIndexEvaluador == -1 || listaInstructores.isEmpty()) {
-                        JOptionPane.showMessageDialog(main, "Por favor, seleccione un evaluador.");
-                        return;
-                    }
-                    int idInstructor = listaInstructores.get(selectedIndexEvaluador).getID_usuarios();
 
                     int idFicha = ficha.getSelectedIndex() + 1;
                     int idEmpresa = listaIDEmpresas.get(empresa.getSelectedIndex()); // Obtener el ID real
@@ -89,7 +83,7 @@ public class AprendizGUI {
                             idUsuario,
                             idFicha,
                             idEmpresa,
-                            idInstructor,
+                            22,
                             idModalidad,
                             estadoSeleccionado
                     );
@@ -106,14 +100,15 @@ public class AprendizGUI {
                     JOptionPane.showMessageDialog(main, "Error en los datos ingresados");
                     ex.printStackTrace();
                 }
+                SwingUtilities.getWindowAncestor(confirmarButton).dispose();
             }
+
         });
     }
 
     private void limpiarCampos() {
         if (aprendiz.getItemCount() > 0) aprendiz.setSelectedIndex(0);
         if (empresa.getItemCount() > 0) empresa.setSelectedIndex(0);
-        if (evaluador.getItemCount() > 0) evaluador.setSelectedIndex(0);
         if (modalidad.getItemCount() > 0) modalidad.setSelectedIndex(0);
         if (ficha.getItemCount() > 0) ficha.setSelectedIndex(0);
         if (estado.getItemCount() > 0) estado.setSelectedIndex(0);

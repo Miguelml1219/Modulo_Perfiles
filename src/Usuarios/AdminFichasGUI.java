@@ -11,11 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AdminFichasGUI {
-    private JPanel main;
+    private JPanel adminfichas;
     private JTable tablefichas;
     private JTextField textField1;
 
     private TableRowSorter<TableModel> sorter;
+
+    public JPanel getPanel(){return adminfichas;}
 
     public AdminFichasGUI() {
         inicializarFiltro();
@@ -137,9 +139,9 @@ public class AdminFichasGUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         JFrame frame = new JFrame("Administración de Fichas");
-        frame.setContentPane(new AdminFichasGUI().main);
+        frame.setContentPane(new AdminFichasGUI().adminfichas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);

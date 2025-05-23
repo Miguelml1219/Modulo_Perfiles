@@ -139,7 +139,7 @@
                 <border type="none"/>
                 <children/>
               </grid>
-              <grid id="673f2" layout-manager="GridLayoutManager" row-count="27" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="673f2" layout-manager="GridLayoutManager" row-count="30" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
@@ -184,7 +184,7 @@
                   <grid id="87748" binding="pnlBtonRegisEmpr" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="15" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="18" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -345,7 +345,7 @@
                   <grid id="f76a5" binding="pnlBtonPermiso" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="18" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="21" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -407,7 +407,7 @@
                   <grid id="39e2c" binding="pnlBtonAsigInstru" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="19" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="22" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -469,7 +469,7 @@
                   <grid id="d91ca" binding="pnlBtonAprenContrat" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="20" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="23" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -500,7 +500,7 @@
                   <grid id="da164" binding="pnlBtonPerfil" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="25" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="28" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -531,7 +531,7 @@
                   </grid>
                   <component id="fcf67" class="javax.swing.JLabel" binding="separadorInvisible">
                     <constraints>
-                      <grid row="26" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="29" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font size="20"/>
@@ -542,7 +542,7 @@
                   <grid id="456de" binding="PanelFormato" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="22" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="25" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -573,7 +573,7 @@
                   </grid>
                   <component id="db8e" class="javax.swing.JButton" binding="f147">
                     <constraints>
-                      <grid row="23" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                      <grid row="26" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -592,7 +592,7 @@
                   </component>
                   <component id="9ee48" class="javax.swing.JButton" binding="f023">
                     <constraints>
-                      <grid row="24" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                      <grid row="27" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -612,7 +612,7 @@
                   <grid id="d0eca" binding="panelAsigna" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="12" right="0"/>
                     <constraints>
-                      <grid row="21" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="24" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -697,9 +697,66 @@
                       <text value=" Sedes"/>
                     </properties>
                   </component>
-                  <component id="3b9fa" class="javax.swing.JButton" binding="botonCrearModalidad">
+                  <component id="bd1b6" class="javax.swing.JButton" binding="verFichasButton" default-binding="true">
                     <constraints>
                       <grid row="14" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12998400"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="Calibri" size="18" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="11"/>
+                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <iconTextGap value="4"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <requestFocusEnabled value="false"/>
+                      <text value=" Ver fichas"/>
+                    </properties>
+                  </component>
+                  <component id="e062b" class="javax.swing.JButton" binding="verProgramasButton" default-binding="true">
+                    <constraints>
+                      <grid row="15" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12998400"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="Calibri" size="18" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="11"/>
+                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <iconTextGap value="4"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <requestFocusEnabled value="false"/>
+                      <text value=" Ver programas"/>
+                    </properties>
+                  </component>
+                  <component id="3bd0e" class="javax.swing.JButton" binding="verSedesButton" default-binding="true">
+                    <constraints>
+                      <grid row="16" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12998400"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="Calibri" size="18" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="11"/>
+                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <iconTextGap value="4"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <requestFocusEnabled value="false"/>
+                      <text value=" Ver sedes"/>
+                    </properties>
+                  </component>
+                  <component id="3b9fa" class="javax.swing.JButton" binding="botonCrearModalidad">
+                    <constraints>
+                      <grid row="17" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -718,7 +775,7 @@
                   </component>
                   <component id="6b026" class="javax.swing.JButton" binding="botonCrearEmpresa">
                     <constraints>
-                      <grid row="16" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                      <grid row="19" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>
@@ -737,7 +794,7 @@
                   </component>
                   <component id="b629e" class="javax.swing.JButton" binding="botonAdministrarEmpresa">
                     <constraints>
-                      <grid row="17" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                      <grid row="20" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-12998400"/>

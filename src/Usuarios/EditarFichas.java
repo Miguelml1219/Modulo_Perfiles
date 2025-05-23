@@ -3,6 +3,7 @@ package Usuarios;
 import javax.swing.*;
 import java.awt.event.*;
 import java.text.*;
+import java.util.HashMap;
 
 public class EditarFichas {
     private JPanel main;
@@ -10,8 +11,8 @@ public class EditarFichas {
     private JTextField fechainicio;
     private JTextField fechafinlectiva;
     private JTextField fechafin;
-    private JComboBox<Integer> idprograma;
-    private JComboBox<Integer> idsede;
+    private JComboBox<String> idprograma;
+    private JComboBox<String> idsede;
     private JComboBox<String> modalidad;
     private JComboBox<String> jornada;
     private JComboBox<String> nivelformacion;
@@ -24,14 +25,24 @@ public class EditarFichas {
 
     private final SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
 
+    private HashMap<String, Integer> mapaProgramas;
+    private HashMap<String, Integer> mapaSedes;
+
     public JPanel getMainPanel() {
         return main;
     }
 
     public EditarFichas(Fichas_setget ficha) {
         this.fichaActual = ficha;
-        cargarDatosFicha();
         cargarCombos();
+        cargarDatosFicha();
+
+        cancelar.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(main);
+            if (frame != null) {
+                frame.dispose();
+            }
+        });
 
         confirmarButton.addActionListener(new ActionListener() {
             @Override
@@ -39,92 +50,147 @@ public class EditarFichas {
                 guardarCambios();
             }
         });
-
-        cancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(main);
-                frame.dispose();
-            }
-        });
     }
+
     private void cargarCombos() {
         idprograma.removeAllItems();
         idsede.removeAllItems();
 
-        // Cargar programas desde la base de datos
-        ProgramasDAO programasDAO = new ProgramasDAO();
-        for (Programas_getset programa : programasDAO.listarProgramas()) {
-            idprograma.addItem(programa.getID_programas()); // sin convertir a String
+        // --- Programas ---
+        try {
+            ProgramasDAO programasDAO = new ProgramasDAO();
+            mapaProgramas = new HashMap<>();
+
+            for (Programas_getset programa : programasDAO.listarProgramas()) {
+                String nombrePrograma = programa.getNombre_programa();
+                int idPrograma = programa.getID_programas();
+
+                mapaProgramas.put(nombrePrograma, idPrograma);
+                idprograma.addItem(nombrePrograma);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar programas: " + e.getMessage());
         }
 
-        // Cargar sedes desde la base de datos
-        SedeDAO sedeDAO = new SedeDAO();
-        for (Sede_getset sede : sedeDAO.listarSedes()) {
-            idsede.addItem(sede.getID_sede()); // sin convertir a String
+        // --- Sedes ---
+        try {
+            SedeDAO sedeDAO = new SedeDAO();
+            mapaSedes = sedeDAO.obtenerMapaSedes(); // <Nombre, ID>
+
+            for (String nombreSede : mapaSedes.keySet()) {
+                idsede.addItem(nombreSede);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar sedes: " + e.getMessage());
         }
 
-        // Otros combos fijos
+        // --- Combos fijos ---
         modalidad.setModel(new DefaultComboBoxModel<>(new String[]{"Presencial", "Virtual"}));
         jornada.setModel(new DefaultComboBoxModel<>(new String[]{"Diurna", "Nocturna", "Mixta"}));
         nivelformacion.setModel(new DefaultComboBoxModel<>(new String[]{"Técnico", "Tecnólogo"}));
         estado.setModel(new DefaultComboBoxModel<>(new String[]{"Activa", "Inactiva"}));
     }
 
-
-
     private void cargarDatosFicha() {
-        codigo.setText(fichaActual.getCodigo());
-        fechainicio.setText(formatoFecha.format(fichaActual.getFecha_inicio()));
-        fechafinlectiva.setText(formatoFecha.format(fichaActual.getFecha_fin_lec()));
-        fechafin.setText(formatoFecha.format(fichaActual.getFecha_final()));
+        codigo.setText(fichaActual.getCodigo() != null ? fichaActual.getCodigo() : "");
 
-        idprograma.setSelectedItem(fichaActual.getNombre_programa());
-        idsede.setSelectedItem(fichaActual.getNombre_sede());
+        if (fichaActual.getFecha_inicio() != null) {
+            fechainicio.setText(formatoFecha.format(fichaActual.getFecha_inicio()));
+        }
+        if (fichaActual.getFecha_fin_lec() != null) {
+            fechafinlectiva.setText(formatoFecha.format(fichaActual.getFecha_fin_lec()));
+        }
+        if (fichaActual.getFecha_final() != null) {
+            fechafin.setText(formatoFecha.format(fichaActual.getFecha_final()));
+        }
 
+        if (fichaActual.getNombre_programa() != null && !fichaActual.getNombre_programa().trim().isEmpty()) {
+            idprograma.setSelectedItem(fichaActual.getNombre_programa());
+        }
 
-        modalidad.setSelectedItem(fichaActual.getModalidad());
-        jornada.setSelectedItem(fichaActual.getJornada());
-        nivelformacion.setSelectedItem(fichaActual.getNivel_formacion());
-        estado.setSelectedItem(fichaActual.getEstado());
+        if (fichaActual.getNombre_sede() != null && !fichaActual.getNombre_sede().trim().isEmpty()) {
+            idsede.setSelectedItem(fichaActual.getNombre_sede());
+        }
+
+        if (fichaActual.getModalidad() != null) {
+            modalidad.setSelectedItem(fichaActual.getModalidad());
+        }
+        if (fichaActual.getJornada() != null) {
+            jornada.setSelectedItem(fichaActual.getJornada());
+        }
+        if (fichaActual.getNivel_formacion() != null) {
+            nivelformacion.setSelectedItem(fichaActual.getNivel_formacion());
+        }
+        if (fichaActual.getEstado() != null) {
+            estado.setSelectedItem(fichaActual.getEstado());
+        }
     }
 
     private void guardarCambios() {
         try {
-            fichaActual.setCodigo(codigo.getText());
+            if (codigo.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El código no puede estar vacío.");
+                return;
+            }
+
+            if (fechainicio.getText().trim().isEmpty() ||
+                    fechafinlectiva.getText().trim().isEmpty() ||
+                    fechafin.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todas las fechas son obligatorias.");
+                return;
+            }
+
+            if (idprograma.getSelectedItem() == null || idsede.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un programa y una sede.");
+                return;
+            }
+
+            fichaActual.setCodigo(codigo.getText().trim());
             fichaActual.setFecha_inicio(formatoFecha.parse(fechainicio.getText()));
             fichaActual.setFecha_fin_lec(formatoFecha.parse(fechafinlectiva.getText()));
             fichaActual.setFecha_final(formatoFecha.parse(fechafin.getText()));
-            fichaActual.setNombre_programa((String) idprograma.getSelectedItem());
-            fichaActual.setNombre_sede((String) idsede.getSelectedItem());
+
+            String nombrePrograma = (String) idprograma.getSelectedItem();
+            String nombreSede = (String) idsede.getSelectedItem();
+
+            fichaActual.setNombre_programa(nombrePrograma);
+            fichaActual.setNombre_sede(nombreSede);
+
+            // Establecer ID reales
+            if (mapaProgramas.containsKey(nombrePrograma)) {
+                fichaActual.setNombre_programa(String.valueOf(mapaProgramas.get(nombrePrograma)));
+            } else {
+                throw new Exception("No se encontró el ID del programa seleccionado.");
+            }
+
+            if (mapaSedes.containsKey(nombreSede)) {
+                fichaActual.setNombre_sede(String.valueOf(mapaSedes.get(nombreSede)));
+            } else {
+                throw new Exception("No se encontró el ID de la sede seleccionada.");
+            }
+
             fichaActual.setModalidad((String) modalidad.getSelectedItem());
             fichaActual.setJornada((String) jornada.getSelectedItem());
             fichaActual.setNivel_formacion((String) nivelformacion.getSelectedItem());
             fichaActual.setEstado((String) estado.getSelectedItem());
 
-            if (dao.actualizarFicha(fichaActual)) {
+            boolean actualizado = dao.actualizarFicha(fichaActual);
+
+            if (actualizado) {
                 JOptionPane.showMessageDialog(null, "Ficha actualizada correctamente.");
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(main);
-                frame.dispose();
-
-                FichasDAO fichasDAO = new FichasDAO(ConexionBD.getConnection());
-                Fichas_setget fichas = fichasDAO.obtenerFichaPorID(fichaActual.getID_Fichas());
-
-                if(fichas != null){
-                    JFrame frameEditarFichas = new JFrame("Editar Fichas");
-                    EditarFichas editarFichas = new EditarFichas(fichas);
-                    frameEditarFichas.setContentPane(editarFichas.getMainPanel());
-                    frameEditarFichas.pack();
-                    frameEditarFichas.setLocationRelativeTo(null);
-                    frameEditarFichas.setVisible(true);
+                if (frame != null) {
+                    frame.dispose();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Error al actualizar ficha.");
+                JOptionPane.showMessageDialog(null, "Error al actualizar la ficha en la base de datos.");
             }
+
         } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Error al parsear la fecha: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el formato de fecha. Use el formato: yyyy-MM-dd\n" + e.getMessage());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar cambios: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al guardar los cambios: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

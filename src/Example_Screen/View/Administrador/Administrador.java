@@ -82,6 +82,9 @@ public class Administrador {
     private JButton botonCrearModalidad;
     private JButton botonCrearEmpresa;
     private JButton botonAdministrarEmpresa;
+    private JButton verFichasButton;
+    private JButton verProgramasButton;
+    private JButton verSedesButton;
 
     private JTable table1;
     private JFrame frame;
@@ -143,6 +146,9 @@ public class Administrador {
                 botonCrearSede.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -159,6 +165,9 @@ public class Administrador {
                 botonCrearSede.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -175,6 +184,9 @@ public class Administrador {
                 botonCrearSede.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f023.setVisible(false);
                 f147.setVisible(false);
                 cargarInicioPaneles();
@@ -190,7 +202,8 @@ public class Administrador {
 
         JButton[] botones = {inicio, verUsuariosButton, crearUsuariosButton,AsignarIntructorButton, miPerfil, permisosButton, registrarEmpresa,
                 aprendices, evaluadores, coevaluadores, auxiliares, FormatoBoton, f147, f023,asignaBoton, botonAprendizContratado, botonCrearSede,
-                botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha, botonCrearEmpresa, botonAdministrarEmpresa};
+                botonCrearPrograma, botonCrearModalidad, botonCrearUsuario, botonCrearFicha, botonCrearEmpresa, botonAdministrarEmpresa,verSedesButton,verProgramasButton,verFichasButton
+        };
 
 
         for (JButton btn : botones) {
@@ -382,6 +395,9 @@ public class Administrador {
                 //botonCrearModalidad.setVisible(!visible);;
                 botonCrearPrograma.setVisible(!visible);
                 botonCrearSede.setVisible(!visible);
+                verFichasButton.setVisible(!visible);
+                verProgramasButton.setVisible(!visible);
+                verSedesButton.setVisible(!visible);
                 String textoBase = crearUsuariosButton.getText().replace(ICONO_FLECHA_DERECHA, "").replace(ICONO_FLECHA_ABAJO, "").trim();
                 crearUsuariosButton.setText(textoBase + "  " + (visible ? ICONO_FLECHA_DERECHA : ICONO_FLECHA_ABAJO));
                 if (visible) {
@@ -472,6 +488,27 @@ public class Administrador {
             public void actionPerformed(ActionEvent e) {
                 mostrarTablaAprendicesContratados();
 
+            }
+        });
+        verFichasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelverFichas();
+                resaltarSubmenu(verFichasButton);
+            }
+        });
+        verProgramasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelverProgramas();
+                resaltarSubmenu(verProgramasButton);
+            }
+        });
+        verSedesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarPanelverSedes();
+                resaltarSubmenu(verSedesButton);
             }
         });
     }
@@ -1032,6 +1069,37 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
+    public void mostrarPanelverFichas() {
+        AdminFichasGUI adminFichasGUI = new AdminFichasGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(adminFichasGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+    public void mostrarPanelverProgramas() {
+        AdminProgramaGUI adminProgramaGUI = new AdminProgramaGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(adminProgramaGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+    public void mostrarPanelverSedes() {
+       AdminSedesGUI adminSedesGUI = new AdminSedesGUI();
+
+        // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
+        contenidoPanel.removeAll();
+        contenidoPanel.setLayout(new BorderLayout());
+        contenidoPanel.add(adminSedesGUI.getPanel(), BorderLayout.CENTER);
+        contenidoPanel.revalidate();
+        contenidoPanel.repaint();
+    }
+
 
     /**
      * Este metodo sirve para ocultar un montón de botones y paneles del menú.
@@ -1058,6 +1126,9 @@ public class Administrador {
                 pnlBtonRegisEmpr.setVisible(false);
                 pnlBtonPermiso.setVisible(false);
                 pnlBtonAprenContrat.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 panelAsigna.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
@@ -1080,6 +1151,9 @@ public class Administrador {
                 pnlBtonRegisEmpr.setVisible(false);
                 pnlBtonPermiso.setVisible(false);
                 pnlBtonAprenContrat.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 PanelFormato.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
@@ -1104,6 +1178,9 @@ public class Administrador {
                 pnlBtonPermiso.setVisible(false);
                 panelAsigna.setVisible(false);
                 PanelFormato.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
 
@@ -1299,6 +1376,9 @@ public class Administrador {
         botonCrearEmpresa.setVisible(false);
         botonAdministrarEmpresa.setVisible(false);
         separadorInvisible.setVisible(false);
+        verFichasButton.setVisible(false);
+        verProgramasButton.setVisible(false);
+        verSedesButton.setVisible(false);
 
         if (menuReducido) {
             tamañoCompletoMenu();
@@ -1399,6 +1479,9 @@ public class Administrador {
                 auxiliares.setVisible(true);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
@@ -1416,6 +1499,9 @@ public class Administrador {
                 PanelFormato.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
@@ -1433,6 +1519,9 @@ public class Administrador {
                 PanelFormato.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
+                verFichasButton.setVisible(false);
+                verProgramasButton.setVisible(false);
+                verSedesButton.setVisible(false);
                 f147.setVisible(false);
                 f023.setVisible(false);
                 break;
