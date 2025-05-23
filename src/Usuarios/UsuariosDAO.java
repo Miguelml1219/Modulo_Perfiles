@@ -39,6 +39,24 @@ public class UsuariosDAO {
         }
     }
 
+    public String obtenerCorreoPorDocumento(String numeroDoc, String tipoDoc) {
+        String email = null;
+        try (Connection conn = DBConnection.getConnection()) {
+            String query = "SELECT email FROM usuarios WHERE numero = ? AND tipo_dc = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, numeroDoc);
+            ps.setString(2, tipoDoc);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return email;
+    }
+
+
     // Actualizar usuario por ID (con validaciones)
     public boolean actualizarUsuario(Usuarios_getset usuario) {
         if (!validarUsuario(usuario, true)) return false;

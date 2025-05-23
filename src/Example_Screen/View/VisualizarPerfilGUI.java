@@ -42,12 +42,12 @@ public class VisualizarPerfilGUI {
     public VisualizarPerfilGUI(int idUsuario, int idRol) {
 
 
-        irAlPerfilButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        //irAlPerfilButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         Color colorHover = new Color(0, 120, 50);
         Color colorBase = new Color(57, 169, 0);
 
 
-        aplicarEfectoHover(irAlPerfilButton, colorHover, colorBase);
+        //aplicarEfectoHover(irAlPerfilButton, colorHover, colorBase);
 
         inicializarVisibilidadElementos();
 
@@ -76,7 +76,7 @@ public class VisualizarPerfilGUI {
         boolean esAprendiz = (idRol == 1);
 
         // Mostrar/ocultar botón
-        irAlPerfilButton.setVisible(esAprendiz);
+        //irAlPerfilButton.setVisible(esAprendiz);
 
         // Mostrar/ocultar datos específicos de aprendiz
         empr.setVisible(esAprendiz);
@@ -89,7 +89,7 @@ public class VisualizarPerfilGUI {
 
     private void inicializarVisibilidadElementos() {
         // Inicializar elementos como ocultos por defecto
-        irAlPerfilButton.setVisible(false);
+        //irAlPerfilButton.setVisible(false);
         empr.setVisible(false);
         fich.setVisible(false);
         prog.setVisible(false);

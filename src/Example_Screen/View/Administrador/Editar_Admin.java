@@ -82,20 +82,18 @@ public class Editar_Admin{
         cargarDatosAprendiz(this.idUsuario, this.idRol);
 
         // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
-        if (LoginGUI.idUsuarioActual != 1) {
-
+        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
+        if (this.idRol != 1) { // ← AQUÍ ESTÁ EL CAMBIO
             modal.setVisible(false);
             datoModal.setVisible(false);
-
             empre.setVisible(false);
             datoEmpre.setVisible(false);
-
             progra.setVisible(false);
             datoProgra.setVisible(false);
-
             ficha.setVisible(false);
             datoFicha.setVisible(false);
         }
+
 
         textField1.setVisible(false);
         confirmar️Button.setEnabled(false);

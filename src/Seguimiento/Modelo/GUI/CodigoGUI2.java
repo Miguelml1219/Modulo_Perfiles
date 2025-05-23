@@ -4,6 +4,7 @@ import Example_Screen.View.Login.LoginGUI;
 import Seguimiento.Modelo.Codigo;
 import Seguimiento.Modelo.DAO.CodigoDAO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -83,16 +84,22 @@ public class CodigoGUI2 extends JFrame {
      */
     private void configurarVentana() {
         setTitle("Gestor de Archivos PDF");
-        setSize(1200, 800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(900, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
+
 
     /**
      * Configura y organiza los componentes gráficos de la interfaz.
      */
     private void configurarComponentes() {
         panelPrincipal = new JPanel(new BorderLayout());
+        Border bordeVerde = BorderFactory.createLineBorder(new Color(0x39A900), 3);
+
+// Margen interior
+        Border margenInterior = BorderFactory.createEmptyBorder(25, 25, 25, 25);
+        panelPrincipal.setBorder(BorderFactory.createCompoundBorder(bordeVerde, margenInterior));
 
         panelArchivos = new JPanel();
         panelArchivos.setLayout(new BoxLayout(panelArchivos, BoxLayout.Y_AXIS));
@@ -349,11 +356,23 @@ public class CodigoGUI2 extends JFrame {
         btnEliminar.addActionListener(e -> eliminarArchivo(archivo, panelArchivo));
 
 
-
         // Botón de validación
         JButton btnValidar = new JButton("Validar");
         estilizarBoton(btnValidar, Color.BLUE);
         btnValidar.addActionListener(e -> validarArchivo(archivo, btnValidar));
+
+        if ("2".equals(cofigBotonInicioSegunRol)) {
+            btnEliminar.setVisible(false);
+            btnSubir.setVisible(false);
+        }
+
+        if("4".equals(cofigBotonInicioSegunRol) || "5".equals(cofigBotonInicioSegunRol))
+        {
+            btnValidar.setVisible(false);
+            btnEliminar.setVisible(false);
+            btnSubir.setVisible(false);
+
+        }
 
         // Verificar si ya está validado por los 2 roles requeridos (Aprendiz y Evaluador)
         boolean validadoCompletamente = archivo.getVal1().equals("Aprobado") &&
