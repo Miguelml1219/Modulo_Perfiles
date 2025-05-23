@@ -891,7 +891,7 @@ public class Administrador {
     }
 
 
-    public void configurarFlechasBotones() {
+
 
 
     /**
