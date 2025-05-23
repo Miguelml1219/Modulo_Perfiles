@@ -3,8 +3,18 @@ package Example_Screen.Model;
 import Example_Screen.Connection.DBConnection;
 import java.sql.*;
 import java.time.LocalDate;
-
+/**
+ * Esta clase como tal es encargada de acceder a la base de datos para obtener información
+ * relacionada con los aprendices.
+ */
 public class AprendizDAO {
+    /**
+     * Obtiene un objeto Aprendiz con la información de un aprendiz específico
+     * consultando la base de datos por el ID del usuario.
+     *
+     * @param idUsuario El ID del usuario aprendiz a consultar.
+     * @return Un objeto Aprendiz con los datos obtenidos (nombre, fechas), o null si no se encuentra o hay error.
+     */
     public Aprendiz obtenerAprendiz(int idUsuario) {
         String query = "SELECT f.fecha_fin_lec, f.fecha_final, u.nombres " +
                 "FROM fichas f " +
