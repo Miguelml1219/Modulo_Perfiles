@@ -9,8 +9,12 @@ public class Fichas_setget {
 
     Date fecha_inicio, fecha_fin_lec, fecha_final;
 
-    public Fichas_setget(String nombre_programa,String nombre_sede,String codigo, String modalidad, String jornada, String nivel_formacion,   Date fecha_inicio, Date fecha_fin_lec, Date fecha_final, String estado) {
-        this.ID_Fichas = ID_Fichas;
+    public Fichas_setget(String nombre_programa, String nombre_sede, String codigo,
+                         String modalidad, String jornada, String nivel_formacion,
+                         Date fecha_inicio, Date fecha_fin_lec, Date fecha_final, String estado) {
+        // Elimina esta línea incorrecta:
+        // this.ID_Fichas = ID_Fichas;
+
         this.codigo = codigo;
         this.modalidad = modalidad;
         this.jornada = jornada;

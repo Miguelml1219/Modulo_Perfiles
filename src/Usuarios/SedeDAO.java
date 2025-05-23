@@ -2,6 +2,7 @@ package Usuarios;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SedeDAO {
     private static ConexionBD conexion = new ConexionBD();
@@ -82,7 +83,7 @@ public class SedeDAO {
         return null;
     }
 
-    // listar todas las sedes
+    // Listar todas las sedes
     public ArrayList<Sede_getset> listarSedes() {
         ArrayList<Sede_getset> lista = new ArrayList<>();
         String query = "SELECT * FROM sede";
@@ -107,5 +108,25 @@ public class SedeDAO {
         return lista;
     }
 
+    // ✅ NUEVO: Obtener HashMap con nombres e IDs de sedes
+    public HashMap<String, Integer> obtenerMapaSedes() {
+        HashMap<String, Integer> mapaSedes = new HashMap<>();
+        String query = "SELECT ID_sede, nombre_sede FROM sede";
 
+        try (Connection con = conexion.getConnection();
+             PreparedStatement pst = con.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("ID_sede");
+                String nombre = rs.getString("nombre_sede");
+                mapaSedes.put(nombre, id);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return mapaSedes;
+    }
 }
