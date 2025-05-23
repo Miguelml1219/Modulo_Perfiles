@@ -41,6 +41,7 @@ public class VisualizarPerfilGUI {
 
     public VisualizarPerfilGUI(int idUsuario, int idRol) {
 
+
         irAlPerfilButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         Color colorHover = new Color(0, 120, 50);
         Color colorBase = new Color(57, 169, 0);
@@ -82,6 +83,8 @@ public class VisualizarPerfilGUI {
         fich.setVisible(esAprendiz);
         prog.setVisible(esAprendiz);
         modalidad.setVisible(esAprendiz);
+
+
     }
 
     private void inicializarVisibilidadElementos() {
@@ -170,6 +173,7 @@ public class VisualizarPerfilGUI {
                 tipo_doc.setText(rs.getString("tipo_dc"));
                 rol.setText(rs.getString("rol"));
                 estado.setText(rs.getString("estado"));
+
 
             } else {
                 JOptionPane.showMessageDialog(null,
