@@ -3,6 +3,7 @@ package Example_Screen.View.Administrador;
 import Empresas.Vista.AdministrarGUI;
 import Empresas.Vista.CrearGUI;
 import Example_Screen.AsignacionInstructor.AsignacionGUI;
+import Example_Screen.Connection.DBConnection;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
@@ -26,6 +27,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Esta es la clase principal para la pantalla del Administrador.
  * Es como el centro de control desde donde el admin puede ir a diferentes partes del programa.
@@ -102,8 +108,8 @@ public class Administrador {
     private JButton submenuActivo = null;
     private Color colorSubmenuNormal = new Color(57, 169, 0);
 
-    private static final String ICONO_FLECHA_DERECHA = "▶";
-    private static final String ICONO_FLECHA_ABAJO = "▼";
+    private static final String ICONO_FLECHA_DERECHA = "     ▸";
+    private static final String ICONO_FLECHA_ABAJO = "     ▾";
     private static final Color COLOR_FLECHA = Color.WHITE;
     /**
      * Constructor de la clase Administrador.
@@ -252,6 +258,10 @@ public class Administrador {
             }
         });
 
+        /**
+         * Este ActionListener controla el comportamiento del botón cuando se hace clic en él.
+         * Su función es com tal alternar la visibilidad de dos componentes (f147 y f023) y
+         */
         FormatoBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -347,6 +357,11 @@ public class Administrador {
                 configurarBotonPermisos();
             }
         });
+
+        /**
+         * Este evento se ejecuta cuando el usuario hace clic en el botón.
+         * Esta pues Cambia la visibilidad de los botones botonCrearEmpresa y botonAdministrarEmpresa.
+         */
         registrarEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -366,6 +381,12 @@ public class Administrador {
                 mostrarPanelAsignarInstructor();
             }
         });
+
+        /**
+         * Este evento como tal se activa cuando el usuario hace clic en el botón.
+         * Al presionar el botón, se muestra u oculta un conjunto de botones relacionados
+         * con la creación de usuarios (como crear ficha, programa y sede).
+         */
         crearUsuariosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -530,7 +551,10 @@ public class Administrador {
      * Limpia el panel de contenido y carga el de "Editar_Admin".
      */
     public void mostrarPanelEditar() {
-        Editar_Admin editarAdmin = new Editar_Admin();
+
+        int idUsuario = LoginGUI.idUsuarioActual; // o traerIDusuario
+        int idRol = 1; // Si ya sabes que es Aprendiz
+        Editar_Admin editarAdmin = new Editar_Admin(idUsuario,idRol);
 
         // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
         contenidoPanel.removeAll();
@@ -551,12 +575,16 @@ public class Administrador {
         boton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                boton.setBackground(colorHover);
+                if (!boton.equals(submenuActivo)) {
+                    boton.setBackground(colorHover);
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                boton.setBackground(colorBase);
+                if (!boton.equals(submenuActivo)) {
+                    boton.setBackground(colorBase);
+                }
             }
         });
     }
@@ -677,13 +705,22 @@ public class Administrador {
 
 
     // ------------­ LLAMADAS ESPECÍFICAS --------------
+    /**
+     * Muestra en pantalla el panel correspondiente al Formato 147 - Bitácoras.
+     * Este metodo obtiene el usuario que ha iniciado sesión, crea una instancia
+     * del panel de seguimiento 147 usando ese usuario, y lo muestra con el título adecuado.
+     */
     public void mostrarPanelSeguimiento147() {
         String usuario = LoginGUI.getUsuarioActual();
         CodigoGUI2 codigoGUI = new CodigoGUI2(usuario);
 
         mostrarPanel("Formato 147 - Bitácoras", codigoGUI.getPanel());
     }
-
+    /**
+     * Muestra en pantalla el panel correspondiente al Formato 023 - Seguimiento.
+     * Al igual que el anterior, este método consigue el nombre del usuario
+     * que está usando el sistema, crea el panel del Formato 023, y lo muestra en la interfaz.
+     */
     public void mostrarPanelSeguimiento023() {
         String usuario = LoginGUI.getUsuarioActual();
         CodigoGUI codigoGUI = new CodigoGUI(usuario);
@@ -692,7 +729,9 @@ public class Administrador {
     }
 
     /**
-     * Muestra el panel de seguimiento.
+     * Muestra el panel gráfico de inicio para el usuario actual (aprendiz).
+     * Este metodo se encarga de limpiar el panel principal y mostrar un resumen visual
+     * del progreso del aprendiz que ha iniciado sesión.
      */
     public void mostrarPanelGraficoInicio() {
         contenidoPanel.setBackground(new Color(246, 246, 246)); // Color verde #39A900
@@ -709,7 +748,8 @@ public class Administrador {
         panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
         panelIzquierdo.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
-        JLabel titulo = new JLabel("Tu Progreso");
+
+        JLabel titulo = new JLabel("Progreso de "+aprendiz.getNombre());
         titulo.setFont(new Font("Calibri", Font.BOLD, 25));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
@@ -734,53 +774,112 @@ public class Administrador {
 
         JPanel panelDerecho = new JPanel();
         panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
-        panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
-        JButton botonPerfil = new JButton("Visualizar Perfil");
+        // Crear y configurar botón Visualizar Perfil
+        JButton botonPerfil = new JButton("Ver Información");
         botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonPerfil.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonPerfil.setPreferredSize(new Dimension(200, 40)); // Ajusta según necesidad
+        botonPerfil.setPreferredSize(new Dimension(200, 40));
         botonPerfil.setMaximumSize(new Dimension(200, 40));
-
-
-        botonPerfil.setBackground(new Color(0, 122, 255));
+        botonPerfil.setBackground(new Color(0x39A900)); // Verde
         botonPerfil.setForeground(Color.WHITE);
         botonPerfil.setFont(new Font("Calibri", Font.BOLD, 20));
-        botonPerfil.setFocusPainted(true);
-        botonPerfil.setEnabled(true);
+        botonPerfil.setFocusPainted(false);
 
-
-        botonPerfil.setHorizontalTextPosition(SwingConstants.RIGHT);
-        botonPerfil.setVerticalTextPosition(SwingConstants.CENTER);
-        botonPerfil.setIconTextGap(10);
-
-
+        // Acción del botón Perfil
         botonPerfil.addActionListener(e -> {
-            JDialog perfilDialog = new JDialog(frame, "Visualizar Perfil", true);
+            try {
+                // Obtener el rol del usuario actual desde la base de datos
+                int rolUsuario = obtenerRolUsuario(LoginGUI.idUsuarioActual);
 
-            VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
-
-            perfilDialog.setContentPane(perfilGUI.panel1);
-            perfilDialog.pack();
-            perfilDialog.setLocationRelativeTo(frame);
-            perfilDialog.setVisible(true);
+                JDialog perfilDialog = new JDialog(frame, "Ver Información", true);
+                // Usar el ID del usuario actual y su rol correcto
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(LoginGUI.idUsuarioActual, rolUsuario);
+                perfilDialog.setContentPane(perfilGUI.panel1);
+                perfilDialog.pack();
+                perfilDialog.setLocationRelativeTo(frame);
+                perfilDialog.setVisible(true);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(frame,
+                        "Error al cargar el perfil: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         });
-        botonPerfil.addMouseListener(new MouseAdapter() {
+
+
+        // Efecto hover
+            botonPerfil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                botonPerfil.setBackground(new Color(0, 100, 220));
+                botonPerfil.setBackground(new Color(0, 120, 50));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                botonPerfil.setBackground(new Color(0, 122, 255));
+                botonPerfil.setBackground(new Color(0x39A900));
             }
         });
 
+// Crear y configurar botón Bitácoras
+        JButton botonBitacoras = new JButton("Ver Bitácoras");
+        botonBitacoras.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonBitacoras.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonBitacoras.setPreferredSize(new Dimension(200, 40));
+        botonBitacoras.setMaximumSize(new Dimension(200, 40));
+        botonBitacoras.setBackground(new Color(0x007BFF)); // Azul
+        botonBitacoras.setForeground(Color.WHITE);
+        botonBitacoras.setFont(new Font("Calibri", Font.BOLD, 20));
+        botonBitacoras.setFocusPainted(false);
+
+// Hover efecto
+        botonBitacoras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonBitacoras.setBackground(new Color(0x339EFF));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonBitacoras.setBackground(new Color(0x007BFF));
+            }
+        });
+
+// Crear y configurar botón Seguimiento
+        JButton botonSeguimiento = new JButton("Ver Seguimiento");
+        botonSeguimiento.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonSeguimiento.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonSeguimiento.setPreferredSize(new Dimension(200, 40));
+        botonSeguimiento.setMaximumSize(new Dimension(200, 40));
+        botonSeguimiento.setBackground(new Color(0x003366)); // Azul oscuro
+        botonSeguimiento.setForeground(Color.WHITE);
+        botonSeguimiento.setFont(new Font("Calibri", Font.BOLD, 20));
+        botonSeguimiento.setFocusPainted(false);
+
+// Hover efecto
+        botonSeguimiento.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonSeguimiento.setBackground(new Color(0x1A4D80));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonSeguimiento.setBackground(new Color(0x003366));
+            }
+        });
+
+// Añadir botones al panel con espacio entre ellos
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(botonPerfil);
         panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
+        panelDerecho.add(botonBitacoras);
+        panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
+        panelDerecho.add(botonSeguimiento);
         panelDerecho.add(Box.createVerticalGlue());
+
 
         contenidoPanel.add(panelIzquierdo, BorderLayout.CENTER);
         contenidoPanel.add(panelDerecho, BorderLayout.EAST);
@@ -789,22 +888,59 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-    public void resaltarSubmenu(JButton botonSubmenu) {
+    /**
+     * Como tal lo que hace es que resalta visualmente un submenú cuando se selecciona.
+     * Este metodo cambia el color de fondo del botón del submenú seleccionado para que
+     * el usuario vea cuál está activo. También restaura el color del submenú anterior
+     * si era diferente.
+     */
 
-        if (submenuActivo != null) {
+
+    private int obtenerRolUsuario(int idUsuario) {
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT ID_rol FROM usuarios WHERE ID_usuarios = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("ID_rol");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 1; // Valor por defecto (Aprendiz) si no se encuentra
+    }
+
+
+    public void resaltarSubmenu(JButton botonSubmenu) {
+        if (submenuActivo != null && !submenuActivo.equals(botonSubmenu)) {
             submenuActivo.setBackground(colorSubmenuNormal);
         }
 
+
         if (botonSubmenu != null) {
             botonSubmenu.setBackground(new Color(30, 150, 75));
+            submenuActivo = botonSubmenu;
+        } else {
+            submenuActivo = null;
         }
-        submenuActivo = botonSubmenu;
     }
-    private void configurarFlechasBotones() {
 
-        verUsuariosButton.setText(verUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
-        crearUsuariosButton.setText(crearUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
-        registrarEmpresa.setText(registrarEmpresa.getText() + "  " + ICONO_FLECHA_DERECHA);
+
+
+
+
+    /**
+     * Agrega una flecha al texto de ciertos botones del menú y cambia su color.
+     * Este metodo se usa para que los botones principales del sistema tengan una flecha
+     * (→) al lado de su texto,este indicando que se puede desplegar un submenú.
+     */
+    public void configurarFlechasBotones() {
+
+        verUsuariosButton.setText(verUsuariosButton.getText() + "    " + ICONO_FLECHA_DERECHA);
+        crearUsuariosButton.setText(crearUsuariosButton.getText() + "        " + ICONO_FLECHA_DERECHA);
+        registrarEmpresa.setText(registrarEmpresa.getText() + " " + ICONO_FLECHA_DERECHA);
         FormatoBoton.setText(FormatoBoton.getText() + "  " + ICONO_FLECHA_DERECHA);
 
 
@@ -814,6 +950,11 @@ public class Administrador {
         FormatoBoton.setForeground(COLOR_FLECHA);
     }
 
+    /**
+     * Muestra en pantalla la tabla con los aprendices que están asignados a un usuario.
+     * Este metodo se encarga de obtener los aprendices relacionados con el usuario actual,
+     * y luego mostrar esa información en una tabla dentro del panel principal de la interfaz.
+     */
     public void mostrarTablaAprendicesAsignados() {
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
         AprendicesAsignados asignados = new AprendicesAsignados();
@@ -830,7 +971,10 @@ public class Administrador {
         vista.mostrarRol("Aprendices Asignados");
 
     }
-
+    /**
+     * Muestra en el panel principal una tabla con los aprendices que han sido contratados por un usuario específico.
+     * Este metodo obtiene los datos de los aprendices contratados y los muestra en una vista tipo tabla.
+     */
     public void mostrarTablaAprendicesContratados() {
 
         VerUsuariosRegistrados vista = new VerUsuariosRegistrados();
@@ -850,7 +994,11 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear un nuevo usuario.
+     * Este metodo crea una nueva instancia de la pantalla para crear usuarios,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de usuario.
+     */
     public void mostrarPanelCrearUsuario() {
         CrearUsuarioGUI crearUsuarioGUI = new CrearUsuarioGUI();
 
@@ -861,7 +1009,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear una nueva modalidad.
+     * Este metodo crea una nueva instancia de la pantalla para crear modalidades,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de modalidad.
+     */
     public void mostrarPanelCrearModalidad() {
         CrearModalidadGUI modalidadGUI = new CrearModalidadGUI();
 
@@ -872,7 +1024,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz gráfica para crear un nuevo programa.
+     * Este metodo crea una nueva instancia de la pantalla para crear programas,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de programa.
+     */
     public void mostrarPanelCrearProgramas() {
         CrearProgramaGUI crearProgramaGUI = new CrearProgramaGUI();
 
@@ -883,7 +1039,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz para crear nuevas fichas.
+     * Este metodo crea una nueva instancia de la pantalla para crear fichas,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de fichas.
+     */
     public void mostrarPanelCrearFichas() {
         CrearFichasGUI crearFichasGUI = new CrearFichasGUI();
 
@@ -894,7 +1054,11 @@ public class Administrador {
         contenidoPanel.revalidate();
         contenidoPanel.repaint();
     }
-
+    /**
+     * Muestra en el panel principal la interfaz para crear nuevas sedes.
+     * Este metodo crea una nueva instancia del formulario para crear sedes,
+     * limpia el contenido actual del panel principal y agrega el panel de creación de sedes.
+     */
     public void mostrarPanelCrearSedes() {
         CrearSedesGUI crearSedesGUI = new CrearSedesGUI();
 
@@ -1276,6 +1440,11 @@ public class Administrador {
             submenuActivo.setBackground(colorSubmenuNormal);
             submenuActivo = null;
         }
+
+        verUsuariosButton.setText(verUsuariosButton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        crearUsuariosButton.setText(crearUsuariosButton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        registrarEmpresa.setText(registrarEmpresa.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
+        FormatoBoton.setText(FormatoBoton.getText().replace(ICONO_FLECHA_ABAJO, ICONO_FLECHA_DERECHA));
         contenidoPanel.removeAll();
         contenidoPanel.setLayout(new BorderLayout());
 

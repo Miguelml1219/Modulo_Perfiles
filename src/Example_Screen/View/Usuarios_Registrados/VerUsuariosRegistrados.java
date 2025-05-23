@@ -240,7 +240,7 @@ public class VerUsuariosRegistrados {
             super.fireEditingStopped();
         }
 
-        private void abrirPerfilUsuario(String numeroDoc, String tipoDoc) {
+        public void abrirPerfilUsuario(String numeroDoc, String tipoDoc) {
             try {
                 // Obtener el rol del usuario específico desde la base de datos
                 int rolUsuario = obtenerRolUsuario(numeroDoc, tipoDoc);
