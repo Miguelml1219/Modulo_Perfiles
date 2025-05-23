@@ -553,8 +553,11 @@ public class Administrador {
     public void mostrarPanelEditar() {
 
         int idUsuario = LoginGUI.idUsuarioActual; // o traerIDusuario
-        int idRol = 1; // Si ya sabes que es Aprendiz
-        Editar_Admin editarAdmin = new Editar_Admin(idUsuario,idRol);
+        int idRol = traerIDusuario; // ← CAMBIO AQUÍ: usar el rol real del usuario
+        // O si no tienes rolUsuarioActual, usa el método que tengas para obtener el rol:
+        // int idRol = obtenerRolUsuario(idUsuario);
+
+        Editar_Admin editarAdmin = new Editar_Admin(idUsuario, idRol);
 
         // Muy importante: accede al panel primero para inicializar los componentes del GUI builder
         contenidoPanel.removeAll();

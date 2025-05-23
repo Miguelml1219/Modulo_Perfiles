@@ -77,22 +77,37 @@ public class Editar_Admin{
      */
     public Editar_Admin(int idUsuario, int idRol){
 
+
         this.idUsuario = idUsuario;
         this.idRol = idRol;
         cargarDatosAprendiz(this.idUsuario, this.idRol);
+        cargarDatosUsuario();
+        configurarVisibilidadCampos();
 
-        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
-        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
-        if (this.idRol != 1) { // ← AQUÍ ESTÁ EL CAMBIO
-            modal.setVisible(false);
-            datoModal.setVisible(false);
-            empre.setVisible(false);
-            datoEmpre.setVisible(false);
-            progra.setVisible(false);
-            datoProgra.setVisible(false);
-            ficha.setVisible(false);
-            datoFicha.setVisible(false);
-        }
+
+
+//        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
+//        // Ocultar campos si el usuario NO es rol 1 (Aprendiz)
+//        if (this.idRol != 1) { // ← AQUÍ ESTÁ EL CAMBIO
+//            modal.setVisible(false);
+//            datoModal.setVisible(false);
+//            empre.setVisible(false);
+//            datoEmpre.setVisible(false);
+//            progra.setVisible(false);
+//            datoProgra.setVisible(false);
+//            ficha.setVisible(false);
+//            datoFicha.setVisible(false);
+//        }else {
+//            // Solo mostrar si es rol 1 (Aprendiz)
+//            modal.setVisible(true);
+//            datoModal.setVisible(true);
+//            empre.setVisible(true);
+//            datoEmpre.setVisible(true);
+//            progra.setVisible(true);
+//            datoProgra.setVisible(true);
+//            ficha.setVisible(true);
+//            datoFicha.setVisible(true);
+//        }
 
 
         textField1.setVisible(false);
@@ -151,7 +166,6 @@ public class Editar_Admin{
 
         Border bottom = BorderFactory.createMatteBorder(0, 0, 2, 0, Color.decode("#39A900"));
 
-        cargarDatosUsuario();
 
         editarPerfil️Button.addActionListener(new ActionListener() {
             /**
@@ -162,8 +176,8 @@ public class Editar_Admin{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                configurarPermisosPorRol();
 
+                configurarPermisosPorRol();
 
                 editarPerfil️Button.setEnabled(false);
                 confirmar️Button.setEnabled(true);
@@ -436,6 +450,28 @@ public class Editar_Admin{
                 rol.setEnabled(false);
                 estado.setEnabled(false);
                 break;
+        }
+    }
+
+    private void configurarVisibilidadCampos() {
+        if (this.idRol != 1) { // NO es Aprendiz
+            modal.setVisible(false);
+            datoModal.setVisible(false);
+            empre.setVisible(false);
+            datoEmpre.setVisible(false);
+            progra.setVisible(false);
+            datoProgra.setVisible(false);
+            ficha.setVisible(false);
+            datoFicha.setVisible(false);
+        } else { // ES Aprendiz (idRol = 1)
+            modal.setVisible(true);
+            datoModal.setVisible(true);
+            empre.setVisible(true);
+            datoEmpre.setVisible(true);
+            progra.setVisible(true);
+            datoProgra.setVisible(true);
+            ficha.setVisible(true);
+            datoFicha.setVisible(true);
         }
     }
 
