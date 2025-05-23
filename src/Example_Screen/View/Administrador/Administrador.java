@@ -811,7 +811,7 @@ public class Administrador {
 
 
         // Efecto hover
-            botonPerfil.addMouseListener(new MouseAdapter() {
+        botonPerfil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 botonPerfil.setBackground(new Color(0, 120, 50));
@@ -823,7 +823,9 @@ public class Administrador {
             }
         });
 
-// Crear y configurar botón Bitácoras
+        // CÓDIGO COMENTADO - Botón Bitácoras
+        /*
+        // Crear y configurar botón Bitácoras
         JButton botonBitacoras = new JButton("Ver Bitácoras");
         botonBitacoras.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonBitacoras.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -834,7 +836,7 @@ public class Administrador {
         botonBitacoras.setFont(new Font("Calibri", Font.BOLD, 20));
         botonBitacoras.setFocusPainted(false);
 
-// Hover efecto
+        // Hover efecto
         botonBitacoras.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -846,8 +848,11 @@ public class Administrador {
                 botonBitacoras.setBackground(new Color(0x007BFF));
             }
         });
+        */
 
-// Crear y configurar botón Seguimiento
+        // CÓDIGO COMENTADO - Botón Seguimiento
+        /*
+        // Crear y configurar botón Seguimiento
         JButton botonSeguimiento = new JButton("Ver Seguimiento");
         botonSeguimiento.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonSeguimiento.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -858,7 +863,7 @@ public class Administrador {
         botonSeguimiento.setFont(new Font("Calibri", Font.BOLD, 20));
         botonSeguimiento.setFocusPainted(false);
 
-// Hover efecto
+        // Hover efecto
         botonSeguimiento.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -870,15 +875,20 @@ public class Administrador {
                 botonSeguimiento.setBackground(new Color(0x003366));
             }
         });
+        */
 
-// Añadir botones al panel con espacio entre ellos
+        // Añadir solo el botón de perfil centrado verticalmente
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(botonPerfil);
+        panelDerecho.add(Box.createVerticalGlue());
+
+        // CÓDIGO COMENTADO - Agregado de botones adicionales
+        /*
         panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
         panelDerecho.add(botonBitacoras);
         panelDerecho.add(Box.createRigidArea(new Dimension(0, 10)));
         panelDerecho.add(botonSeguimiento);
-        panelDerecho.add(Box.createVerticalGlue());
+        */
 
 
         contenidoPanel.add(panelIzquierdo, BorderLayout.CENTER);

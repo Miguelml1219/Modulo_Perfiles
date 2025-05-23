@@ -3,6 +3,8 @@ package Example_Screen.View.Usuarios_Registrados;
 import Example_Screen.Connection.DBConnection;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.VisualizarPerfilGUI;
+import Seguimiento.Modelo.GUI.CodigoGUI;
+import Seguimiento.Modelo.GUI.CodigoGUI2;
 import Usuarios.EditarUsuario;
 import Usuarios.UsuariosDAO;
 import Usuarios.Usuarios_getset;
@@ -63,7 +65,6 @@ public class VerUsuariosRegistrados {
     }
 
 
-
     // Declarar sorter como atributo de clase
     private TableRowSorter<DefaultTableModel> sorter;
 
@@ -100,7 +101,12 @@ public class VerUsuariosRegistrados {
         DefaultTableModel model = new DefaultTableModel() {
             // Para evitar que las celdas sean editables
             public boolean isCellEditable(int row, int column) {
-                return column == 5 || column == 6;
+                // Si es aprendiz (rol 1), permitir editar columnas de botones adicionales
+                if (verUsuarioPorRol == 1) {
+                    return column == 5 || column == 6 || column == 7 || column == 8; // Ver Perfil, Bitácoras, Seguimiento, Editar
+                } else {
+                    return column == 5 || column == 6; // Ver Perfil, Editar
+                }
             }
         };
 
@@ -109,8 +115,15 @@ public class VerUsuariosRegistrados {
         model.addColumn("Nombres");
         model.addColumn("Apellidos");
         model.addColumn("Email");
-        model.addColumn("Ver Perfil");  // Nueva columna
-        model.addColumn("Editar");  // Nueva columna
+        model.addColumn("Ver Perfil");
+
+        // Agregar columnas adicionales solo para aprendices
+        if (verUsuarioPorRol == 1) {
+            model.addColumn("Bitácoras");
+            model.addColumn("Seguimiento");
+        }
+
+        model.addColumn("Editar");
 
         try {
             Connection con = DBConnection.getConnection();
@@ -118,14 +131,32 @@ public class VerUsuariosRegistrados {
             ResultSet rs = stmt.executeQuery("SELECT tipo_dc, numero, nombres, apellidos, email_insti FROM usuarios WHERE id_rol = " + verUsuarioPorRol);
 
             while (rs.next()) {
-                Object[] dato = new Object[7];
-                dato[0] = rs.getString(1);
-                dato[1] = rs.getString(2);
-                dato[2] = rs.getString(3);
-                dato[3] = rs.getString(4);
-                dato[4] = rs.getString(5);
-                dato[5] = "Ver Perfil"; // El texto del botón
-                dato[6] = "Editar"; // Texto del nuevo botón
+                Object[] dato;
+
+                // Crear array de datos según el tipo de usuario
+                if (verUsuarioPorRol == 1) {
+                    // Para aprendices: 8 columnas
+                    dato = new Object[9];
+                    dato[0] = rs.getString(1);
+                    dato[1] = rs.getString(2);
+                    dato[2] = rs.getString(3);
+                    dato[3] = rs.getString(4);
+                    dato[4] = rs.getString(5);
+                    dato[5] = "Ver Perfil";
+                    dato[6] = "Bitácoras";
+                    dato[7] = "Seguimiento";
+                    dato[8] = "Editar";
+                } else {
+                    // Para otros roles: 7 columnas
+                    dato = new Object[7];
+                    dato[0] = rs.getString(1);
+                    dato[1] = rs.getString(2);
+                    dato[2] = rs.getString(3);
+                    dato[3] = rs.getString(4);
+                    dato[4] = rs.getString(5);
+                    dato[5] = "Ver Perfil";
+                    dato[6] = "Editar";
+                }
 
                 model.addRow(dato);
             }
@@ -134,15 +165,21 @@ public class VerUsuariosRegistrados {
             sorter = new TableRowSorter<>(model);
             table1.setRowSorter(sorter);
 
-            // Renderizador y editor para el botón
+            // Configurar renderizadores y editores para botones
             table1.getColumn("Ver Perfil").setCellRenderer(new ButtonRenderer());
             table1.getColumn("Ver Perfil").setCellEditor(new ButtonEditor(new JCheckBox()));
-            // Renderizador y editor para el botón
+
+            // Configurar columnas adicionales solo para aprendices
+            if (verUsuarioPorRol == 1) {
+                table1.getColumn("Bitácoras").setCellRenderer(new ButtonRenderer());
+                table1.getColumn("Bitácoras").setCellEditor(new ButtonEditor(new JCheckBox()));
+
+                table1.getColumn("Seguimiento").setCellRenderer(new ButtonRenderer());
+                table1.getColumn("Seguimiento").setCellEditor(new ButtonEditor(new JCheckBox()));
+            }
+
             table1.getColumn("Editar").setCellRenderer(new ButtonRenderer());
             table1.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
-
-
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -159,7 +196,7 @@ public class VerUsuariosRegistrados {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
-            setText((value == null) ? "Ver Perfil" : value.toString());
+            setText((value == null) ? "Botón" : value.toString());
             return this;
         }
     }
@@ -218,8 +255,16 @@ public class VerUsuariosRegistrados {
                 String columnName = table.getColumnName(selectedColumn);
 
                 if ("Ver Perfil".equals(columnName)) {
-                    // Acción para Ver Perfil - MODIFICADO
+                    // Acción para Ver Perfil
                     abrirPerfilUsuario(numeroDoc, tipoDoc);
+
+                } else if ("Bitácoras".equals(columnName)) {
+                    // Acción para Bitácoras - NUEVA FUNCIONALIDAD
+                    abrirBitacoras(numeroDoc, tipoDoc, nombres, apellidos);
+
+                } else if ("Seguimiento".equals(columnName)) {
+                    // Acción para Seguimiento - NUEVA FUNCIONALIDAD
+                    abrirSeguimiento(numeroDoc, tipoDoc, nombres, apellidos);
 
                 } else if ("Editar".equals(columnName)) {
                     // Acción para Editar Usuario
@@ -229,7 +274,6 @@ public class VerUsuariosRegistrados {
             isPushed = false;
             return new String(label);
         }
-
 
         public boolean stopCellEditing() {
             isPushed = false;
@@ -272,6 +316,48 @@ public class VerUsuariosRegistrados {
             }
         }
 
+
+        // NUEVA FUNCIONALIDAD: Método para abrir Bitácoras
+        public void abrirBitacoras(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
+            try {
+                // Usamos la clase DAO para obtener el email del aprendiz por su documento
+                UsuariosDAO dao = new UsuariosDAO();
+                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
+
+                if (email != null && !email.isEmpty()) {
+                    SwingUtilities.invokeLater(() -> {
+                        CodigoGUI2 bitacorasGUI = new CodigoGUI2(email);
+                        bitacorasGUI.setVisible(true);
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al abrir bitácoras: " + ex.getMessage());
+            }
+        }
+
+        public void abrirSeguimiento(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
+            try {
+                // Usamos la clase DAO para obtener el email del aprendiz por su documento
+                UsuariosDAO dao = new UsuariosDAO();
+                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
+
+                if (email != null && !email.isEmpty()) {
+                    SwingUtilities.invokeLater(() -> {
+                        CodigoGUI codigoGUI = new CodigoGUI(email);
+                        codigoGUI.setVisible(true);
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al abrir seguimiento: " + ex.getMessage());
+            }
+        }
+
         private int obtenerRolUsuario(String numeroDoc, String tipoDoc) {
             try (Connection conn = DBConnection.getConnection()) {
                 String sql = "SELECT ID_rol FROM usuarios WHERE numero = ? AND tipo_dc = ?";
@@ -306,7 +392,6 @@ public class VerUsuariosRegistrados {
             }
             return 0; // Valor por defecto si no se encuentra
         }
-
 
         // Método para editar usuario
         private void editarUsuario(String tipoDoc, String numeroDoc) {
@@ -388,8 +473,8 @@ public class VerUsuariosRegistrados {
         scroll.getViewport().setBackground(Color.decode("#e8e6e8"));
         scroll.getViewport().setBackground(Color.decode("#e8e6e8"));
     }
-    public void tipoDeUsuarioRegistrado1() {
 
+    public void tipoDeUsuarioRegistrado1() {
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();

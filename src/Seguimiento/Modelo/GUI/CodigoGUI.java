@@ -4,6 +4,7 @@ import Example_Screen.View.Login.LoginGUI;
 import Seguimiento.Modelo.Codigo;
 import Seguimiento.Modelo.DAO.CodigoDAO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,9 +93,9 @@ public class CodigoGUI extends JFrame {
      * Configura las propiedades básicas de la ventana principal.
      */
     private void configurarVentana() {
-        setTitle("Gestor de Archivos PDF - Formato 023");
-        setSize(1200, 800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Gestor de Archivos PDF");
+        setSize(900, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
@@ -103,6 +104,13 @@ public class CodigoGUI extends JFrame {
      */
     private void configurarComponentes() {
         panelPrincipal = new JPanel(new BorderLayout());
+        // Borde verde exterior
+        Border bordeVerde = BorderFactory.createLineBorder(new Color(0x39A900), 3);
+
+// Margen interior
+        Border margenInterior = BorderFactory.createEmptyBorder(25, 25, 25, 25);
+        panelPrincipal.setBorder(BorderFactory.createCompoundBorder(bordeVerde, margenInterior));
+
 
         panelArchivos = new JPanel();
         panelArchivos.setLayout(new BoxLayout(panelArchivos, BoxLayout.Y_AXIS));
@@ -348,12 +356,27 @@ public class CodigoGUI extends JFrame {
 
         if ("1".equals(cofigBotonInicioSegunRol)) {
             btnEliminar.setVisible(false);
+            btnSubir.setVisible(false);
+        }
+
+        if("3".equals(cofigBotonInicioSegunRol))
+        {
+            btnEliminar.setVisible(false);
+            btnSubir.setVisible(false);
         }
 
         // Botón de validación
         JButton btnValidar = new JButton("Validar");
         estilizarBoton(btnValidar, Color.BLUE);
         btnValidar.addActionListener(e -> validarArchivo(archivo, btnValidar, btnEliminar));
+
+        if("4".equals(cofigBotonInicioSegunRol) || "5".equals(cofigBotonInicioSegunRol))
+        {
+            btnValidar.setVisible(false);
+            btnEliminar.setVisible(false);
+            btnSubir.setVisible(false);
+        }
+
 
         // Verificar si ya está validado por los 3 roles
         boolean validadoCompletamente = archivo.getVal1().equals("Aprobado") ||
