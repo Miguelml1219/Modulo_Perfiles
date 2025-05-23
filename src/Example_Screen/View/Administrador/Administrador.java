@@ -3,6 +3,7 @@ package Example_Screen.View.Administrador;
 import Empresas.Vista.AdministrarGUI;
 import Empresas.Vista.CrearGUI;
 import Example_Screen.AsignacionInstructor.AsignacionGUI;
+import Example_Screen.Connection.DBConnection;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
 import Example_Screen.View.AprendicesAsignados;
@@ -26,6 +27,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Esta es la clase principal para la pantalla del Administrador.
  * Es como el centro de control desde donde el admin puede ir a diferentes partes del programa.
@@ -708,7 +714,7 @@ public class Administrador {
         panelDerecho.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
         // Crear y configurar botón Visualizar Perfil
-        JButton botonPerfil = new JButton("Visualizar Perfil");
+        JButton botonPerfil = new JButton("Ver Información");
         botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonPerfil.setAlignmentX(Component.CENTER_ALIGNMENT);
         botonPerfil.setPreferredSize(new Dimension(200, 40));
@@ -718,18 +724,31 @@ public class Administrador {
         botonPerfil.setFont(new Font("Calibri", Font.BOLD, 20));
         botonPerfil.setFocusPainted(false);
 
-// Acción del botón Perfil
+        // Acción del botón Perfil
         botonPerfil.addActionListener(e -> {
-            JDialog perfilDialog = new JDialog(frame, "Visualizar Perfil", true);
-            VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(traerIDusuario, LoginGUI.idUsuarioActual);
-            perfilDialog.setContentPane(perfilGUI.panel1);
-            perfilDialog.pack();
-            perfilDialog.setLocationRelativeTo(frame);
-            perfilDialog.setVisible(true);
+            try {
+                // Obtener el rol del usuario actual desde la base de datos
+                int rolUsuario = obtenerRolUsuario(LoginGUI.idUsuarioActual);
+
+                JDialog perfilDialog = new JDialog(frame, "Ver Información", true);
+                // Usar el ID del usuario actual y su rol correcto
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(LoginGUI.idUsuarioActual, rolUsuario);
+                perfilDialog.setContentPane(perfilGUI.panel1);
+                perfilDialog.pack();
+                perfilDialog.setLocationRelativeTo(frame);
+                perfilDialog.setVisible(true);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(frame,
+                        "Error al cargar el perfil: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         });
 
-// Efecto hover
-        botonPerfil.addMouseListener(new MouseAdapter() {
+
+        // Efecto hover
+            botonPerfil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 botonPerfil.setBackground(new Color(0, 120, 50));
@@ -806,6 +825,22 @@ public class Administrador {
         contenidoPanel.repaint();
     }
 
+    private int obtenerRolUsuario(int idUsuario) {
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT ID_rol FROM usuarios WHERE ID_usuarios = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("ID_rol");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 1; // Valor por defecto (Aprendiz) si no se encuentra
+    }
+
     public void resaltarSubmenu(JButton botonSubmenu) {
         if (submenuActivo != null && !submenuActivo.equals(botonSubmenu)) {
             submenuActivo.setBackground(colorSubmenuNormal);
@@ -819,7 +854,7 @@ public class Administrador {
             submenuActivo = null;
         }
     }
-    private void configurarFlechasBotones() {
+    public void configurarFlechasBotones() {
 
         verUsuariosButton.setText(verUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
         crearUsuariosButton.setText(crearUsuariosButton.getText() + "  " + ICONO_FLECHA_DERECHA);
