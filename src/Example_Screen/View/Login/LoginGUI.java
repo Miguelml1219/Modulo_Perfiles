@@ -177,7 +177,7 @@ public class LoginGUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        URL iconoURL = LoginGUI.class.getClassLoader().getResource("Example_Screen/img/SENA.png");
+        URL iconoURL = LoginGUI.class.getClassLoader().getResource("img/SENA.png");
         if (iconoURL != null) {
             frame.setIconImage(new ImageIcon(iconoURL).getImage());
         }

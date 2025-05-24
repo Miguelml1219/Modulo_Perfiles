@@ -4,22 +4,112 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="ca3c09e0-4534-467b-8aaa-190991ed0909" name="Changes" comment="los botones desplegables tienen hover">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itext5_itextpdf_5_5_12.xml" beforeDir="false" />
+    <list default="true" id="3024f2e0-cbb8-48b8-b9b8-9b29a4936ff7" name="Changes" comment="se arregla bug">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/itextpdf.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a__m___Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a_ m__[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a_ m__[Changes]1/src.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_2_22_a__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_2_22_a_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_2_22_a_ m__[Changes]/src.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_5_20_p__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_5_20_p_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_5_54_p__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_5_54_p_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_05_2025_1_29_a__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_05_2025_1_29_a_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2025_3_13_p__m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2025_3_13_p_ m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2025_3_13_p_ m__[Changes]/src.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modulo_Perfiles.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo_Perfiles.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/src/Seguimiento/Modelo/GUI/CodigoGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seguimiento/Modelo/GUI/CodigoGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seguimiento/Modelo/GUI/CodigoGUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seguimiento/Modelo/GUI/CodigoGUI2.java" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/src/Usuarios/AprendizGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuarios/AprendizGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf_almacenados/Certificación.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_10_56_a_ m__[Changes]/src.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/AsignacionInstructor/Asignacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AsignacionInstructor/Asignacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/AsignacionInstructor/AsignacionGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/AsignacionInstructor/AsignacionGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/AsignacionInstructor/AsignacionGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AsignacionInstructor/AsignacionGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/AsignacionInstructor/GUIEvaluador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/AsignacionInstructor/GUIEvaluador.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/AsignacionInstructor/GUIEvaluador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AsignacionInstructor/GUIEvaluador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Editar_Admin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Administrador/Editar_Admin.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/Login/LoginGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/View/VisualizarPerfilGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example_Screen/View/VisualizarPerfilGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Aprendices.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Aprendices.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ChatGPT Image Apr 30, 2025, 05_36_50 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/ChatGPT Image Apr 30, 2025, 05_36_50 PM.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título ().png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título ().png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (14) - copia - copia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (14) - copia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (14).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título (7).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título (7).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título zzz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título zzz.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título((.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título((.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título...png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título...png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/Diseño sin título__.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Diseño sin título__.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/SENA.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/SENA.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/cerrar-modal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ecuador (1) (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ecuador (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ecuador (5) (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/ecuador (5) (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ecuador (6) (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/fondo - copia.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/fondo - copia.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/fondo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/fondo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-buscar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-chulito.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-subir-archivo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-256 - copia (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-256 - copia - copia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-256 - copia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-user-tabla.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/ico-ver.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/img-inicio.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/img-inicio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/logo-sena-blanco - copia.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/logo-sena-blanco - copia.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/logo-sena-blanco.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/logo-sena-blanco.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/manu_burguer - copia.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/manu_burguer - copia.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Example_Screen/img/manu_burguer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/manu_burguer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/AdminModalidadGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuarios/AdminModalidadGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Usuarios/AprendizGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuarios/AprendizGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Usuarios/UsuariosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuarios/UsuariosDAO.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Administrador/AdministradorAprendiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Administrador/InicioAdministrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/Aprendiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Aprendiz/modalPerfilAprendiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/Empresa.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/Empresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/EmpresaPerfilAprendiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalAprendizEmpresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Empresa/modalPerfilEmpresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GestionPantalla.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GestionPantalla.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/Instructor.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/Instructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/InstructorPerfilAprendiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/modalAprendizInstructor.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/modalAprendizInstructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Instructor/modalPerfilInstructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/Diseño sin título (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/Diseño sin título.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico-usuario-mas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/logo-sena.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,27 +119,27 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="miguel" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;4nGu10&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AndreZit0"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Miguelml1219/Modulo_Perfiles.git&quot;,
-    &quot;accountId&quot;: &quot;b34dff06-a247-440e-9b6e-7fc5d659d6a3&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Miguelml1219/Modulo_Perfiles.git",
+    "accountId": "2669e2aa-ce14-47d7-878f-92b28afebe6f"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2xIUhAsXqMHuBcDtiWWkMgg8mZC" />
+  <component name="ProjectId" id="2xYdsydpyC8JF5QvEynKGqEdgqn" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -57,50 +147,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.LoginGUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;181&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fabian&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.LoginGUI.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "181",
-    "git-widget-placeholder": "andres",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
-
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\FABIAN\IdeaProjects\Modulo_Perfiles\src\Usuarios" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="LoginGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Example_Screen.View.Login.LoginGUI" />
@@ -115,6 +169,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Modulo_Perfiles" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Modulo_Perfiles" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoginGUI" />
@@ -124,35 +189,27 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ca3c09e0-4534-467b-8aaa-190991ed0909" name="Changes" comment="cree el perfil de coevaluador y arreglo de algunos bug" />
-      <created>1747625232743</created>
+      <changelist id="3024f2e0-cbb8-48b8-b9b8-9b29a4936ff7" name="Changes" comment="se arregla bug" />
+      <created>1748119156913</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1747625232743</updated>
-      <workItem from="1747625246609" duration="284000" />
-      <workItem from="1747629169788" duration="1128000" />
-      <workItem from="1747631219487" duration="8774000" />
-      <workItem from="1747860325587" duration="2267000" />
-      <workItem from="1747946810871" duration="5772000" />
+      <updated>1748119156913</updated>
     </task>
-    <task id="LOCAL-00001" summary="ahora el modulo de usuarios funciona por medio de botones">
-      <option name="closed" value="true" />
-      <created>1747793964938</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1747793964957</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cree el perfil de coevaluador y arreglo de algunos bug" />
-    <MESSAGE value="ahora el modulo de usuarios funciona por medio de botones" />
-    <MESSAGE value="los botones desplegables tienen hover" />
-    <option name="LAST_COMMIT_MESSAGE" value="los botones desplegables tienen hover" />
+    <MESSAGE value="se arregla bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="se arregla bug" />
   </component>
 </project>

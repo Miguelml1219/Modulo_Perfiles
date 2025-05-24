@@ -2,7 +2,7 @@ package Example_Screen.View.Administrador;
 
 import Empresas.Vista.AdministrarGUI;
 import Empresas.Vista.CrearGUI;
-import Example_Screen.AsignacionInstructor.AsignacionGUI;
+import AsignacionInstructor.AsignacionGUI;
 import Example_Screen.Connection.DBConnection;
 import Example_Screen.Model.Aprendiz;
 import Example_Screen.Model.AprendizDAO;
@@ -1489,7 +1489,7 @@ public class Administrador {
                 aprendices.setVisible(false);
                 evaluadores.setVisible(false);
                 coevaluadores.setVisible(false);
-                auxiliares.setVisible(true);
+                auxiliares.setVisible(false);
                 botonCrearEmpresa.setVisible(false);
                 botonAdministrarEmpresa.setVisible(false);
                 verFichasButton.setVisible(false);
@@ -1552,7 +1552,7 @@ public class Administrador {
      * @param frame La ventana (JFrame) a la que le vamos a poner el ícono.
      */
     public static void setFrameIcon(JFrame frame) {
-        URL iconoURL = Administrador.class.getClassLoader().getResource("Example_Screen/img/SENA.png");
+        URL iconoURL = Administrador.class.getClassLoader().getResource("img/SENA.png");
         if (iconoURL != null) {
             frame.setIconImage(new ImageIcon(iconoURL).getImage());
         }
