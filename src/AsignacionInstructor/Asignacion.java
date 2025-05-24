@@ -1,4 +1,4 @@
-package Example_Screen.AsignacionInstructor;
+package AsignacionInstructor;
 
 /**
  * Clase que representa la asignación de un instructor a un aprendiz.
