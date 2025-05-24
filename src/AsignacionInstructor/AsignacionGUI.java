@@ -1,4 +1,4 @@
-package Example_Screen.AsignacionInstructor;
+package AsignacionInstructor;
 
 
 import Example_Screen.Connection.DBConnection;

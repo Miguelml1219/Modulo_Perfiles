@@ -48,7 +48,7 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <icon value="Example_Screen/img/Diseño sin título (7).png"/>
+                  <icon value="img/Diseño sin título (7).png"/>
                   <text value=""/>
                   <verticalTextPosition value="0"/>
                 </properties>
@@ -172,7 +172,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/ecuador (5) (1).png"/>
+                          <icon value="img/ecuador (5) (1).png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -203,7 +203,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título((.png"/>
+                          <icon value="img/Diseño sin título((.png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -257,7 +257,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título ().png"/>
+                          <icon value="img/Diseño sin título ().png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -278,7 +278,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -297,7 +297,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -316,7 +316,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -335,7 +335,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -364,7 +364,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título...png"/>
+                          <icon value="img/Diseño sin título...png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -395,7 +395,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título__.png"/>
+                          <icon value="img/Diseño sin título__.png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -427,7 +427,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título zzz.png"/>
+                          <icon value="img/Diseño sin título zzz.png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -441,7 +441,7 @@
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <icon value="Example_Screen/img/manu_burguer - copia.png"/>
+                      <icon value="img/manu_burguer - copia.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -460,7 +460,7 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="2" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <icon value="Example_Screen/img/logo-sena-blanco - copia.png"/>
+                          <icon value="img/logo-sena-blanco - copia.png"/>
                           <text value=""/>
                         </properties>
                       </component>
@@ -488,7 +488,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="4"/>
-                          <icon value="Example_Screen/img/ecuador (5) (1).png"/>
+                          <icon value="img/ecuador (5) (1).png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="true"/>
@@ -562,7 +562,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="11"/>
-                          <icon value="Example_Screen/img/Diseño sin título zzz.png"/>
+                          <icon value="img/Diseño sin título zzz.png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="false"/>
@@ -583,7 +583,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -602,7 +602,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -631,7 +631,7 @@
                           <foreground color="-1"/>
                           <horizontalAlignment value="2"/>
                           <horizontalTextPosition value="4"/>
-                          <icon value="Example_Screen/img/ecuador (5) (1).png"/>
+                          <icon value="img/ecuador (5) (1).png"/>
                           <iconTextGap value="14"/>
                           <margin top="0" left="0" bottom="0" right="0"/>
                           <requestFocusEnabled value="true"/>
@@ -652,7 +652,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -671,7 +671,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -690,7 +690,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -709,7 +709,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -728,7 +728,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -747,7 +747,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -766,7 +766,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -785,7 +785,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -804,7 +804,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -823,7 +823,7 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="2"/>
                       <horizontalTextPosition value="11"/>
-                      <icon value="Example_Screen/img/Aprendices.png"/>
+                      <icon value="img/Aprendices.png"/>
                       <iconTextGap value="4"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <requestFocusEnabled value="false"/>
@@ -869,7 +869,7 @@
                 </constraints>
                 <properties>
                   <horizontalAlignment value="0"/>
-                  <icon value="Example_Screen/img/fondo - copia.png"/>
+                  <icon value="img/fondo - copia.png"/>
                   <text value=""/>
                 </properties>
               </component>

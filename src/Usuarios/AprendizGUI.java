@@ -83,7 +83,7 @@ public class AprendizGUI {
                             idUsuario,
                             idFicha,
                             idEmpresa,
-                            22,
+                            26,
                             idModalidad,
                             estadoSeleccionado
                     );
