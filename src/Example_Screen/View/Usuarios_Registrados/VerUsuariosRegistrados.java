@@ -1,6 +1,7 @@
 package Example_Screen.View.Usuarios_Registrados;
 
 import Example_Screen.Connection.DBConnection;
+import Example_Screen.View.Administrador.Administrador;
 import Example_Screen.View.Login.LoginGUI;
 import Example_Screen.View.VisualizarPerfilGUI;
 import Seguimiento.Modelo.GUI.CodigoGUI;
@@ -64,6 +65,12 @@ public class VerUsuariosRegistrados {
         return new ButtonEditor(new JCheckBox());
     }
 
+    private Administrador admin;
+
+    public VerUsuariosRegistrados(Administrador admin) {
+        this.admin = admin;
+    }
+
 
     // Declarar sorter como atributo de clase
     private TableRowSorter<DefaultTableModel> sorter;
@@ -118,10 +125,10 @@ public class VerUsuariosRegistrados {
         model.addColumn("Ver Perfil");
 
         // Agregar columnas adicionales solo para aprendices
-        if (verUsuarioPorRol == 1) {
-            model.addColumn("Bitácoras");
-            model.addColumn("Seguimiento");
-        }
+//        if (verUsuarioPorRol == 1) {
+//            model.addColumn("Bitácoras");
+//            model.addColumn("Seguimiento");
+//        }
 
         model.addColumn("Editar");
 
@@ -136,16 +143,18 @@ public class VerUsuariosRegistrados {
                 // Crear array de datos según el tipo de usuario
                 if (verUsuarioPorRol == 1) {
                     // Para aprendices: 8 columnas
-                    dato = new Object[9];
+                    dato = new Object[7];
                     dato[0] = rs.getString(1);
                     dato[1] = rs.getString(2);
                     dato[2] = rs.getString(3);
                     dato[3] = rs.getString(4);
                     dato[4] = rs.getString(5);
                     dato[5] = "Ver Perfil";
-                    dato[6] = "Bitácoras";
-                    dato[7] = "Seguimiento";
-                    dato[8] = "Editar";
+                    dato[6] = "Editar";
+
+//                    dato[6] = "Bitácoras";
+//                    dato[7] = "Seguimiento";
+                    //dato[8] = "Editar";
                 } else {
                     // Para otros roles: 7 columnas
                     dato = new Object[7];
@@ -170,13 +179,13 @@ public class VerUsuariosRegistrados {
             table1.getColumn("Ver Perfil").setCellEditor(new ButtonEditor(new JCheckBox()));
 
             // Configurar columnas adicionales solo para aprendices
-            if (verUsuarioPorRol == 1) {
-                table1.getColumn("Bitácoras").setCellRenderer(new ButtonRenderer());
-                table1.getColumn("Bitácoras").setCellEditor(new ButtonEditor(new JCheckBox()));
-
-                table1.getColumn("Seguimiento").setCellRenderer(new ButtonRenderer());
-                table1.getColumn("Seguimiento").setCellEditor(new ButtonEditor(new JCheckBox()));
-            }
+//            if (verUsuarioPorRol == 1) {
+//                table1.getColumn("Bitácoras").setCellRenderer(new ButtonRenderer());
+//                table1.getColumn("Bitácoras").setCellEditor(new ButtonEditor(new JCheckBox()));
+//
+//                table1.getColumn("Seguimiento").setCellRenderer(new ButtonRenderer());
+//                table1.getColumn("Seguimiento").setCellEditor(new ButtonEditor(new JCheckBox()));
+//            }
 
             table1.getColumn("Editar").setCellRenderer(new ButtonRenderer());
             table1.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
@@ -258,13 +267,13 @@ public class VerUsuariosRegistrados {
                     // Acción para Ver Perfil
                     abrirPerfilUsuario(numeroDoc, tipoDoc);
 
-                } else if ("Bitácoras".equals(columnName)) {
-                    // Acción para Bitácoras - NUEVA FUNCIONALIDAD
-                    abrirBitacoras(numeroDoc, tipoDoc, nombres, apellidos);
-
-                } else if ("Seguimiento".equals(columnName)) {
-                    // Acción para Seguimiento - NUEVA FUNCIONALIDAD
-                    abrirSeguimiento(numeroDoc, tipoDoc, nombres, apellidos);
+//                } else if ("Bitácoras".equals(columnName)) {
+//                    // Acción para Bitácoras - NUEVA FUNCIONALIDAD
+//                    abrirBitacoras(numeroDoc, tipoDoc, nombres, apellidos);
+//
+//                } else if ("Seguimiento".equals(columnName)) {
+//                    // Acción para Seguimiento - NUEVA FUNCIONALIDAD
+//                    abrirSeguimiento(numeroDoc, tipoDoc, nombres, apellidos);
 
                 } else if ("Editar".equals(columnName)) {
                     // Acción para Editar Usuario
@@ -295,7 +304,7 @@ public class VerUsuariosRegistrados {
                         "Perfil de Usuario", true);
 
                 // Crear instancia de VisualizarPerfilGUI con el rol correcto del usuario específico
-                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(idUsuario, rolUsuario);
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(idUsuario, rolUsuario, admin);
 
                 // Cargar los datos del usuario específico
                 perfilGUI.cargarDatosUsuarioEspecifico(numeroDoc, tipoDoc);
@@ -318,45 +327,45 @@ public class VerUsuariosRegistrados {
 
 
         // NUEVA FUNCIONALIDAD: Método para abrir Bitácoras
-        public void abrirBitacoras(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
-            try {
-                // Usamos la clase DAO para obtener el email del aprendiz por su documento
-                UsuariosDAO dao = new UsuariosDAO();
-                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
+//        public void abrirBitacoras(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
+//            try {
+//                // Usamos la clase DAO para obtener el email del aprendiz por su documento
+//                UsuariosDAO dao = new UsuariosDAO();
+//                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
+//
+//                if (email != null && !email.isEmpty()) {
+//                    SwingUtilities.invokeLater(() -> {
+//                        CodigoGUI2 bitacorasGUI = new CodigoGUI2(email);
+//                        bitacorasGUI.setVisible(true);
+//                    });
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                JOptionPane.showMessageDialog(null, "Error al abrir bitácoras: " + ex.getMessage());
+//            }
+//        }
 
-                if (email != null && !email.isEmpty()) {
-                    SwingUtilities.invokeLater(() -> {
-                        CodigoGUI2 bitacorasGUI = new CodigoGUI2(email);
-                        bitacorasGUI.setVisible(true);
-                    });
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al abrir bitácoras: " + ex.getMessage());
-            }
-        }
-
-        public void abrirSeguimiento(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
-            try {
-                // Usamos la clase DAO para obtener el email del aprendiz por su documento
-                UsuariosDAO dao = new UsuariosDAO();
-                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
-
-                if (email != null && !email.isEmpty()) {
-                    SwingUtilities.invokeLater(() -> {
-                        CodigoGUI codigoGUI = new CodigoGUI(email);
-                        codigoGUI.setVisible(true);
-                    });
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al abrir seguimiento: " + ex.getMessage());
-            }
-        }
+//        public void abrirSeguimiento(String numeroDoc, String tipoDoc, String nombres, String apellidos) {
+//            try {
+//                // Usamos la clase DAO para obtener el email del aprendiz por su documento
+//                UsuariosDAO dao = new UsuariosDAO();
+//                String email = dao.obtenerCorreoPorDocumento(numeroDoc, tipoDoc); // Asegúrate de tener este método en tu DAO
+//
+//                if (email != null && !email.isEmpty()) {
+//                    SwingUtilities.invokeLater(() -> {
+//                        CodigoGUI codigoGUI = new CodigoGUI(email);
+//                        codigoGUI.setVisible(true);
+//                    });
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "No se encontró el correo del aprendiz.");
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                JOptionPane.showMessageDialog(null, "Error al abrir seguimiento: " + ex.getMessage());
+//            }
+//        }
 
         private int obtenerRolUsuario(String numeroDoc, String tipoDoc) {
             try (Connection conn = DBConnection.getConnection()) {
