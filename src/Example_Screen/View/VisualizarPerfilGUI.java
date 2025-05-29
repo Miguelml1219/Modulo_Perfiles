@@ -131,21 +131,15 @@ public class VisualizarPerfilGUI {
 
     public void cargarDatosUsuario(int idUsuario)
     {
-        String usuarioEmail = obtenerUsuarioActual();
-        if (usuarioEmail == null || usuarioEmail.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No se pudo obtener la información del usuario actual.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
         try (Connection conn = DBConnection.getConnection()) {
             //String sql = "SELECT * FROM usuarios WHERE email = ?";
             // Cambiar esta consulta:
             String sql = "SELECT u.*, r.rol FROM usuarios u " +
                     "INNER JOIN rol r ON u.ID_rol = r.ID_rol " +
-                    "WHERE u.email = ?";
+                    "WHERE u.ID_usuarios = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, usuarioEmail);
+            stmt.setInt(1, idUsuario);
             ResultSet rs = stmt.executeQuery();
 
 
@@ -166,15 +160,18 @@ public class VisualizarPerfilGUI {
                 rol.setText(rs.getString("rol"));
                 estado.setText(rs.getString("estado"));
 
+                emailActual = rs.getString("email");
+
 
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró información del usuario en la base de datos.",
+                JOptionPane.showMessageDialog(null,
+                        "No se encontró información del usuario con ID: " + idUsuario,
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
-            emailActual = rs.getString("email");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al cargar los datos del usuario: " + ex.getMessage(),
+            JOptionPane.showMessageDialog(null,
+                    "Error al cargar los datos del usuario: " + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
 

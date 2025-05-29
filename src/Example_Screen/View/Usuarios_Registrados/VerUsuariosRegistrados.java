@@ -196,16 +196,43 @@ public class VerUsuariosRegistrados {
     }
 
     // Renderiza el botón
-    class ButtonRenderer extends JButton implements TableCellRenderer {
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
+
+        private JButton button;
+
         public ButtonRenderer() {
+            setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // Centra el botón sin márgenes
             setOpaque(true);
             setBackground(Color.WHITE);
-            setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+
+            button = new JButton();
+            button.setPreferredSize(new Dimension(70, 30));
+            button.setMargin(new Insets(5, 10, 5, 10));
+            button.setFocusPainted(false);
+            button.setBorder(BorderFactory.createEmptyBorder());
+            button.setContentAreaFilled(false);
+            button.setOpaque(true);
+            add(button);
         }
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
-            setText((value == null) ? "Botón" : value.toString());
+
+            String text = (value == null) ? "" : value.toString();
+            button.setText(text);
+
+            // Colores personalizados
+            if (text.equals("Ver Perfil")) {
+                button.setBackground(new Color(0, 123, 255));
+                button.setForeground(Color.WHITE);
+            } else if (text.equals("Editar")) {
+                button.setBackground(new Color(0, 123, 255));
+                button.setForeground(Color.WHITE);
+            } else {
+                button.setBackground(Color.LIGHT_GRAY);
+                button.setForeground(Color.BLACK);
+            }
+
             return this;
         }
     }
@@ -223,6 +250,8 @@ public class VerUsuariosRegistrados {
             super(checkBox);
             button = new JButton();
             button.setOpaque(true);
+            button.setBorder(BorderFactory.createEmptyBorder());
+            button.setContentAreaFilled(false);
 
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -475,7 +504,7 @@ public class VerUsuariosRegistrados {
         table1.getTableHeader().setBackground(Color.decode("#39A900"));
 
         table1.setFont(new Font("Segoe UI", Font.PLAIN, 13)); // Cuerpo de la tabla
-        table1.setRowHeight(25);
+        table1.setRowHeight(35);
 
         table1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14)); // Encabezado
 

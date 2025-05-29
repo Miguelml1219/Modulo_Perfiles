@@ -361,6 +361,9 @@
             </constraints>
             <properties>
               <background color="-12998400"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <focusable value="true"/>
               <font name="Calibri" size="18" style="1"/>
               <foreground color="-1"/>
               <text value="Ir al Perfil"/>
