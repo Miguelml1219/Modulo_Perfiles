@@ -54,6 +54,8 @@ public class CodigoGUI extends JFrame {
     private final Color naranja = Color.decode("#F39C12");
     private final Font fuenteCalibri = new Font("Calibri", Font.PLAIN, 20);
 
+    //public JButton getBotonSubir(){return btnSubir;}
+
     /**
      * Constructor principal que inicializa la interfaz para un usuario específico.
      * @param email Correo electrónico del usuario que inicia sesión
@@ -64,6 +66,8 @@ public class CodigoGUI extends JFrame {
 
         Map<String, String> infoUsuario = archivoDAO.obtenerInfoCompletaAprendiz(email);
         this.idUsuario = Integer.parseInt(infoUsuario.get("id_usuario"));
+
+        //btnSubir.setVisible(false);
 
         configurarVentana();
         configurarComponentes();
@@ -140,10 +144,17 @@ public class CodigoGUI extends JFrame {
             if (subidaHabilitada) subirArchivo();
             else mostrarMensajeEspera();
         });
-        panelSubir.add(btnSubir);
-        panelPrincipal.add(panelSubir, BorderLayout.SOUTH);
+        panelSubir.add(btnSubir); // se agrega de todas formas
 
+        if("4".equals(cofigBotonInicioSegunRol) || "5".equals(cofigBotonInicioSegunRol)) {
+            btnSubir.setVisible(false);
+        } else {
+            btnSubir.setVisible(true);
+        }
+
+        panelPrincipal.add(panelSubir, BorderLayout.SOUTH);
         add(panelPrincipal);
+
     }
 
     /**
@@ -374,7 +385,6 @@ public class CodigoGUI extends JFrame {
         {
             btnValidar.setVisible(false);
             btnEliminar.setVisible(false);
-            btnSubir.setVisible(false);
         }
 
 

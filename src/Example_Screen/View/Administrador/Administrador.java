@@ -232,6 +232,7 @@ public class Administrador {
         aplicarEfectoHover(auxiliares, colorHover, colorBase);
         aplicarEfectoHover(coevaluadores, colorHover, colorBase);
         aplicarEfectoHover(evaluadores, colorHover, colorBase);
+        aplicarEfectoHover(asignaBoton, colorHover, colorBase);
 
 
 
@@ -919,6 +920,10 @@ public class Administrador {
 
             }
         });
+
+        if("3".equals(cofigBotonInicioSegunRol)){
+            botonBitacoras.setVisible(false);
+        }
 
 
         panelDerecho.add(Box.createVerticalGlue());
