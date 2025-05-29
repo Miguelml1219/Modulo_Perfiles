@@ -666,7 +666,7 @@ public class Administrador {
      */
     public void mostrarPanel(String titulo, JPanel panelContenido) {
         // Cargar ícono desde recursos
-        ImageIcon iconoRegresar = new ImageIcon(getClass().getResource("/img/Diseño sin título (7).png"));
+        ImageIcon iconoRegresar = new ImageIcon(getClass().getResource("/img/previous (3).png"));
         JButton btnRegresar = new JButton(iconoRegresar);
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
@@ -689,7 +689,7 @@ public class Administrador {
         panelTitulo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         panelTitulo.add(lblTitulo, BorderLayout.CENTER);
-        panelTitulo.add(btnRegresar, BorderLayout.EAST); // AHORA el botón está a la derecha
+        panelTitulo.add(btnRegresar, BorderLayout.WEST); // AHORA el botón está a la derecha
 
         // Panel superior blanco que contiene al panel del título
         JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -819,11 +819,11 @@ public class Administrador {
         botonPerfil.addActionListener(e -> {
             try {
                 // Obtener el rol del usuario actual desde la base de datos
-                int rolUsuario = obtenerRolUsuario(LoginGUI.idUsuarioActual);
+                int rolUsuario = obtenerRolUsuario(VisualizarPerfilGUI.userID);
 
                 JDialog perfilDialog = new JDialog(frame, "Ver Información", true);
                 // Usar el ID del usuario actual y su rol correcto
-                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(LoginGUI.idUsuarioActual, rolUsuario,this);
+                VisualizarPerfilGUI perfilGUI = new VisualizarPerfilGUI(VisualizarPerfilGUI.userID, rolUsuario,this);
                 perfilGUI.irAlPerfilButton.setVisible(false);
                 perfilDialog.setContentPane(perfilGUI.panel1);
                 perfilDialog.pack();
